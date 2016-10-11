@@ -1,18 +1,6 @@
 <?php
-$query = new WP_Query( array(
-	'posts_per_page' => 18,
-	'page' => 1,
-	'offset' => 5,
-	'ignore_sticky_posts' => true,
-	'tax_query' => array(
-		array(
-			'taxonomy' => 'post_format',
-			'field'    => 'slug',
-			'terms'    => array( 'post-format-aside' ),
-			'operator' => 'IN'
-		)
-	)
-) );
+$offset = isset( $offset ) ? $offset : 5;
+$query = canino_get_3_cols_query( $offset );
 ?>
 
 <?php if ( $query->have_posts() ): ?>

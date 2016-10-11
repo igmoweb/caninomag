@@ -3,7 +3,7 @@
 add_action( 'wp_enqueue_scripts', 'pressroom_child_enqueue_styles' );
 function pressroom_child_enqueue_styles() {
     wp_enqueue_style( 'pressroom-style', get_template_directory_uri() . '/style.css' );
-	wp_enqueue_script( 'main-style', get_stylesheet_directory_uri() . '/js/main.js', array(),'', true );
+	wp_enqueue_script( 'main-style', get_stylesheet_directory_uri() . '/js/main.js', array(),'201610112029', true );
     //post_formats
 }
 
@@ -25,9 +25,32 @@ function presroom_child_setup_theme() {
 		'before_title' => '<h4 class="box_header">',
 		'after_title' => '</h4>'
 	) );
+
+	register_sidebar( array(
+		'name' => 'Artículos Relacionados',
+		'id' => 'cabecera',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="box_header">',
+		'after_title' => '</h4>'
+	) );
+
+	register_sidebar( array(
+		'name' => 'Pie de Página',
+		'id' => 'blog',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="box_header">',
+		'after_title' => '</h4>'
+	) );
 }
 
 add_action("admin_print_scripts-term.php", "pr_theme_admin_print_scripts_colorpicker");
+
+add_action( 'admin_menu', 'canino_remove_pressroom_menus', 500 );
+function canino_remove_pressroom_menus() {
+	remove_submenu_page( 'themes.php', 'edit.php?post_type=pressroom_sidebars' );
+}
 
 
 function pressroom_child_change_article_excerpt( $excerpt ) {
@@ -135,6 +158,8 @@ add_filter( 'rp4wp_append_content', '__return_false' );
 
 
 include_once( 'inc/customizer.php' );
+include_once( 'inc/load-more.php' );
+include_once( 'inc/helpers.php' );
 
 
 // COSAS PARA CAMBIAR EN EL FUTURO

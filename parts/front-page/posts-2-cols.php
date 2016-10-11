@@ -1,17 +1,6 @@
 <?php
-$query = new WP_Query( array(
-	'posts_per_page' => 6,
-	'page' => 1,
-	'ignore_sticky_posts' => true,
-	'tax_query' => array(
-		array(
-			'taxonomy' => 'post_format',
-			'field'    => 'slug',
-			'terms'    => array( 'post-format-aside' ),
-			'operator' => 'IN'
-		)
-	)
-) );
+$offset = isset( $offset ) ? $offset : 0;
+$query = canino_get_2_cols_query( $offset );
 ?>
 
 <?php if ( $query->have_posts() ): ?>
@@ -34,5 +23,6 @@ $query = new WP_Query( array(
 		<?php $counter++; ?>
 	<?php endwhile; ?>
 <?php endif; ?>
+
 <?php wp_reset_postdata(); ?>
 

@@ -441,12 +441,6 @@ margin: 8px 0px}
 	border-bottom: none;
 }
 
-/** Home page **/
-@media screen and (max-width: 479px) {
-	.canino-home-left {
-
-	}
-}
 
 /** El Parte **/
 .canino-elparte-home ul li {
@@ -472,5 +466,122 @@ margin: 8px 0px}
 	#el-parte .el-parte-left {
 		width:100%;
 		padding-right:0;
+	}
+}
+
+
+.canino-spinner {
+	background: url(images/spinner.gif) no-repeat;
+	-webkit-background-size: 20px 20px;
+	background-size: 20px 20px;
+	visibility: hidden;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	width: 20px;
+	height: 20px;
+	margin: 2px 5px 0;
+	display: inline-block;
+}
+
+#portada-load-more-2-cols {
+	display:none;
+}
+
+#portada-main-3-cols > div > div {
+	margin-top:2em;
+}
+
+#portada-main-upper #portada-main-sidebar {
+	float: right;
+	padding-right: 0;
+	padding-left: 20px !important;
+}
+
+
+#portada-main-upper #portada-main-upper-inner {
+	float: left;
+	padding-left: 0;
+	padding-right: 20px !important;
+}
+
+.canino-3rdparty-widgets {
+	text-align: right;
+}
+
+#portada-main-2-cols > div > .vc_col-sm-6 li.post .post-content .post-excerpt,
+#portada-main-3-cols > div li.post .post-content .post-excerpt {
+	clear:both;
+	margin-top:50px;
+}
+
+.blog .author_row > a {
+	color: #ABABAB;
+	font-size: 13px;
+}
+
+
+
+/** Home page **/
+@media screen and (max-width: 767px) {
+	#portada-main {
+		padding-right: 20px !important;
+		padding-left: 20px !important;
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	#portada-main-upper {
+		margin-right: 0;
+		margin-left: 0;
+		width: 100%;
+	}
+
+	#portada-el-parte .el-parte-left {
+		width: 100%;
+	}
+
+	#portada-main-2-cols > div > .vc_col-sm-6 {
+		width: 100%;
+		padding:0;
+	}
+
+	#portada-main-2-cols > div > .vc_col-sm-6 li.post a.post_image {
+		float:left;
+		max-width: 100px;
+		width: 100px;
+	}
+
+	#portada-main-2-cols > div > .vc_col-sm-6 li.post .post-content {
+		float: right;
+		width: calc(100% - 130px);
+	}
+	#portada-main-2-cols > div > .vc_col-sm-6 li.post .post-content .author_row,
+	#portada-main-2-cols > div > .vc_col-sm-6 li.post .post-content .post-excerpt {
+		display:none;
+	}
+
+	#portada-main-sidebar .wpb_widgetised_column div.widget_text > .textwidget > .canino-3rdparty-widgets {
+		display:none;
+		text-align: center;
+	}
+
+	#portada-main-3-cols {
+		display:none;
+	}
+
+	#portada-load-more-2-cols {
+		display:block;
+		margin-top:20px;
+	}
+	#load-more-2-cols {
+		width: 100%;
+		font-size: 1.6em;
+		display:block;
+	}
+
+	#load-more {
+		display:none;
 	}
 }
