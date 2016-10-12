@@ -94,21 +94,32 @@
 	</div>
 
 	<script>
+		'use strict';
 		// Make big grid images same height
 		( function() {
-			'use strict';
-			var sizes = [],
-				i,
-				minSize;
-			var images = document.querySelectorAll( '#portada-grid > div > div > div.medium > a > img' );
-			for ( i = 0; i < images.length; i++ ) {
-				sizes.push( images[i].height );
+
+			function matchHeights( images ) {
+				var sizes = [],
+					i,
+					minSize;
+				for ( i = 0; i < images.length; i++ ) {
+					sizes.push( images[i].height );
+				}
+
+				minSize = Math.min.apply( null, sizes );
+				if ( ! minSize ) {
+					return;
+				}
+				for ( i = 0; i < images.length; i++ ) {
+					images[i].style.height = minSize + 'px';
+				}
 			}
 
-			minSize = Math.min.apply( null, sizes );
-			for ( i = 0; i < images.length; i++ ) {
-				images[i].style.height = minSize + 'px';
-			}
+			// Big grid
+			matchHeights( document.querySelectorAll( '#portada-grid > div > div > div.medium > a > img' ) );
+			// Small Grid
+			matchHeights( document.querySelectorAll( '#portada-grid > div > div > div.small > a > img' ) );
+
 		}() );
 
 	</script>
