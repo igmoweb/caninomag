@@ -92,4 +92,24 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		// Make big grid images same height
+		( function() {
+			'use strict';
+			var sizes = [],
+				i,
+				minSize;
+			var images = document.querySelectorAll( '#portada-grid > div > div > div.medium > a > img' );
+			for ( i = 0; i < images.length; i++ ) {
+				sizes.push( images[i].height );
+			}
+
+			minSize = Math.min.apply( null, sizes );
+			for ( i = 0; i < images.length; i++ ) {
+				images[i].style.height = minSize + 'px';
+			}
+		}() );
+
+	</script>
 <?php get_footer(); ?>
