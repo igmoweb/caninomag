@@ -43,6 +43,12 @@ function presroom_child_setup_theme() {
 		'before_title' => '<h4 class="box_header">',
 		'after_title' => '</h4>'
 	) );
+
+	// Image sizes
+	add_image_size( 'post-grid-thumb-large', 787, 524, true );
+	add_image_size( 'post-grid-thumb-big', 524, 524, true );
+	add_image_size( 'post-grid-thumb-medium', 524, 261, true );
+	add_image_size( 'blog-post-thumb', 330, 242, true );
 }
 
 add_action("admin_print_scripts-term.php", "pr_theme_admin_print_scripts_colorpicker");
@@ -51,6 +57,7 @@ add_action( 'admin_menu', 'canino_remove_pressroom_menus', 500 );
 function canino_remove_pressroom_menus() {
 	remove_submenu_page( 'themes.php', 'edit.php?post_type=pressroom_sidebars' );
 }
+
 
 
 function pressroom_child_change_article_excerpt( $excerpt ) {
@@ -160,6 +167,7 @@ add_filter( 'rp4wp_append_content', '__return_false' );
 include_once( 'inc/customizer.php' );
 include_once( 'inc/load-more.php' );
 include_once( 'inc/helpers.php' );
+include_once( 'inc/template-tags.php' );
 
 
 // COSAS PARA CAMBIAR EN EL FUTURO

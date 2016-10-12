@@ -12,12 +12,7 @@ $query = new WP_Query( array(
 	<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 		<div class="post small">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" title="<?php the_title_attribute(); ?>">
-				<?php the_post_thumbnail( array(
-					300,
-					300
-				), array(
-					'style' => 'display: block;'
-				) ); ?>
+				<?php the_post_thumbnail( 'thumbnail', array( 'style' => 'display: block;' ) ); ?>
 			</a>
 			<div class="slider_content_box">
 				<h5>

@@ -13,13 +13,7 @@ $query = new WP_Query( array(
 	<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 		<div class="post medium">
 			<a href="<?php echo esc_url( get_permalink() ); ?>" title="<?php the_title_attribute(); ?>">
-				<?php the_post_thumbnail( array(
-					524,
-					261
-				), array(
-					'class' => 'attachment-post-grid-thumb-medium size-post-grid-thumb-medium',
-					'style' => 'display: block;'
-				) ); ?>
+				<?php the_post_thumbnail( 'post-grid-thumb-medium', array( 'style' => 'display: block;' ) ); ?>
 			</a>
 			<div class="slider_content_box">
 				<h2>

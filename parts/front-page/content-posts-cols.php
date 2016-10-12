@@ -12,12 +12,7 @@ if ( $categories ) {
 	<a class="post_image"
 	   href="<?php echo esc_url( get_permalink() ); ?>"
 	   title="<?php the_title_attribute(); ?>">
-		<?php the_post_thumbnail( array(
-			330,
-			242
-		), array(
-			'style' => 'display: block;'
-		) ); ?>
+		<?php the_post_thumbnail( 'blog-post-thumb', array( 'style' => 'display: block;' ) ); ?>
 	</a>
 	<div class="post-content">
 		<h2 class="clearfix">

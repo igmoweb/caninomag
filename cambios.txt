@@ -11,7 +11,7 @@
     }(document, 'script', 'facebook-jssdk'));</script>
     <div class="fb-page" data-href="https://www.facebook.com/caninomag" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/caninomag"><a href="https://www.facebook.com/caninomag">Canino</a></blockquote></div></div>
     <br/>
-    <br/>
+    <br/>wp_uploadbi
     <br/>
     <script data-cfasync="false" async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- Lateral_Rectangulo_Home -->
