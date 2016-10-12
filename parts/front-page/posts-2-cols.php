@@ -1,7 +1,9 @@
 <?php
 $offset = isset( $offset ) ? $offset : 0;
 $query = canino_get_2_cols_query( $offset );
+
 ?>
+
 
 <?php if ( $query->have_posts() ): ?>
 	<?php $counter = 0; ?>

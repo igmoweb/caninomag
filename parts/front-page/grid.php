@@ -8,7 +8,6 @@ $query = new WP_Query( array(
 ?>
 
 
-
 <?php if ( $query->have_posts() ): ?>
 	<?php while ( $query->have_posts() ) : $query->the_post(); ?>
 		<div class="post medium">
