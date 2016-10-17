@@ -50,6 +50,7 @@ function presroom_child_setup_theme() {
 	add_image_size( 'post-grid-thumb-big', 524, 524, true );
 	add_image_size( 'post-grid-thumb-medium', 524, 261, true );
 	add_image_size( 'blog-post-thumb', 330, 242, true );
+	add_image_size( 'el-parte-widget', 100, 100, true );
 }
 
 add_action("admin_print_scripts-term.php", "pr_theme_admin_print_scripts_colorpicker");
@@ -169,7 +170,10 @@ include_once( 'inc/customizer.php' );
 include_once( 'inc/load-more.php' );
 include_once( 'inc/helpers.php' );
 include_once( 'inc/template-tags.php' );
+include_once( 'inc/query.php' );
 
+// Widgets
+include_once( 'inc/widgets/el-parte.php' );
 
 // COSAS PARA CAMBIAR EN EL FUTURO
 /**

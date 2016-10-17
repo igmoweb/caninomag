@@ -1,13 +1,6 @@
-<?php
-$offset = isset( $offset ) ? $offset : 0;
-$query = canino_get_2_cols_query( $offset );
-
-?>
-
-
-<?php if ( $query->have_posts() ): ?>
+<?php if ( have_posts() ): ?>
 	<?php $counter = 0; ?>
-	<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+	<?php while ( have_posts() ) : the_post(); ?>
 		<?php if ( 0 === ( $counter % 2 ) ): ?>
 			<div class="vc_row wpb_row vc_row-fluid">
 		<?php endif; ?>
