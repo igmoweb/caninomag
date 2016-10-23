@@ -1,0 +1,23 @@
+.widget-area {
+  .widget {
+    margin-top: $global-margin;
+    margin-bottom: $global-margin * 2;
+    &:first-child {
+      margin-top:0;
+    }
+
+    h4.widget-title {
+      @include title-section();
+    }
+  }
+}
+
+#top-bar {
+  .widget {
+    display: inline-block;
+    margin-right: $global-margin;
+  }
+  .widget-title {
+    display:none;
+  }
+}

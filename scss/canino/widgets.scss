@@ -1,0 +1,26 @@
+.widget.el-parte {
+  .el-parte-list {
+    list-style:none;
+    li {
+      margin-bottom:$global-margin;
+    }
+    .el-parte-thumbnail {
+      display: block;
+      float: left;
+      padding-right: 5%;
+      min-width:100px;
+      margin-bottom:$global-margin / 2;
+    }
+    .el-parte-content {
+      width:55%;
+      float:left;
+      .el-parte-date {
+        color: $dark-gray;
+        font-size:$small-font-size;
+      }
+      h5 {
+        font-size:rem-calc(15);
+      }
+    }
+  }
+}

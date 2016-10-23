@@ -1,0 +1,12 @@
+/** Specific styles for the theme **/
+#secondary .widget-area {
+  .widget_image {
+    text-align:center;
+  }
+  .widget_facebook_likebox,
+  .widget_twitter_timeline {
+    @include breakpoint( small down ) {
+      display:none;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@mixin title-section( $squema: light ) {
+  @if $squema == light {
+    border-left: 3px solid $dark-gray;
+    background: $light-gray;
+  }
+  @else {
+    border-left: 3px solid $light-gray;
+    background: $dark-gray;
+  }
+
+  font-size: rem-calc( 14 );
+  text-transform: uppercase;
+  font-weight: 600;
+  padding:rem-calc( 9 ) rem-calc( 15 ) rem-calc( 10 );
+  border-bottom:none;
+}
+
+@import 'general';
+@import 'header';
+@import 'grid';
+@import 'footer';
+@import 'pagination';
+@import 'posts';
+@import 'el-parte';
+@import 'sidebars';
+@import 'widgets';
+@import 'custom';

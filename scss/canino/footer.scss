@@ -1,0 +1,18 @@
+#colophon {
+  color:$white;
+  padding:$global-padding*3 0;
+  background:#333;
+
+  .widget-area > .widget {
+    margin-top:0;
+
+    ul {
+      list-style:none;
+      margin-left:0;
+    }
+  }
+
+  h4.widget-title {
+    @include title-section( dark );
+  }
+}

@@ -1,0 +1,70 @@
+#masthead {
+  background:#000;
+  padding: $global-padding/2 0;
+}
+
+#site-navigation {
+  border-bottom:1px solid $light-gray;
+  .menu-menu-ppal-container {
+    ul.menu > li {
+      border-top:3px solid transparent;
+      font-family:$header-font-family;
+      padding-top: $global-padding / 2;
+      padding-bottom: $global-padding / 2;
+
+      &:hover {
+        border-top-color: $primary-color;
+        background:$light-gray;
+      }
+      & > a {
+        color:$body-font-color;
+        font-size:rem-calc( 15 );
+      }
+
+    }
+  }
+
+  ul.menu {
+    li {
+
+    }
+  }
+
+  .menu-social-container {
+    border-left:3px solid $light-gray;
+    ul > li {
+      width:rem-calc(33);
+    }
+    ul > li a {
+      &:before {
+        font-family: "foundation-icons";
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        text-decoration: inherit;
+        color:$secondary-color;
+        font-size:rem-calc(23);
+        padding-right: rem-calc(3);
+        padding-left: rem-calc(3);
+      }
+
+      &[href*="facebook.com"]:before { content: "\f1c4";color:#3b5998;font-size:rem-calc(29); }
+      &[href*="instagram.com"]:before { content: "\f1cd";background:#3b5998;color:white; }
+      &[href*="flickr.com"]:before { content: "\f1c5"; }
+      &[href*="plus.google.com"]:before { content: "\f1car"; }
+      &[href*="linkedin.com"]:before { content: "\f1d0"; }
+      &[href*="pinterest.com"]:before { content: "\f1d6"; }
+      &[href*="reddit.com"]:before { content: "\f1d8"; }
+      &[href*="tumblr.com"]:before { content: "\f1e3"; }
+      &[href*="twitter.com"]:before { content: "\f1e4"; color:white; background: #3cf; }
+      &[href*="vimeo.com"]:before { content: "\f1e4"; }
+      &[href*="youtube.com"]:before { content: "\f1ea"; }
+      &[href*="spotify.com"]:before { content: "\f1dd"; }
+    }
+  }
+}
+

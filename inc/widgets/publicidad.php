@@ -8,16 +8,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Canino_Widget_El_Parte extends WP_Widget {
+class Canino_Widget_Publi extends WP_Widget {
 
 	/**
 	 * Sets up the widgets name etc
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'classname' => 'el-parte'
+			'classname' => 'canino-ad'
 		);
-		parent::__construct( 'el-parte', 'El Parte', $widget_ops );
+		parent::__construct( 'canino-ad', 'Publicidad', $widget_ops );
 	}
 
 	/**
@@ -32,44 +32,7 @@ class Canino_Widget_El_Parte extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title'];
 		}
 
-		$query = new WP_Query( array(
-			'posts_per_page' => 10,
-			'ignore_sticky_posts' => true,
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'post_format',
-					'field'    => 'slug',
-					'terms'    => array( 'post-format-link' ),
-					'operator' => 'IN'
-				)
-			)
-		) );
-
-		?>
-			<?php if ( $query->have_posts() ): ?>
-				<ul class="el-parte-list">
-					<?php while ( $query->have_posts() ): $query->the_post(); ?>
-						<li <?php post_class( 'post' ); ?>>
-							<a class="el-parte-thumbnail" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-								<?php the_post_thumbnail( 'el-parte-widget' ); ?>
-							</a>
-							<div class="el-parte-content">
-								<h5>
-									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-										<?php the_title(); ?>
-									</a>
-								</h5>
-								<p class="el-parte-date">
-									<?php the_date(); ?>
-								</p>
-							</div>
-						</li>
-					<?php endwhile; ?>
-				</ul>
-			<?php endif; ?>
-		<?php
-
-		wp_reset_postdata();
+		canino_ad_banner();
 
 		echo $args['after_widget'];
 	}
@@ -80,7 +43,7 @@ class Canino_Widget_El_Parte extends WP_Widget {
 	 * @param array $instance The widget options
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : 'El Parte';
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : 'Publicidad';
 		?>
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( esc_attr( 'Title:' ) ); ?></label>
@@ -103,7 +66,7 @@ class Canino_Widget_El_Parte extends WP_Widget {
 }
 
 add_action( 'widgets_init', function(){
-	register_widget( 'Canino_Widget_El_Parte' );
+	register_widget( 'Canino_Widget_Publi' );
 });
 
 

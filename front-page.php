@@ -1,102 +1,62 @@
 <?php get_header(); ?>
-	<div class="theme_page relative">
-		<div class="clearfix">
-			<div id="portada-grid" class="vc_row wpb_row vc_row-fluid grid-portada blog_grid">
-				<div class="canino-home-grid-top wpb_column vc_column_container vc_col-sm-12">
-					<div class="wpb_wrapper">
 
-						<?php get_template_part( 'parts/front-page/grid' ); ?>
+<?php get_template_part( 'parts/home/grid' ); ?>
 
-						<div class="wpb_raw_code wpb_content_element wpb_raw_html">
-							<div class="wpb_wrapper">
-								<div class="clearfix"></div>
-							</div>
-						</div>
+<div id="main-content" class="row">
 
-						<?php get_template_part( 'parts/front-page/grid-small' ); ?>
+	<div id="primary" class="column small-12 large-8 small-order-2 medium-order-1">
 
-						<div class="wpb_raw_code wpb_content_element wpb_raw_html">
-							<div class="wpb_wrapper">
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">El Parte</a></h2>
+		<?php
+			$query = canino_get_el_parte_home_query();
+			include_once( locate_template( 'parts/home/el-parte.php' ) );
+			wp_reset_postdata();
+		?>
 
-			<div id="portada-main">
-				<div id="portada-main-upper" class="vc_row wpb_row vc_row-fluid">
-					<div id="portada-main-sidebar" class="wpb_column vc_column_container vc_col-sm-4">
-						<?php get_sidebar( 'cabecera-arriba-del-to' ); ?>
-					</div>
-					<div id="portada-main-upper-inner" class="wpb_column vc_column_container vc_col-sm-8">
-
-						<div id="portada-el-parte" class="vc_row wpb_row vc_row-fluid">
-							<div class="canino-elparte-home wpb_column vc_column_container vc_col-sm-12">
-								<?php get_template_part( 'parts/front-page/el-parte' ); ?>
-							</div>
-						</div>
-
-						<div id="portada-publi" class="canino-home-publi vc_row wpb_row vc_row-fluid vc_hidden-xs">
-							<div class="wpb_column vc_column_container vc_col-sm-12">
-								<div class="wpb_wrapper">
-									<div class="wpb_text_column wpb_content_element  vc_custom_1439651872428">
-										<h4 class="box_header">
-											<a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a>
-										</h4>
-										<!-- Central_horizontal_Home -->
-										<ins class="adsbygoogle"
-										     style="display:inline-block;width:728px;height:90px"
-										     data-ad-client="ca-pub-8311800129241191"
-										     data-ad-slot="1748594590"></ins>
-										<script>
-											(adsbygoogle = window.adsbygoogle || []).push({});
-										</script>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="vc_row wpb_row vc_row-fluid">
-							<div class="wpb_column vc_column_container vc_col-sm-12">
-								<hr class="divider page_margin_top">
-							</div>
-						</div>
-
-						<div id="portada-main-2-cols">
-							<?php get_template_part( 'parts/front-page/posts-2-cols' ); ?>
-						</div>
-
-						<div id="portada-load-more-2-cols" class="vc_row wpb_row vc_row-fluid">
-							<div class="wpb_column vc_column_container vc_col-sm-12">
-								<button id="load-more-2-cols" data-type="2-cols" data-container="portada-main-2-cols" data-offset="6" data-per-page="6" class="load-more-btn alm-load-more-btn more">Ver más artículos <span class="canino-spinner"></span></button>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-
-				<div id="portada-main-3-cols" class="vc_row wpb_row vc_row-fluid">
-					<div id="canino-posts-3-cols" class="wpb_column vc_column_container vc_col-sm-12">
-						<?php get_template_part( 'parts/front-page/posts-3-cols' ); ?>
-					</div>
-				</div>
-
-
-				<div id="portada-load-more" class="vc_row wpb_row vc_row-fluid">
-					<div class="wpb_column vc_column_container vc_col-sm-12">
-						<button id="load-more" data-container="canino-posts-3-cols" data-offset="23" data-per-page="18" data-type="3-cols" class="load-more-btn alm-load-more-btn more">Ver más artículos <span class="canino-spinner"></span></button>
-					</div>
-				</div>
-			</div>
+		<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a></h2>
+		<div class="canino-publi row">
+			<?php canino_ad_banner(); ?>
+		</div>
+		<hr>
+		<div id="canino-home-2-cols">
+			<?php
+				$query = canino_get_2_cols_home_query();
+				$columns = 6;
+				include( locate_template( 'parts/posts-cols.php' ) );
+				wp_reset_postdata();
+			?>
+		</div>
+		<div class="row hide-for-large">
+			<button data-container="canino-home-2-cols" data-offset="6" data-per-page="6" data-type="2-cols" class="large-12 column button callout load-more-btn">
+				Ver más artículos
+				<span class="canino-spinner"></span>
+			</button>
 		</div>
 	</div>
-
+	<div id="secondary" class="column small-12 large-4 small-order-1 medium-order-2">
+		<?php get_sidebar( 'cabecera-arriba-del-to' ); ?>
+	</div>
+</div>
+<div id="submain-content">
+	<div id="canino-home-3-cols">
+		<?php
+			$query = canino_get_3_cols_home_query();
+			$columns = 4;
+			include( locate_template( 'parts/posts-cols.php' ) );
+			wp_reset_postdata();
+		?>
+	</div>
+	<div class="row">
+		<button data-container="canino-home-3-cols" data-offset="24" data-per-page="18" data-type="3-cols" class="large-12 column button callout load-more-btn">
+			Ver más artículos
+			<span class="canino-spinner"></span>
+		</button>
+	</div>
+</div>
 	<script>
 		'use strict';
 		// Make big grid images same height
-		( function() {
+		window.onload = function() {
 
 			function matchHeights( images, min ) {
 				var sizes = [],
@@ -120,12 +80,28 @@
 				}
 			}
 
-			// Big grid
-			matchHeights( document.querySelectorAll( '#portada-grid > div > div > div.medium > a > img' ), 261 );
-			// Small Grid
-			matchHeights( document.querySelectorAll( '#portada-grid > div > div > div.small > a > img' ), 300 );
 
-		}() );
+			function resizeGrid() {
+				var bigMin, smallMin;
+				if ( 'small' == Foundation.MediaQuery.current ) {
+					smallMin = 150;
+					bigMin = 250;
+				}
+				else {
+					smallMin = 300;
+					bigMin = 261;
+				}
 
+				// Big grid
+				matchHeights( document.querySelectorAll( '#canino-grid-top > div img' ), bigMin );
+				// Small Grid
+				matchHeights( document.querySelectorAll( '#canino-grid-bottom > div img' ), smallMin );
+			}
+
+			resizeGrid();
+
+			window.onresize = resizeGrid;
+
+		};
 	</script>
 <?php get_footer(); ?>

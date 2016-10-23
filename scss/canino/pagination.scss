@@ -1,0 +1,9 @@
+ul.pagination {
+  li > a {
+    background:$light-gray;
+    &:hover {
+      background:$primary-color;
+      color:white;
+    }
+  }
+}
