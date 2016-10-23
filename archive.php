@@ -12,7 +12,7 @@
 			<div class="vc_row wpb_row vc_row-fluid">
 				<div class="divider_block clearfix page_margin_top_section"><hr class="divider first"><hr class="divider subheader_arrow"><hr class="divider last"></div>
 				<div class="wpb_column vc_column_container vc_col-sm-8">
-					<div class="wpb_wrapper">
+					<div class="wpb_wrapper canino-2-cols">
 						<div>
 							<?php get_template_part( 'parts/archives/posts-2-cols' ); ?>
 						</div>

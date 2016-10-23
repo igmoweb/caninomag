@@ -529,6 +529,14 @@ ul.blog.two_columns div.post-excerpt
 	margin-top:50px;
 }
 
+div.widget.el-parte {
+	margin-bottom:30px;
+}
+
+div.page_margin_top_section {
+	margin-top:30px;
+}
+
 .blog .author_row > a {
 	color: #ABABAB;
 	font-size: 13px;
@@ -540,8 +548,9 @@ ul.blog.two_columns div.post-excerpt
 
 
 
-/** Home page **/
+
 @media screen and (max-width: 767px) {
+	/** Home page **/
 	#portada-main {
 		padding-right: 20px !important;
 		padding-left: 20px !important;
@@ -602,5 +611,10 @@ ul.blog.two_columns div.post-excerpt
 
 	#load-more {
 		display:none;
+	}
+
+	/** Archives **/
+	body.archive .canino-2-cols > div > .wpb_row > .vc_col-sm-6 {
+		width:100%;
 	}
 }

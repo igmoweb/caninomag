@@ -3,7 +3,7 @@
 add_action( 'wp_enqueue_scripts', 'pressroom_child_enqueue_styles' );
 function pressroom_child_enqueue_styles() {
     wp_enqueue_style( 'pressroom-style', get_template_directory_uri() . '/style.css', array(), '20161012'  );
-    wp_enqueue_style( 'main-style', get_stylesheet_directory_uri() . '/style.css', array(), '20161012'  );
+    wp_enqueue_style( 'main-style', get_stylesheet_directory_uri() . '/style.css', array(), '20161017b'  );
 	wp_enqueue_script( 'main-style', get_stylesheet_directory_uri() . '/js/main.js', array(),'20161012', true );
     //post_formats
 }

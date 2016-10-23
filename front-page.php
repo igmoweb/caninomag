@@ -98,10 +98,11 @@
 		// Make big grid images same height
 		( function() {
 
-			function matchHeights( images ) {
+			function matchHeights( images, min ) {
 				var sizes = [],
 					i,
 					minSize;
+
 				for ( i = 0; i < images.length; i++ ) {
 					sizes.push( images[i].height );
 				}
@@ -110,15 +111,19 @@
 				if ( ! minSize ) {
 					return;
 				}
+
+				if ( minSize < min ) {
+					minSize = min;
+				}
 				for ( i = 0; i < images.length; i++ ) {
 					images[i].style.height = minSize + 'px';
 				}
 			}
 
 			// Big grid
-			matchHeights( document.querySelectorAll( '#portada-grid > div > div > div.medium > a > img' ) );
+			matchHeights( document.querySelectorAll( '#portada-grid > div > div > div.medium > a > img' ), 261 );
 			// Small Grid
-			matchHeights( document.querySelectorAll( '#portada-grid > div > div > div.small > a > img' ) );
+			matchHeights( document.querySelectorAll( '#portada-grid > div > div > div.small > a > img' ), 300 );
 
 		}() );
 
