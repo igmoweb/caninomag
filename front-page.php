@@ -4,7 +4,7 @@
 
 <div id="main-content" class="row">
 
-	<div id="primary" class="column small-12 large-8 small-order-2 medium-order-1">
+	<div id="primary" class="<?php canino_primary_class(); ?>">
 
 		<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">El Parte</a></h2>
 		<?php
@@ -14,7 +14,7 @@
 		?>
 
 		<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a></h2>
-		<div class="canino-publi row">
+		<div class="canino-publi row show-for-medium">
 			<?php canino_ad_banner(); ?>
 		</div>
 		<hr>
@@ -33,11 +33,11 @@
 			</button>
 		</div>
 	</div>
-	<div id="secondary" class="column small-12 large-4 small-order-1 medium-order-2">
+	<div id="secondary" class="<?php canino_secondary_class(); ?>">
 		<?php get_sidebar( 'cabecera-arriba-del-to' ); ?>
 	</div>
 </div>
-<div id="submain-content">
+<div id="submain-content" class="show-for-medium">
 	<div id="canino-home-3-cols">
 		<?php
 			$query = canino_get_3_cols_home_query();

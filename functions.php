@@ -92,13 +92,33 @@ jQuery( document ).ready( function() {
 		) );
 
 		register_sidebar( array(
-			'name' => 'Pie de Página',
-			'id' => 'blog',
-			'before_widget' => '<div id="%1$s" class="widget column %2$s">',
+			'name' => 'Pie de Página (Izquierda)',
+			'id' => 'pie-izq',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
 			'before_title' => '<h4 class="widget-title">',
 			'after_title' => '</h4>'
 		) );
+
+		register_sidebar( array(
+			'name' => 'Pie de Página (Centro)',
+			'id' => 'pie-centro',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h4 class="widget-title">',
+			'after_title' => '</h4>'
+		) );
+
+		register_sidebar( array(
+			'name' => 'Pie de Página (Derecha)',
+			'id' => 'pie-dcha',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h4 class="widget-title">',
+			'after_title' => '</h4>'
+		) );
+
+
 
 		register_sidebar( array(
 			'name' => 'Top Bar',

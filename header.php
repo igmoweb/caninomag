@@ -30,31 +30,35 @@
 	</header>
 
 	<?php if ( has_nav_menu( 'primary' ) ) : ?>
-		<div class="title-bar" data-responsive-toggle="site-navigation" data-hide-for="large">
+		<div class="title-bar hide-for-large" data-responsive-toggle="site-navigation" data-hide-for="large">
 			<button class="menu-icon" type="button" data-toggle></button>
 			<div class="title-bar-title">Menu</div>
 		</div>
 		<div id="site-navigation" class="main-navigation">
 			<nav role="navigation" class="row">
-				<?php
-				// Primary navigation menu.
-				wp_nav_menu( array(
-					'menu_class'     => 'menu column large-10 vertical medium-horizontal',
-					'theme_location' => 'primary'
-				) );
-
-				if ( has_nav_menu( 'social' ) ) {
-					// Social navigation menu.
+				<div class="columns large-10 canino-primary-menu-wrap">
+					<?php
+					// Primary navigation menu.
 					wp_nav_menu( array(
-						'menu_class'     => 'menu column large-2 small-horizontal',
-						'theme_location' => 'social',
-						'depth' => 1,
-						'link_before'    => '<span class="show-for-sr">',
-						'link_after'     => '</span>',
+						'menu_class'     => 'menu vertical medium-horizontal canino-primary-menu',
+						'theme_location' => 'primary'
 					) );
-				}
-
-				?>
+					?>
+				</div>
+				<div class="columns large-2 canino-social-menu-wrap">
+					<?php
+						if ( has_nav_menu( 'social' ) ) {
+							// Social navigation menu.
+							wp_nav_menu( array(
+								'menu_class'     => 'menu small-horizontal canino-social-menu',
+								'theme_location' => 'social',
+								'depth' => 1,
+								'link_before'    => '<span class="show-for-sr">',
+								'link_after'     => '</span>',
+							) );
+						}
+					?>
+				</div>
 			</nav>
 		</div><!-- .main-navigation -->
 	<?php endif; ?>

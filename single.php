@@ -38,6 +38,11 @@
 										</a>
 									</div>
 								<?php endif; ?>
+								<?php if ( function_exists( 'sharing_display' ) ): ?>
+									<div class="post-sharing text-center">
+										<?php echo sharing_display(); ?>
+									</div>
+								<?php endif; ?>
 								<hr class="small">
 								<div class="post-tags">
 									<p><small>Etiquetas</small></p>

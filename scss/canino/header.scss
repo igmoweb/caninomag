@@ -4,38 +4,41 @@
 }
 
 #site-navigation {
+  .canino-primary-menu-wrap {
+
+  }
+  .canino-social-menu-wrap {
+
+    & > div {
+      display: inline-block;
+      float: right;
+    }
+  }
   border-bottom:1px solid $light-gray;
-  .menu-menu-ppal-container {
-    ul.menu > li {
-      border-top:3px solid transparent;
-      font-family:$header-font-family;
-      padding-top: $global-padding / 2;
-      padding-bottom: $global-padding / 2;
 
-      &:hover {
-        border-top-color: $primary-color;
-        background:$light-gray;
-      }
-      & > a {
-        color:$body-font-color;
-        font-size:rem-calc( 15 );
-      }
+  ul.canino-primary-menu > li {
+    border-top:3px solid transparent;
+    font-family:$header-font-family;
+    padding-top: $global-padding / 2;
+    padding-bottom: $global-padding / 2;
 
+    &:hover {
+      border-top-color: $primary-color;
+      background:$light-gray;
+    }
+    & > a {
+      color:$body-font-color;
+      font-size:rem-calc( 15 );
     }
   }
 
-  ul.menu {
-    li {
-
+  ul.canino-social-menu {
+    & > li {
+      width: rem-calc( 41 );
     }
-  }
-
-  .menu-social-container {
-    border-left:3px solid $light-gray;
-    ul > li {
-      width:rem-calc(33);
-    }
-    ul > li a {
+    & > li a {
+      padding-left:0;
+      padding-right:0;
       &:before {
         font-family: "foundation-icons";
         font-style: normal;
