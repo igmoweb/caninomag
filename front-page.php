@@ -106,8 +106,8 @@
 					bigMin = 261;
 				}
 
-				if ( 'large' === Foundation.MediaQuery.current ) {
-					// Big grid (only in medium/large devices
+				if ( 'medium' != Foundation.MediaQuery.current && 'small' != Foundation.MediaQuery.current ) {
+					// Big grid (only in large devices)
 					matchHeights( document.querySelectorAll( '#canino-grid-top > div img' ), bigMin );
 				}
 
