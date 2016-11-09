@@ -1,7 +1,13 @@
 <div id="canino-grid">
 	<?php
 	$query = new WP_Query( array(
-		'cat' => 73,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'canino_destacado',
+				'field'    => 'term_id',
+				'terms'    => 73,
+			),
+		),
 		'posts_per_page' => 2,
 		'page' => 1,
 		'ignore_sticky_posts' => true
@@ -27,7 +33,13 @@
 
 	<?php
 	$query = new WP_Query( array(
-		'cat' => 687,
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'canino_destacado',
+				'field'    => 'term_id',
+				'terms'    => 687,
+			),
+		),
 		'posts_per_page' => 4,
 		'page' => 1,
 		'ignore_sticky_posts' => true

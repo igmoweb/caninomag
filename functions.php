@@ -16,6 +16,8 @@ class Canino_Theme {
 
 	private static $instance;
 
+	public $version = '1.0';
+
 	public static function get_instance() {
 		if ( ! self::$instance ) {
 			self::$instance = new self();
@@ -38,17 +40,21 @@ class Canino_Theme {
 		add_filter( 'esc_html', array( $this, 'rename_post_formats' ) );
 		add_action('admin_head', array( $this, 'live_rename_formats') );
 
+		add_action( 'admin_init', array( $this, 'maybe_upgrade' ) );
+
 		include_once( 'inc/class-canino-load-more.php' );
 		include_once( 'inc/class-canino-query.php' );
 		include_once( 'inc/class-canino-customizer.php' );
 		include_once( 'inc/class-canino-critica.php' );
+		include_once( 'inc/class-canino-taxonomies.php' );
+		include_once( 'inc/class-canino-destacado.php' );
 		include_once( 'inc/template-tags.php' );
 		include_once( 'inc/widgets/el-parte.php' );
 		include_once( 'inc/widgets/publicidad.php' );
 	}
 
 	function enqueue_styles() {
-		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201609111114' );
+		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201609111200' );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_style( 'canino-foundicons', get_stylesheet_directory_uri() . '/css/foundation-icons/foundation-icons.css' );
 		wp_enqueue_script(
@@ -140,6 +146,8 @@ jQuery( document ).ready( function() {
 			'primary' => __( 'Primary Menu',      'canino' ),
 			'social'  => __( 'Social Links Menu', 'canino' ),
 		) );
+
+		Canino_Taxonomies::register();
 	}
 
 	function change_article_excerpt( $excerpt ) {
@@ -211,6 +219,40 @@ jQuery( document ).ready( function() {
 				});
 			</script>
 		<?php }
+	}
+
+	function maybe_upgrade() {
+		global $wpdb;
+		$saved_version = get_option( 'canino_theme_version' );
+		if ( $saved_version === $this->version ) {
+			return;
+		}
+
+		if ( version_compare( $saved_version, '1.0', '<' ) ) {
+			$terms = array(
+				get_term_by( 'slug', 'destacado', 'category' ),
+				get_term_by( 'slug', 'destacado-pequeno', 'category' )
+			);
+
+			foreach ( $terms as $term ) {
+				if ( ! $term ) {
+					continue;
+				}
+
+				$wpdb->update(
+					$wpdb->term_taxonomy,
+					array( 'taxonomy' => 'canino_destacado' ),
+					array( 'term_id' => $term->term_id ),
+					array( '%s' ),
+					array( '%d' )
+				);
+
+				clean_term_cache( $term->term_id, 'category' );
+				clean_term_cache( $term->term_id, 'canino_destacado' );
+			}
+		}
+
+		update_option( 'canino_theme_version', $this->version );
 	}
 
 
