@@ -17,7 +17,7 @@ if ( ! class_exists( 'Canino_Destacado' ) ) {
 		}
 
 		public function register_meta_box() {
-			add_meta_box( 'canino-destacado', 'Destacado', array( $this, 'render' ), 'post', 'side' );
+			add_meta_box( 'canino-destacado', 'Destacado', array( $this, 'render' ), 'post', 'side', 'high' );
 		}
 
 		public function render( $post ) {
