@@ -3,6 +3,14 @@
   padding:$global-padding*3 0;
   background:#333;
 
+  a {
+    color:$white;
+    &:hover {
+      color:$white;
+      text-decoration: underline;
+    }
+  }
+
   .widget-area > .widget {
     margin-top:0;
 
@@ -14,5 +22,25 @@
 
   h4.widget-title {
     @include title-section( dark );
+  }
+
+  .widget ul.menu {
+    display:block;
+  }
+  .widget.widget_wpcom_social_media_icons_widget .genericon {
+    font-size:rem-calc(60);
+    padding:rem-calc(5);
+    &.genericon-facebook {
+      color:#3c5899;
+      background: white;
+    }
+    &.genericon-twitter {
+      color:white;
+      background: #56acf0;
+    }
+    &.genericon-instagram {
+      color:white;
+      background: #155486;
+    }
   }
 }

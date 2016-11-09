@@ -40,7 +40,7 @@
 					<?php
 					// Primary navigation menu.
 					wp_nav_menu( array(
-						'menu_class'     => 'menu vertical medium-horizontal canino-primary-menu',
+						'menu_class'     => 'menu vertical large-horizontal canino-primary-menu',
 						'theme_location' => 'primary'
 					) );
 					?>

@@ -41,7 +41,8 @@ gulp.task('build', ['sass','clear-build'], function() {
             '!scss/',
             '!*.md',
             '!*.json',
-            '!gulpfile.js'
+            '!gulpfile.js',
+            '!pasos-migracion'
         ]
     )
         .pipe(gulp.dest('./build/'));

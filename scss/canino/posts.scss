@@ -34,6 +34,9 @@ article.hentry {
   }
 
   &.post-cols {
+    img {
+      @include animate-opacity();
+    }
     @include breakpoint(medium down) {
       .post-header {
         & > .post-image,

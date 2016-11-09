@@ -19,7 +19,6 @@ class Canino_Customizer {
 
 		$this->ganalytics( $wp_customize );
 		$this->ads( $wp_customize );
-		$this->fb( $wp_customize );
 		$this->category_colors( $wp_customize );
 	}
 
@@ -56,19 +55,6 @@ class Canino_Customizer {
 		) );
 	}
 
-	private function fb( $wp_customize ) {
-		$wp_customize->add_setting( 'canino_fb', array(
-			'type'       => 'theme_mod', // or 'option'
-			'capability' => 'edit_theme_options',
-			'default'    => '',
-		) );
-
-		$wp_customize->add_control( 'canino_fb', array(
-			'type'    => 'textarea',
-			'section' => 'canino_options', // Required, core or custom.
-			'label'   => 'Facebook Footer Code'
-		) );
-	}
 
 	private function category_colors( $wp_customize ) {
 		$categories = get_terms( array( 'taxonomy' => 'category', 'hide-empty' => false ) );

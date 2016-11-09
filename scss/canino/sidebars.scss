@@ -13,11 +13,22 @@
 }
 
 #top-bar {
+  position: relative;
   .widget {
     display: inline-block;
     margin-right: $global-margin;
   }
   .widget-title {
     display:none;
+  }
+}
+
+#secondary > .widget-area {
+  @include breakpoint(medium down) {
+    text-align:center;
+    .widget {
+      padding-left: rem-calc(25);
+      padding-right: rem-calc(25);
+    }
   }
 }

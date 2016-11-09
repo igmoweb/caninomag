@@ -5,11 +5,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-function canino_ad_banner() {
+function canino_ad_banner( $size = 'large' ) {
+	switch ( $size ) {
+		case 'small': {
+			$width = 300;
+			$height = 250;
+			break;
+		}
+		default: {
+			$width = 748;
+			$height = 90;
+		}
+	}
 	?>
 	<!-- Central_horizontal_Home -->
 	<ins class="adsbygoogle"
-	     style="display:inline-block;width:728px;height:90px"
+	     style="display:inline-block;width:<?php echo $width; ?>px;height:<?php echo $height; ?>px"
 	     data-ad-client="ca-pub-8311800129241191"
 	     data-ad-slot="1748594590"></ins>
 	<script>

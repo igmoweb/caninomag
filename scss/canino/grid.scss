@@ -10,6 +10,21 @@
     position:relative;
     img {
       width:100%;
+      @include animate-opacity();
+    }
+
+    a:hover {
+      color:$white;
+      text-decoration: underline;
+    }
+
+    &:hover {
+      img {
+        opacity:$img-opacity;
+      }
+      a {
+        text-decoration: underline;
+      }
     }
   }
   .canino-grid-item-content {
@@ -31,4 +46,7 @@
 
 #canino-grid-bottom h2 {
   font-size:$global-font-size;
+  @include breakpoint(small down) {
+    font-size:$small-font-size;
+  }
 }

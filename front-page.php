@@ -13,11 +13,25 @@
 			wp_reset_postdata();
 		?>
 
-		<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a></h2>
-		<div class="canino-publi row show-for-medium">
-			<?php canino_ad_banner(); ?>
+		<div class="show-for-large">
+			<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a></h2>
+			<div class="canino-publi row">
+				<div class="column large-12">
+					<?php canino_ad_banner(); ?>
+				</div>
+			</div>
+			<hr>
 		</div>
-		<hr>
+
+		<div class="show-for-medium-only">
+			<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a></h2>
+			<div class="canino-publi row align-center">
+				<div class="column medium-5">
+					<?php canino_ad_banner( 'small' ); ?>
+				</div>
+			</div>
+		</div>
+
 		<div id="canino-home-2-cols">
 			<?php
 				$query = canino_get_2_cols_home_query();
@@ -37,7 +51,7 @@
 		<?php get_sidebar( 'cabecera-arriba-del-to' ); ?>
 	</div>
 </div>
-<div id="submain-content" class="show-for-medium">
+<div id="submain-content" class="show-for-large">
 	<div id="canino-home-3-cols">
 		<?php
 			$query = canino_get_3_cols_home_query();
@@ -91,9 +105,12 @@
 					smallMin = 300;
 					bigMin = 261;
 				}
+				
+				if ( 'large' === Foundation.MediaQuery.current ) {
+					// Big grid (only in medium/large devices
+					matchHeights( document.querySelectorAll( '#canino-grid-top > div img' ), bigMin );
+				}
 
-				// Big grid
-				matchHeights( document.querySelectorAll( '#canino-grid-top > div img' ), bigMin );
 				// Small Grid
 				matchHeights( document.querySelectorAll( '#canino-grid-bottom > div img' ), smallMin );
 			}
