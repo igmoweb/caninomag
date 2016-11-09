@@ -4,7 +4,7 @@
 
 - Instalar bower y nodejs
 - Clonar este repositorio
-- Ejecutar `bower install` y `npm install`. Esto instalará todas las dependencias de Bower y npm
+- Ejecutar `npm install` y `bower install`. Esto instalará todas las dependencias de Bower y npm
 - Ejecutar `npm run sass` para generar el archivo `css/app.css` por primera vez
 
 ### Qué instala

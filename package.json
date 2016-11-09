@@ -28,8 +28,5 @@
   },
   "author": "Ignacio Cruz <igmoweb@gmail.com>",
   "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "gulp-autoprefixer": "^3.1.0"
-  }
+  "private": true
 }
