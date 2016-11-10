@@ -61,7 +61,7 @@
 		?>
 	</div>
 	<div class="row">
-		<button data-container="canino-home-3-cols" data-offset="25" data-per-page="18" data-type="3-cols" class="large-12 column button callout load-more-btn">
+		<button data-container="canino-home-3-cols" data-offset="18" data-per-page="12" data-type="3-cols" class="large-12 column button callout load-more-btn">
 			Ver más artículos
 			<span class="canino-spinner"></span>
 		</button>

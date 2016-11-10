@@ -54,8 +54,8 @@ function canino_get_2_cols_home_query( $offset = 0 ) {
 }
 
 function canino_get_3_cols_home_query( $offset = 6 ) {
-	return new WP_Query( array(
-		'posts_per_page' => 18,
+	$query = new WP_Query( array(
+		'posts_per_page' => 12,
 		'page' => 1,
 		'offset' => $offset,
 		'ignore_sticky_posts' => true,
@@ -68,4 +68,6 @@ function canino_get_3_cols_home_query( $offset = 6 ) {
 			)
 		)
 	) );
+
+	return $query;
 }

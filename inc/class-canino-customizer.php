@@ -74,7 +74,7 @@ class Canino_Customizer {
 	}
 
 	public function add_inline_css() {
-		$categories = get_terms( array( 'taxonomy' => 'category', 'hide-empty' => false ) );
+		$categories = get_terms( array( 'taxonomy' => 'category', 'hide-empty' => false, 'update_term_meta_cache' => false ) );
 		foreach ( $categories as $category ) {
 			$color = get_theme_mod( 'canino_cat_color_' . $category->term_id, '' );
 			if ( $color ) {

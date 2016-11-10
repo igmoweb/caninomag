@@ -267,10 +267,23 @@ function canino_theme() {
 canino_theme();
 
 
+
 function canino_get_post_category( $post_id ) {
+	global $canino_categories;
+	// Cache hack
+	$canino_categories = is_array( $canino_categories ) ? $canino_categories : array();
+	if ( isset( $canino_categories[ $post_id ] ) ) {
+		return $canino_categories[ $post_id ];
+	}
+
 	$categories = wp_get_object_terms( $post_id, 'category' );
 	if ( $categories ) {
-		return $categories[0];
+		$category = $categories[0];
 	}
-	return new WP_Term( new stdClass() );
+	else {
+		$category = new WP_Term( new stdClass() );
+	}
+
+	$canino_categories[ $post_id ] = $category;
+	return $category;
 }
