@@ -95,5 +95,13 @@ body.single {
         margin-right:rem-calc( 3 );
       }
     }
+    .sticky {
+      @include breakpoint(large up) {
+        max-width:109px;
+      }
+      @include breakpoint(medium down) {
+        display:none;
+      }
+    }
   }
 }

@@ -19,7 +19,8 @@
 					</header>
 					<div class="row">
 						<section id="post-content-<?php the_ID(); ?>" class="post-content large-10 column medium-order-2">
-							<?php the_content(); ?>
+							<h4 class="post-excerpt"><?php the_excerpt(); ?></h4>
+							<?php the_content( null, true ); ?>
 						</section>
 						<footer class="post-footer large-2 column medium-order-1" data-sticky-container>
 							<div class="sticky" data-sticky data-anchor="post-content-<?php the_ID(); ?>">
@@ -52,6 +53,15 @@
 						</footer>
 					</div>
 				</article>
+
+				<?php if ( function_exists( 'rp4wp_children' ) ): ?>
+					<?php rp4wp_children(); ?>
+				<?php endif; ?>
+
+				<?php if ( function_exists( 'mc4wp_show_form' ) ): ?>
+					<?php mc4wp_show_form(25814); ?>
+				<?php endif; ?>
+
 			<?php endwhile; ?>
 	</div>
 
@@ -60,4 +70,9 @@
 		<?php get_sidebar( 'cabecera-arriba-del-to' ); ?>
 	</div>
 </div>
+
+<?php if ( comments_open() || get_comments_number() ) : ?>
+	<?php comments_template(); ?>
+<?php endif; ?>
+
 <?php get_footer(); ?>
