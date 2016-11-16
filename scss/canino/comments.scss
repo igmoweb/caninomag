@@ -1,3 +1,71 @@
 .comments-title {
   @include title-section();
 }
+
+#comments {
+  margin-top:$global-margin * 2;
+}
+
+ol.comment-list {
+  list-style:none;
+  margin-left:0;
+
+  > li {
+    margin-top: $global-margin * 3;
+    clear:both;
+  }
+  ol.children {
+    list-style:none;
+    margin-left:0;
+    > li {
+      margin-top: $global-margin * 2;
+      clear:both;
+      border-left:1px solid $dark-gray;
+      padding-left:$global-padding * 2;
+    }
+  }
+
+  .comment-body {
+    .comment-author img {
+      float: left;
+      margin-right:$global-margin * 2;
+    }
+    .comment-meta {
+      font-style: italic;
+      font-size:$small-font-size;
+    }
+    .says { display:none; }
+    .safe-comments-report-link { float:right;}
+    .comment-reply-link {
+      @include button();
+      font-size:map-get($button-sizes, small);
+      margin-bottom:0;
+      margin-top: $global-margin;
+    }
+  }
+}
+
+#respond {
+  margin-top:$global-margin;
+  padding-top:$global-margin;
+  border-top: 1px solid $light-gray;
+  h3 {
+    @include title-section();
+  }
+
+  .comment-form-author, .comment-form-email, .comment-form-url {
+    width:100%;
+    display:block;
+    @include breakpoint(large up) {
+      display: inline-block;
+      width: 33%;
+      margin-bottom:0;
+    }
+  }
+  .comment-form-comment {
+    clear:both;
+  }
+  .form-submit input[type="submit"] {
+    @include button();
+  }
+}

@@ -203,87 +203,86 @@ function canino_get_critica_fields( $area = 'all' ) {
 	$all_fields = array(
 		'' => array(
 			'titulo' => array(
-				'label' => 'titulo',
+				'label' => 'Título',
 				'type' => 'text'
-
 			),
 			'year' => array(
 				'label' => 'Año',
 				'type' => 'text'
 			),
 			'texto-ficha' => array(
-				'label' => 'texto-ficha',
+				'label' => '',
 				'type' => 'text'
 			),
 			'portada' => array(
-				'label' => 'portada',
+				'label' => 'Portada',
 				'type' => 'file'
 
 			),
 			'texto-ficha2' => array(
-				'label' => 'texto-ficha2',
+				'label' => '',
 				'type' => 'text'
 			)
 		),
 		'cine' => array(
 			'cine-director' => array(
-				'label' => 'cine-director',
+				'label' => 'Director',
 				'type' => 'text'
 			),
 			'cine-guion' => array(
-				'label' => 'cine-guion',
+				'label' => 'Guión',
 				'type' => 'text'
 			),
 			'cine-actores' => array(
-				'label' => 'cine-actores',
+				'label' => 'Actores',
 				'type' => 'text'
 			)
 		),
 		'juego' => array(
 			'game-estudio' => array(
-				'label' => 'game-estudio',
+				'label' => 'Estudio',
 				'type' => 'text'
 			),
 			'game-distribuidora' => array(
-				'label' => 'game-distribuidora',
+				'label' => 'Distribuidora',
 				'type' => 'text'
 			),
 			'game-plataformas' => array(
-				'label' => 'game-plataformas',
+				'label' => 'Plataformas',
 				'type' => 'text'
 			)
 		),
 		'libro' => array(
 			'libro-editorial' => array(
-				'label' => 'libro-editorial',
+				'label' => 'Editorial',
 				'type' => 'text'
 			),
 			'libro-autor' => array(
-				'label' => 'libro-autor',
+				'label' => 'Autor',
 				'type' => 'text'
 			)
 		),
 		'comic' => array(
 			'comic-guionista' => array(
-				'label' => 'comic-guionista',
+				'label' => 'Guionista',
 				'type' => 'text'
 			),
 			'comic-editorial' => array(
-				'label' => 'comic-editorial',
+				'label' => 'editorial',
 				'type' => 'text'
 			),
 			'comic-dibujante' => array(
-				'label' => 'comic-dibujante',
+				'label' => 'Dibujante',
 				'type' => 'text'
 			),
 		),
 		'musica' => array(
 			'musica-artista' => array(
-				'label' => 'musica-artista',
+				'label' => 'Artista',
 				'type' => 'text'
 			),
 			'musica-sello' => array(
-				'label' => 'musica-sello',
+				'label' => 'Sello',
 				'type' => 'text'
 			),
 		)

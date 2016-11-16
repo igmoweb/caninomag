@@ -11,9 +11,14 @@
 				<?php if ( 'titulo' === $key ): ?>
 					<h3><?php echo esc_html( $value ); ?></h3>
 				<?php elseif ( 'portada' === $key ): ?>
-					<p></p>
+					<div><?php echo wp_get_attachment_image( $value, 'thumbnail' ); ?></div>
 				<?php else: ?>
-					<div><strong><?php echo $atts['label']; ?></strong><?php echo $value; ?></div>
+					<div>
+						<?php if ( $atts['label'] ): ?>
+							<strong><?php echo $atts['label']; ?></strong>:
+						<?php endif; ?>
+						<?php echo $value; ?>
+					</div>
 				<?php endif; ?>
 			<?php endforeach; ?>
 		<?php endforeach; ?>

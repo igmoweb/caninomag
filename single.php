@@ -9,7 +9,7 @@
 							<li class="post-category"><i class="fi-folder"></i> En <?php echo get_the_category_list( ', ' ); ?></li>
 							<li class="post-date"><i class="fi-clock"></i> <?php the_date(); ?></li>
 							<li class="post-author"><i class="fi-pencil"></i> <?php the_author_link(); ?></li>
-							<li class="post-comments-count"><i class="fi-comment"></i> <?php printf( _n( '%d Comentario', '%d Comentarios', get_comments_number_text() ), get_comments_number_text() ); ?></li>
+							<li class="post-comments-count"><i class="fi-comment"></i> <a href="#comments"><?php printf( _n( '%d Comentario', '%d Comentarios', get_comments_number_text() ), get_comments_number_text() ); ?></a></li>
 						</ul>
 						<div class="post-image">
 							<?php the_post_thumbnail( 'single-post-thumb' ); ?>
@@ -18,7 +18,7 @@
 						</ul>
 					</header>
 					<div class="row">
-						<section id="post-content-<?php the_ID(); ?>" class="post-content large-10 column medium-order-2">
+						<section id="post-content-<?php the_ID(); ?>" class="post-content large-10 small-12 column medium-order-2">
 							<h4 class="post-excerpt"><?php the_excerpt(); ?></h4>
 							<?php the_content( null, true ); ?>
 						</section>
