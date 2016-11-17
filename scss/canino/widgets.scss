@@ -1,19 +1,19 @@
 .widget.el-parte {
   .el-parte-list {
     list-style:none;
+    margin-left:0;
     li {
       margin-bottom:$global-margin;
+      @include flex();
     }
     .el-parte-thumbnail {
-      display: block;
-      float: left;
-      padding-right: 5%;
       min-width:100px;
-      margin-bottom:$global-margin / 2;
+      display:inline-block;
+      margin-right: 5%;
+      margin-bottom: $global-margin / 2;
     }
     .el-parte-content {
-      width:55%;
-      float:left;
+      display:inline-block;
       .el-parte-date {
         color: $dark-gray;
         font-size:$small-font-size;
