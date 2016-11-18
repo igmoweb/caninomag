@@ -49,12 +49,12 @@ class Canino_Theme {
 		include_once( 'inc/class-canino-taxonomies.php' );
 		include_once( 'inc/class-canino-destacado.php' );
 		include_once( 'inc/template-tags.php' );
-		include_once( 'inc/widgets/el-parte.php' );
 		include_once( 'inc/widgets/publicidad.php' );
+		include_once( 'inc/widgets/articulos.php' );
 	}
 
 	function enqueue_styles() {
-		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201611162139' );
+		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201611172139' );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_style( 'canino-foundicons', get_stylesheet_directory_uri() . '/bower_components/foundation-icon-fonts/foundation-icons.css' );
 		wp_enqueue_script(
@@ -93,13 +93,14 @@ jQuery( document ).ready( function() {
 		) );
 
 		register_sidebar( array(
-			'name' => 'Artículos Relacionados',
-			'id' => 'cabecera',
+			'name' => 'Página de autor',
+			'id' => 'author',
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
 			'before_title' => '<h4 class="widget-title">',
 			'after_title' => '</h4>'
 		) );
+
 
 		register_sidebar( array(
 			'name' => 'Pie de Página (Izquierda)',
@@ -143,7 +144,8 @@ jQuery( document ).ready( function() {
 		add_image_size( 'post-grid-thumb-big', 524, 524, true );
 		add_image_size( 'post-grid-thumb-medium', 524, 261, true );
 		add_image_size( 'blog-post-thumb', 330, 242, true );
-		add_image_size( 'el-parte-widget', 100, 100, true );
+		add_image_size( 'articulos-widget-small', 100, 100, true );
+		add_image_size( 'articulos-widget-big', 524, 261, true );
 		add_image_size( 'single-post-thumb',634, 424, true );
 
 		register_nav_menus( array(

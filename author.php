@@ -8,15 +8,25 @@
 		<?php the_author_meta( 'description' ); ?>
 	</div>
 </div>
-<hr>
+<div class="row">
+	<div class="column large-12">
+		<hr>
+	</div>
+
+</div>
+
 <div id="main-content" class="row">
-	<div id="primary" class="column small-12 large-12">
+	<div id="primary" class="column small-12 large-8">
 		<div class="canino-cols row">
 			<?php while ( have_posts() ): the_post(); ?>
 				<?php get_template_part( 'parts/content', 'archive' ); ?>
 			<?php endwhile; ?>
 		</div>
 		<?php get_template_part( 'parts/pagination' ); ?>
+	</div>
+
+	<div id="secondary" class="column small-12 large-4">
+		<?php get_sidebar( 'author' ); ?>
 	</div>
 </div>
 <?php get_footer(); ?>
