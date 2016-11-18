@@ -10,3 +10,21 @@
     }
   }
 }
+
+body.author {
+  .author-links {
+    list-style:none;
+    margin-left:0;
+    li {
+      font-size:rem-calc( 40 );
+      display:inline-block;
+      margin-right:rem-calc(20);
+      a {
+        color:$body-font-color;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

@@ -6,6 +6,16 @@
 	<div class="column large-8">
 		<h1 class="page_title"><?php echo canino_get_archive_title();?></h1>
 		<?php the_author_meta( 'description' ); ?>
+		<ul class="author-links">
+			<?php if ( get_the_author_meta( 'twitter' ) ): ?>
+				<li class="twitter">
+					<a href="https://twitter.com/<?php the_author_meta( 'twitter' ); ?>">
+						<i class="fi-social-twitter"></i> <span class="show-for-sr">Twitter de <?php the_author() ;?></span>
+					</a>
+				</li>
+			<?php endif; ?>
+		</ul>
+
 	</div>
 </div>
 <div class="row">
