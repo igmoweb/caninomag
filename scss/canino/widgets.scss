@@ -34,8 +34,7 @@ $medium-sizes: map-get($header-sizes, 'medium' );
       .articulos-post {
         display:flex;
         .articulos-header {
-          flex-basis: 13.2rem + $global-margin;
-          flex-grow:0;
+          flex: 0 0 rem-calc( 100 ) + $global-margin;
         }
         .articulos-content {
           flex-grow:2;

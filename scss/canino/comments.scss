@@ -4,6 +4,17 @@
 
 #comments {
   margin-top:$global-margin * 2;
+
+  .navigation {
+    border-top:1px solid $light-gray;
+    padding-top:$global-padding;
+    .nav-links {
+      @include clearfix();
+      a {
+        color:$white;
+      }
+    }
+  }
 }
 
 ol.comment-list {

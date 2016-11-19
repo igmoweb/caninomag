@@ -54,7 +54,7 @@ class Canino_Theme {
 	}
 
 	function enqueue_styles() {
-		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201611172139' );
+		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201611180000' );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_style( 'canino-foundicons', get_stylesheet_directory_uri() . '/bower_components/foundation-icon-fonts/foundation-icons.css' );
 		wp_enqueue_script(
