@@ -20,6 +20,7 @@ class Canino_Customizer {
 		$this->ganalytics( $wp_customize );
 		$this->ads( $wp_customize );
 		$this->category_colors( $wp_customize );
+		$this->category_headers( $wp_customize );
 	}
 
 
@@ -68,6 +69,23 @@ class Canino_Customizer {
 			$wp_customize->add_control(
 				new WP_Customize_Color_Control( $wp_customize, 'canino_cat_color_' . $category->term_id, array(
 					'label' => sprintf( 'Categoría: %s', $category->name ),
+					'section' => 'canino_options',
+				) ) );
+		}
+	}
+
+	private function category_headers( $wp_customize ) {
+		$categories = get_terms( array( 'taxonomy' => 'category', 'hide-empty' => false ) );
+		foreach ( $categories as $category ) {
+			$wp_customize->add_setting( 'canino_cat_header_' . $category->term_id, array(
+				'type'       => 'theme_mod', // or 'option'
+				'capability' => 'edit_theme_options',
+				'default'    => '',
+			) );
+
+			$wp_customize->add_control(
+				new WP_Customize_Upload_Control( $wp_customize, 'canino_cat_header_' . $category->term_id, array(
+					'label' => sprintf( 'Cabecera de categoría: %s', $category->name ),
 					'section' => 'canino_options',
 				) ) );
 		}

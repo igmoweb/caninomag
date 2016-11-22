@@ -110,3 +110,28 @@ function alx_embed_html( $html ) {
 
 add_filter( 'embed_oembed_html', 'alx_embed_html', 10, 3 );
 add_filter( 'video_embed_html', 'alx_embed_html' ); // Jetpack
+
+
+/**
+ * Shows the logo
+ */
+function canino_the_custom_logo() {
+	the_custom_logo();
+}
+
+add_filter( 'theme_mod_custom_logo', 'canino_custom_logo' );
+function canino_custom_logo( $value ) {
+	if ( ! function_exists( 'is_category' ) ) {
+		return $value;
+	}
+
+	if ( is_category() ) {
+		$category_id = get_queried_object_id();
+		$header = get_theme_mod( 'canino_cat_header_' . $category_id );
+		if ( $header && $post_id = attachment_url_to_postid( $header ) ) {
+			return $post_id;
+		}
+	}
+
+	return $value;
+}

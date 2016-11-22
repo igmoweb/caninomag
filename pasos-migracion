@@ -12,6 +12,17 @@ Share
 
 3. Añadir logo en cabecera y favicon
 4. Colores de categorías
+CINE: #B71C1C
+TV #388E3C;
+CINE #EF6C00;
+LECTURAS: #5D4037
+MUSICA: #EF6C00
+MONDO PIXEL: #7B1FA2
+MEZCLADITO: #1976D2
+CANINOVISION: #FF80AB
+
+
+
 5. Ads code
 <script type="text/javascript">
 			var _comscore = _comscore || [];

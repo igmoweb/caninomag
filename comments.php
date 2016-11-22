@@ -29,7 +29,7 @@ if ( post_password_required() ) {
 					number_format_i18n( get_comments_number() ), get_the_title() );
 				?>
 			</h2>
-			
+
 			<ol class="comment-list">
 				<?php
 				wp_list_comments( array(

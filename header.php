@@ -18,11 +18,11 @@
 		<div class="site-branding text-center">
 			<?php if ( is_front_page() && is_home() ) : ?>
 				<h1 class="site-title">
-					<?php the_custom_logo(); ?>
+					<?php canino_the_custom_logo(); ?>
 				</h1>
 			<?php else : ?>
 				<p class="site-title">
-					<?php the_custom_logo(); ?>
+					<?php canino_the_custom_logo(); ?>
 				</p>
 			<?php endif; ?>
 		</div>
