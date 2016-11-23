@@ -11,7 +11,7 @@
 				<?php if ( 'titulo' === $key ): ?>
 					<h3><?php echo esc_html( $value ); ?></h3>
 				<?php elseif ( 'portada' === $key ): ?>
-					<div><?php echo wp_get_attachment_image( $value, 'thumbnail' ); ?></div>
+					<div><?php echo wp_get_attachment_image( $value, 'full' ); ?></div>
 				<?php else: ?>
 					<div>
 						<?php if ( $atts['label'] ): ?>

@@ -71,7 +71,7 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 			}
 			foreach ( $fields as $field => $atts ) {
 				$name = "canino[$field]";
-				$id = "canino-$field-";
+				$id = "canino-$field";
 				if ( 'text' === $atts['type'] ) {
 					?>
 					<p>
@@ -211,8 +211,8 @@ function canino_get_critica_fields( $area = 'all' ) {
 				'type' => 'text'
 			),
 			'texto-ficha' => array(
-				'label' => '',
-				'type' => 'text'
+				'label' => 'Texto',
+				'type' => 'textarea'
 			),
 			'portada' => array(
 				'label' => 'Portada',
@@ -220,8 +220,8 @@ function canino_get_critica_fields( $area = 'all' ) {
 
 			),
 			'texto-ficha2' => array(
-				'label' => '',
-				'type' => 'text'
+				'label' => 'Texto 2',
+				'type' => 'textarea'
 			)
 		),
 		'cine' => array(
