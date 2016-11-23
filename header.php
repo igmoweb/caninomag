@@ -26,7 +26,6 @@
 				</p>
 			<?php endif; ?>
 		</div>
-
 	</header>
 
 	<?php if ( has_nav_menu( 'primary' ) ) : ?>
@@ -61,6 +60,12 @@
 				</div>
 			</nav>
 		</div><!-- .main-navigation -->
+	<?php endif; ?>
+
+	<?php if ( function_exists('yoast_breadcrumb') && ! is_home() ): ?>
+		<div class="row">
+			<?php yoast_breadcrumb('<div id="breadcrumbs" class="column large-12">','</div>'); ?>
+		</div>
 	<?php endif; ?>
 
 	<div id="content" role="main">

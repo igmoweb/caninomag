@@ -74,7 +74,7 @@ class Canino_Widget_Articulos extends WP_Widget {
 		<?php if ( $query->have_posts() ): ?>
 			<ul class="articulos-list <?php echo $instance['format']; ?>">
 				<?php while ( $query->have_posts() ): $query->the_post(); ?>
-					<li <?php post_class( 'post' ); ?>>
+					<li>
 						<article class="articulos-post">
 							<header class="articulos-header">
 								<a class="articulos-thumbnail" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">

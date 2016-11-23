@@ -1,0 +1,10 @@
+#breadcrumbs {
+  padding-top: $global-padding;
+  font-size: rem-calc( 12 );
+  text-align: right;
+
+  .breadcrumb_last {
+    font-weight:normal;
+    color:$dark-gray;
+  }
+}

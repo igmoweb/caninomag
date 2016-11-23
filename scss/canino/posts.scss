@@ -69,6 +69,12 @@ body.single, body.page {
 
 body.single {
   .hentry {
+    .post-content {
+      h1,h2,h3,h4,h5,h6 {
+        margin: $global-margin * 2 0;
+      }
+    }
+
     footer.post-footer > div {
       margin-top: $global-margin;
     }
@@ -85,9 +91,10 @@ body.single {
       }
     }
     .post-details {
-      * {
-        color:$secondary-color;
+      *, .post-date  {
+        color:darken( $dark-gray, 30% );
       }
+
       > li {
         margin-right: $global-margin;
       }
