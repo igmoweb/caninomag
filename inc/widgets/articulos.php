@@ -68,6 +68,10 @@ class Canino_Widget_Articulos extends WP_Widget {
 			}
 		}
 
+		if ( is_single() && $id = get_the_ID() ) {
+			$query_args['post__not_in'] = array( $id );
+		}
+
 		$query = new WP_Query( $query_args );
 
 		?>

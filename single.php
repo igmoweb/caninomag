@@ -14,8 +14,6 @@
 					<div class="post-image">
 						<?php the_post_thumbnail( 'single-post-thumb' ); ?>
 					</div>
-					<ul class="post-details">
-					</ul>
 				</header>
 				<div class="row">
 					<section id="post-content-<?php the_ID(); ?>" class="post-content large-10 small-12 column medium-order-2">
