@@ -1,12 +1,22 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 var $    = require('gulp-load-plugins')();
-var concat = require("gulp-concat-js");
+var concat = require("gulp-concat");
 var babel = require('gulp-babel');
+var uglify = require('gulp-uglify');
 
 var sassPaths = [
   'bower_components/foundation-sites/scss',
   'bower_components/motion-ui/src'
+];
+
+var js_files = [
+    'bower_components/foundation-sites/js/foundation.core.js',
+    './bower_components/foundation-sites/js/foundation.util.mediaQuery.js',
+    'bower_components/foundation-sites/js/foundation.sticky.js',
+    'bower_components/foundation-sites/js/foundation.dropdownMenu.js',
+    'bower_components/foundation-sites/js/foundation.responsiveToggle.js',
+    'bower_components/foundation-sites/js/foundation.util.touch.js'
 ];
 
 gulp.task('sass', function() {
@@ -31,22 +41,19 @@ gulp.task( 'clear-build', function() {
         .pipe(clean());
 });
 
-gulp.task( 'files', function() {
+/**
+ * Concat needed JS Files
+ */
+gulp.task( 'javascript', function() {
     // Tale only needed JS
-    gulp.src(
-        [
-            './bower_components/foundation-sites/js/foundation.core.js',
-            './bower_components/foundation-sites/js/foundation.util.mediaQuery.js',
-            './bower_components/foundation-sites/js/foundation.sticky.js'
-        ]
-    )
-        .pipe(concat({
-            "target": "foundation.min.js" // Name to concatenate to
-        }))
+    return gulp.src(js_files)
+        .pipe(babel())
+        .pipe(concat('foundation.min.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('./js'));
 });
 
-gulp.task('build', ['sass','files','clear-build'], function() {
+gulp.task('build', ['sass','javascript','clear-build'], function() {
 
     // Copy JS
     gulp.src(
@@ -64,6 +71,4 @@ gulp.task('build', ['sass','files','clear-build'], function() {
     )
         .pipe(gulp.dest('./build/'));
 
-
-    // Copy CSS
 });

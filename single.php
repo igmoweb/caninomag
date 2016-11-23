@@ -54,6 +54,9 @@
 				</div>
 			</article>
 
+			<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a></h2>
+			<?php canino_ad_banner(); ?>
+
 			<?php if ( function_exists( 'rp4wp_children' ) ): ?>
 				<?php rp4wp_children(); ?>
 			<?php endif; ?>

@@ -59,8 +59,9 @@ class Canino_Theme {
 		wp_enqueue_style( 'canino-foundicons', get_stylesheet_directory_uri() . '/bower_components/foundation-icon-fonts/foundation-icons.css' );
 		wp_enqueue_script(
 			'canino-foundation',
-			get_stylesheet_directory_uri() . '/bower_components/foundation-sites/dist/foundation.min.js',
-			array( 'jquery' )
+			get_stylesheet_directory_uri() . '/js/foundation.min.js',
+			array( 'jquery' ),
+			'201611190000'
 		);
 
 		$js = '
@@ -81,6 +82,7 @@ jQuery( document ).ready( function() {
 
 		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'video' ) );
 		add_theme_support( 'custom-logo' );
+		add_theme_support('post-thumbnails');
 
 		// Sidebars
 		register_sidebar( array(
