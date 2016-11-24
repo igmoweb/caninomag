@@ -74,6 +74,9 @@ body.single {
         margin: $global-margin * 2 0;
       }
     }
+    h4.post-excerpt {
+      margin-top:0;
+    }
 
     footer.post-footer > div {
       margin-top: $global-margin;
