@@ -10,6 +10,8 @@
 ### Qué instala
 - [Foundation 6](http://foundation.zurb.com/sites.html)
 - [Foundation Icons](http://zurb.com/playground/foundation-icon-fonts-3)
+- [Cookie Law Info](https://es.wordpress.org/plugins/cookie-law-info/) Sólo como dependencia para el desarrollo.
+Canino incluye el JS y CSS de dicho plugin de forma inline. Dicha carpeta (`bower_components/cookie-law-info`) no aparecerá en el build 
 
 ## Modificación de estilos
 ### Estructura

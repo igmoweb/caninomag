@@ -4,6 +4,9 @@ var $    = require('gulp-load-plugins')();
 var concat = require("gulp-concat");
 var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var uglifyCSS = require( 'gulp-uglifycss' );
+var replace = require('gulp-replace');
 
 var sassPaths = [
   'bower_components/foundation-sites/scss',
@@ -53,7 +56,36 @@ gulp.task( 'javascript', function() {
         .pipe(gulp.dest('./js'));
 });
 
-gulp.task('build', ['sass','javascript','clear-build'], function() {
+gulp.task( 'cookie-law-info-js', function() {
+    var cookieFiles = [
+        'bower_components/cookie-law-info/js/cookielawinfo.js'
+    ];
+    return gulp.src(cookieFiles)
+        .pipe(uglify())
+        .pipe(gulp.dest('./plugins/cookie-law-info/js'));
+});
+
+gulp.task( 'cookie-law-info-css', function() {
+    var cookieFiles = [
+        'bower_components/cookie-law-info/css/cli-style.css'
+    ];
+    return gulp.src(cookieFiles)
+        .pipe( replace('../images/', 'wp-content/plugins/cookie-law-info/images/'))
+        .pipe(uglifyCSS())
+        .pipe(gulp.dest('./plugins/cookie-law-info/css'));
+});
+
+
+gulp.task( 'safe-reports-comments-js', function() {
+    var cookieFiles = [
+        'bower_components/safe-report-comments/js/ajax.js'
+    ];
+    return gulp.src(cookieFiles)
+        .pipe(uglify())
+        .pipe(gulp.dest('./plugins/safe-report-comments/js'));
+});
+
+gulp.task('build', ['sass','javascript','cookie-law-info-js', 'cookie-law-info-css', 'safe-reports-comments-js','clear-build'], function() {
 
     // Copy JS
     gulp.src(
@@ -66,7 +98,11 @@ gulp.task('build', ['sass','javascript','clear-build'], function() {
             '!*.md',
             '!*.json',
             '!gulpfile.js',
-            '!pasos-migracion'
+            '!pasos-migracion',
+            '!bower_components/cookie-law-info/**',
+            '!bower_components/cookie-law-info/',
+            '!bower_components/safe-report-comments/**',
+            '!bower_components/safe-report-comments/'
         ]
     )
         .pipe(gulp.dest('./build/'));
