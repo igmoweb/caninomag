@@ -14,7 +14,7 @@
 					<div><?php echo wp_get_attachment_image( $value, 'full' ); ?></div>
 				<?php else: ?>
 					<div>
-						<?php if ( $atts['label'] ): ?>
+						<?php if ( $atts['label'] && $atts['show-label'] ): ?>
 							<strong><?php echo $atts['label']; ?></strong>:
 						<?php endif; ?>
 						<?php echo $value; ?>

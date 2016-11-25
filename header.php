@@ -62,7 +62,7 @@
 		</div><!-- .main-navigation -->
 	<?php endif; ?>
 
-	<?php if ( function_exists('yoast_breadcrumb') && ! is_home() ): ?>
+	<?php if ( function_exists('yoast_breadcrumb') && ! is_home() && ! is_front_page() ): ?>
 		<div class="row">
 			<?php yoast_breadcrumb('<div id="breadcrumbs" class="column large-12">','</div>'); ?>
 		</div>

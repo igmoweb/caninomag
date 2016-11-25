@@ -201,3 +201,18 @@ function canino_rich_snippet() {
 	}
 }
 add_action( 'wp_head', 'canino_rich_snippet' );
+
+
+function canino_the_post_teaser() {
+	$post = get_post();
+	$extended = get_extended( $post->post_content );
+	if ( ! empty( $extended['main'] ) && ! empty( $extended['extended'] ) ) {
+		echo $extended['main'];
+		return;
+	}
+	the_excerpt();
+}
+
+function canino_the_post_content() {
+	the_content( null, true );
+}

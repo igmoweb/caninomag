@@ -17,8 +17,8 @@
 				</header>
 				<div class="row">
 					<section id="post-content-<?php the_ID(); ?>" class="post-content large-10 small-12 column medium-order-2">
-						<h4 class="post-excerpt"><?php the_excerpt(); ?></h4>
-						<?php the_content( null, true ); ?>
+						<h4 class="post-excerpt"><?php canino_the_post_teaser(); ?></h4>
+						<?php canino_the_post_content(); ?>
 					</section>
 					<footer class="post-footer large-2 column medium-order-1" data-sticky-container>
 						<div class="sticky" data-sticky data-anchor="post-content-<?php the_ID(); ?>">

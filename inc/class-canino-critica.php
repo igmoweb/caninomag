@@ -204,86 +204,104 @@ function canino_get_critica_fields( $area = 'all' ) {
 		'' => array(
 			'titulo' => array(
 				'label' => 'Título',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'year' => array(
 				'label' => 'Año',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'texto-ficha' => array(
-				'label' => 'Texto',
-				'type' => 'textarea'
+				'label' => 'Slogan',
+				'type' => 'text',
+				'show-label' => false
 			),
 			'portada' => array(
 				'label' => 'Portada',
-				'type' => 'file'
+				'type' => 'file',
+				'show-label' => true
 
 			),
 			'texto-ficha2' => array(
 				'label' => 'Texto 2',
-				'type' => 'textarea'
+				'type' => 'text',
+				'show-label' => false
 			)
 		),
 		'cine' => array(
 			'cine-director' => array(
 				'label' => 'Director',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'cine-guion' => array(
 				'label' => 'Guión',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'cine-actores' => array(
 				'label' => 'Actores',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			)
 		),
 		'juego' => array(
 			'game-estudio' => array(
 				'label' => 'Estudio',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'game-distribuidora' => array(
 				'label' => 'Distribuidora',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'game-plataformas' => array(
 				'label' => 'Plataformas',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			)
 		),
 		'libro' => array(
 			'libro-editorial' => array(
 				'label' => 'Editorial',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'libro-autor' => array(
 				'label' => 'Autor',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			)
 		),
 		'comic' => array(
 			'comic-guionista' => array(
 				'label' => 'Guionista',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'comic-editorial' => array(
 				'label' => 'editorial',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'comic-dibujante' => array(
 				'label' => 'Dibujante',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 		),
 		'musica' => array(
 			'musica-artista' => array(
 				'label' => 'Artista',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 			'musica-sello' => array(
 				'label' => 'Sello',
-				'type' => 'text'
+				'type' => 'text',
+				'show-label' => true
 			),
 		)
 	);
