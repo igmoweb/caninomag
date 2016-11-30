@@ -202,6 +202,12 @@ function canino_is_critica_post() {
 function canino_get_critica_fields( $area = 'all' ) {
 	$all_fields = array(
 		'' => array(
+			'portada' => array(
+				'label' => 'Portada',
+				'type' => 'file',
+				'show-label' => true
+
+			),
 			'titulo' => array(
 				'label' => 'Título',
 				'type' => 'text',
@@ -216,12 +222,6 @@ function canino_get_critica_fields( $area = 'all' ) {
 				'label' => 'Slogan',
 				'type' => 'text',
 				'show-label' => false
-			),
-			'portada' => array(
-				'label' => 'Portada',
-				'type' => 'file',
-				'show-label' => true
-
 			),
 			'texto-ficha2' => array(
 				'label' => 'Texto 2',

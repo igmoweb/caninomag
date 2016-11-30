@@ -10,6 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action( 'wp_enqueue_scripts', 'canino_cookie_law_info_deregister_scripts', 100 );
 function canino_cookie_law_info_deregister_scripts() {
 	wp_dequeue_script( 'cookie-law-info-script' );
+
+	// These are already included in app.css
 	wp_dequeue_style( 'cookielawinfo-style' );
 }
 
@@ -23,12 +25,5 @@ function canino_cookie_law_info_footer_scripts() {
 	<script>
 		<?php echo $contents; ?>
 	</script>
-	<?php
-
-	$contents = file_get_contents( get_stylesheet_directory() . '/plugins/cookie-law-info/css/cli-style.css' );
-	?>
-	<style>
-		<?php echo $contents; ?>
-	</style>
 	<?php
 }

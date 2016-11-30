@@ -23,7 +23,7 @@
 					<footer class="post-footer large-2 column medium-order-1" data-sticky-container>
 						<div class="sticky" data-sticky data-anchor="post-content-<?php the_ID(); ?>">
 							<div class="post-banner-author-avatar">
-								<?php echo get_avatar( get_the_author_meta('ID'), 100 ); ?>
+								<?php echo get_avatar( get_the_author_meta('ID'), 110 ); ?>
 							</div>
 							<div class="post-banner-author">
 								<h3 class="text-center"><?php the_author_posts_link(); ?></h3>
@@ -32,7 +32,6 @@
 								<div class="btn-twitter">
 									<a href="https://twitter.com/<?php echo esc_attr( $twitter ); ?>">
 										<p><i class="fi-social-twitter"></i></p>
-										<p>Seguir en Twitter</p>
 										<p><strong>@<?php echo $twitter; ?></strong></p>
 									</a>
 								</div>

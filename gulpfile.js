@@ -24,15 +24,17 @@ var js_files = [
 
 gulp.task('sass', function() {
   return gulp.src('scss/app.scss')
-    .pipe($.sass({
-      includePaths: sassPaths,
-      outputStyle: 'compressed' // if css compressed **file size**
-    })
-      .on('error', $.sass.logError))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie >= 9']
-    }))
-    .pipe(gulp.dest('css'));
+      .pipe($.sass({
+          includePaths: sassPaths,
+          outputStyle: 'compressed' // if css compressed **file size**
+      })
+          .on('error', $.sass.logError))
+      .pipe($.autoprefixer({
+          browsers: ['last 2 versions', 'ie >= 9']
+      }))
+      .pipe(concat('bower_components/cookie-law-info/css/cli-style.css'))
+      .pipe(rename('app.css'))
+      .pipe(gulp.dest('css'));
 });
 
 gulp.task('default', ['sass'], function() {
@@ -70,9 +72,17 @@ gulp.task( 'cookie-law-info-css', function() {
         'bower_components/cookie-law-info/css/cli-style.css'
     ];
     return gulp.src(cookieFiles)
-        .pipe( replace('../images/', 'wp-content/plugins/cookie-law-info/images/'))
         .pipe(uglifyCSS())
         .pipe(gulp.dest('./plugins/cookie-law-info/css'));
+});
+
+gulp.task( 'cookie-law-info-img', function() {
+    var cookieFiles = [
+        'bower_components/cookie-law-info/images'
+    ];
+    return gulp.src(cookieFiles)
+        .pipe(uglifyCSS())
+        .pipe(gulp.dest('./plugins/cookie-law-info/'));
 });
 
 
@@ -85,7 +95,7 @@ gulp.task( 'safe-reports-comments-js', function() {
         .pipe(gulp.dest('./plugins/safe-report-comments/js'));
 });
 
-gulp.task('build', ['sass','javascript','cookie-law-info-js', 'cookie-law-info-css', 'safe-reports-comments-js','clear-build'], function() {
+gulp.task('build', ['sass','javascript','cookie-law-info-js', 'cookie-law-info-css', 'cookie-law-info-img', 'safe-reports-comments-js','clear-build'], function() {
 
     // Copy JS
     gulp.src(

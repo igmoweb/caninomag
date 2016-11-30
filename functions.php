@@ -48,15 +48,19 @@ class Canino_Theme {
 		include_once( 'inc/class-canino-critica.php' );
 		include_once( 'inc/class-canino-taxonomies.php' );
 		include_once( 'inc/class-canino-destacado.php' );
+		include_once( 'inc/class-canino-rich-snippets.php' );
 		include_once( 'inc/template-tags.php' );
 		include_once( 'inc/widgets/publicidad.php' );
 		include_once( 'inc/widgets/articulos.php' );
+		include_once( 'plugins/amp/amp.php' );
 		include_once( 'plugins/cookie-law-info/cookie-law-info.php' );
 		include_once( 'plugins/safe-report-comments/safe-report-comments.php' );
+
+		new Canino_Rich_Snippets();
 	}
 
 	function enqueue_styles() {
-		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201611241000' );
+		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201611251000' );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_script(
 			'canino-foundation',
