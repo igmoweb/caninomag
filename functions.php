@@ -60,7 +60,7 @@ class Canino_Theme {
 	}
 
 	function enqueue_styles() {
-		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201611251000' );
+		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201612051000' );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_script(
 			'canino-foundation',
