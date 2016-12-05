@@ -24,26 +24,22 @@
 						<div class="sticky" data-sticky data-anchor="post-content-<?php the_ID(); ?>">
 							<div class="post-banner-author-avatar">
 								<?php echo get_avatar( get_the_author_meta('ID'), 110 ); ?>
-							</div>
-							<div class="post-banner-author">
 								<h3 class="text-center"><?php the_author_posts_link(); ?></h3>
+								<?php if ( $twitter = get_the_author_meta( 'twitter' ) ): ?>
+									<div class="btn-twitter">
+										<a href="https://twitter.com/<?php echo esc_attr( $twitter ); ?>">
+											<p><strong>@<?php echo $twitter; ?></strong></p>
+										</a>
+									</div>
+								<?php endif; ?>
 							</div>
-							<?php if ( $twitter = get_the_author_meta( 'twitter' ) ): ?>
-								<div class="btn-twitter">
-									<a href="https://twitter.com/<?php echo esc_attr( $twitter ); ?>">
-										<p><i class="fi-social-twitter"></i></p>
-										<p><strong>@<?php echo $twitter; ?></strong></p>
-									</a>
-								</div>
-							<?php endif; ?>
 							<?php if ( function_exists( 'sharing_display' ) ): ?>
 								<div class="post-sharing text-center">
 									<?php echo sharing_display(); ?>
 								</div>
 							<?php endif; ?>
-							<hr class="small">
 							<div class="post-tags">
-								<p><small>Etiquetas</small></p>
+								<h3>Etiquetas</h3>
 								<?php the_tags( '<span class="post-tag">', '</span><span class="post-tag">', '</span>' ); ?>
 							</div>
 						</div>

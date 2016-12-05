@@ -38,7 +38,10 @@
   }
   .canino-grid-item-content h2 {
     color:$white;
-    text-shadow: 0 1px 2px #000,0 1px 1px #000;
+    a {
+      background: rgba(10, 10, 10, 0.73);
+      padding: 3px 0;
+    }
   }
 
 

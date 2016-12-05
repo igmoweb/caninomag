@@ -78,21 +78,57 @@ body.single {
       margin-top:0;
     }
 
-    footer.post-footer > div {
-      margin-top: $global-margin;
+    footer.post-footer > div.sticky > div {
+      margin-bottom: $global-margin;
+      border-top:1px solid $light-gray;
+      padding-top:$global-padding;
+      &:first-child {
+        border-top:none;
+      }
+      h3 {
+        font-size: $small-font-size;
+        font-weight: 400;
+        text-align: left;
+        display: block;
+        margin-bottom:.5rem
+      }
+
+      &.post-banner-author-avatar h3 {
+        text-align: center;
+        margin-top:$global-margin/2;
+      }
+
+      &.post-sharing {
+        margin-bottom:2*$global-margin;
+        padding-top:0;
+        > li {
+          float:none;
+          display:block;
+        }
+        .share-end {
+          display: none;
+        }
+        .sd-title:before {
+          border:none;
+        }
+      }
+
+      &.post-tags > span {
+        text-align:left;
+        display: block;
+        > a {
+          font-size:$small-font-size;
+          margin-bottom:$global-margin / 3;
+        }
+      }
+
     }
+
     footer.post-footer > div:first-child {
       margin-top:0;
     }
 
-    .post-tags > span {
-      > a {
-        @include button( true, $secondary-color, $button-background-hover, $secondary-color, hollow );
-        font-size:$small-font-size;
-        margin-bottom:$global-margin / 3;
-        padding: rem-calc( 5 );
-      }
-    }
+
     .post-details {
       *, .post-date  {
         color:darken( $dark-gray, 30% );
