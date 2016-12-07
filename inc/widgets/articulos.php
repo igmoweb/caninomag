@@ -80,11 +80,13 @@ class Canino_Widget_Articulos extends WP_Widget {
 				<?php while ( $query->have_posts() ): $query->the_post(); ?>
 					<li>
 						<article class="articulos-post">
-							<header class="articulos-header">
-								<a class="articulos-thumbnail" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-									<?php the_post_thumbnail( 'articulos-widget-' . $instance['format'] ); ?>
-								</a>
-							</header>
+							<?php if ( 'text' != $instance['format'] ): ?>
+								<header class="articulos-header">
+									<a class="articulos-thumbnail" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+										<?php the_post_thumbnail( 'articulos-widget-' . $instance['format'] ); ?>
+									</a>
+								</header>
+							<?php endif; ?>
 							<section class="articulos-content">
 								<h5>
 									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
@@ -150,6 +152,7 @@ class Canino_Widget_Articulos extends WP_Widget {
 			<select id="<?php echo esc_attr( $this->get_field_id( 'format' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'format' ) ); ?>">
 				<option value="small" <?php selected( 'small', $instance['format'] ); ?>>Pequeño</option>
 				<option value="big" <?php selected( 'big', $instance['format'] ); ?>>Grande</option>
+				<option value="text" <?php selected( 'text', $instance['format'] ); ?>>Sólo texto</option>
 			</select>
 		</p>
 		<?php

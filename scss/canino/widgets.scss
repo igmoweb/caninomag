@@ -50,7 +50,20 @@ $medium-sizes: map-get($header-sizes, 'medium' );
       .articulos-category {
         display:none;
       }
-
+    }
+    &.text {
+      h5 {
+        font-size:rem-calc(14);
+      }
+      .articulos-category {
+        font-size:rem-calc(13);
+      }
+      .articulos-date {
+        display:none;
+      }
+      .articulos-author {
+        display:none;
+      }
     }
 
   }

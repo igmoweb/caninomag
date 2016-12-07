@@ -60,7 +60,7 @@ class Canino_Theme {
 	}
 
 	function enqueue_styles() {
-		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201612051000' );
+		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '201612051100' );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_script(
 			'canino-foundation',
@@ -87,7 +87,7 @@ jQuery( document ).ready( function() {
 
 		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'video' ) );
 		add_theme_support( 'custom-logo' );
-		add_theme_support('post-thumbnails');
+		add_theme_support( 'post-thumbnails' );
 
 		// Sidebars
 		register_sidebar( array(

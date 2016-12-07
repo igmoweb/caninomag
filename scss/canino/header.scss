@@ -3,6 +3,10 @@
   padding: $global-padding/2 0;
 }
 
+body:not(.home) .custom-logo {
+  width:230px;
+}
+
 #site-navigation {
   .canino-primary-menu-wrap {
 

@@ -51,7 +51,7 @@
 			<div class="hide-for-large">
 				<?php canino_ad_banner('small'); ?>
 			</div>
-			<div class="show-for-large-only">
+			<div class="show-for-large">
 				<?php canino_ad_banner(); ?>
 			</div>
 
