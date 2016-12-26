@@ -78,3 +78,22 @@ $medium-sizes: map-get($header-sizes, 'medium' );
 #secondary div.mc4wp-form-fields > h6 {
   display:none;
 }
+
+
+
+.widget_top-posts .widgets-list-layout {
+  li > a {
+    width: 25%;
+  }
+
+  div.widgets-list-layout-links {
+    max-width: 100%;
+    width: 70%;
+    a {
+      color: $body-font-color;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+header: la tipo la haría un pelín más pequeña (para que no se corten tanto los titulares), un pelín más gruesa y con un pelín menos de interlineado. personalmente quitaría el autor (está justo debajo y con más protagonismo) y también yo me plantearía pasar las etiquetas al mini-sidebar de autor y compartir, sólo para ver qué tal quedaría.
+también me cargaría del header cuántos comentarios hay (a quién le importa antes de leer el artículo?)
+artículo: la entradilla también un pelín más gruesa (el renderizado de esa tipo a ese tamaño y grosor es raruno). algo más de espacio tras la foto de portada y el contenido. al resto de imágenes del post les pondría el doble de margen superior e inferior que tienen ahora mismo.
+en el  mini-sidebar podría el nombre del autor más pequeño. ya tiene un dibujo que llama mucho la atención. No lo pondría más de 1 o 2 pt más grandes que el cuerpo de texto (si es que hace falta ponerlo más grande). me cargaría el icono de twitter (con la arroba ya es suficiente). lo de compartir no tiene sentido si ese sidebar no va a ser fixed, máxime cuando ya hay otra zona de compartir al final
+pasaría de los círculos y haría los botones en rectángulos. esos que se ven mucho con su contador
+en el footer de RRSS del post alargaría el borde hasta el final
+suscríbete no lo metería en una caja y de hecho lo metería en el footer de la web, no en el post
+la búsqueda la incluiría en el menú del header
+los títulos de artículos del sidebar son gigantes

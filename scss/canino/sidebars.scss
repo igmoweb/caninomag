@@ -8,6 +8,7 @@
 
     h4.widget-title {
       @include title-section();
+      margin-bottom:$global-margin;
     }
   }
 }
