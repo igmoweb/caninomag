@@ -30,8 +30,8 @@
 
 	<?php if ( has_nav_menu( 'primary' ) ) : ?>
 		<div class="title-bar hide-for-large" data-responsive-toggle="site-navigation" data-hide-for="large">
+			<div class="title-bar-title"><?php canino_the_custom_logo(); ?></div>
 			<button class="menu-icon" type="button" data-toggle></button>
-			<div class="title-bar-title">Menu</div>
 		</div>
 		<div id="site-navigation" class="main-navigation">
 			<nav role="navigation" class="row">

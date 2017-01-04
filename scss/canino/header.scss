@@ -3,8 +3,31 @@
   padding: $global-padding/2 0;
 }
 
-body:not(.home) .custom-logo {
+body:not(.home) #masthead .custom-logo {
   width:230px;
+}
+
+.title-bar-title .custom-logo {
+  display:none;
+}
+
+@include breakpoint( small down ) {
+  #masthead {
+    padding-bottom:1px;
+    height:35px;
+
+    .custom-logo {
+      display:none;
+    }
+    #top-bar .cintillo {
+      height:17px;
+    }
+  }
+
+  .title-bar-title .custom-logo {
+    width:100px;
+    display:block;
+  }
 }
 
 #site-navigation {
