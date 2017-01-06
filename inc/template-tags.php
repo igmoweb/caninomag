@@ -51,14 +51,14 @@ function canino_get_archive_title() {
 
 function canino_primary_class( $class = '' ) {
 	if ( is_front_page() ) {
-		$class .= ' column small-12 large-8 small-order-2 medium-order-1';
+		$class .= ' column small-12 large-8 small-order-1 medium-order-1';
 	}
 	echo esc_attr( $class );
 }
 
 function canino_secondary_class( $class = '' ) {
 	if ( is_front_page() ) {
-		$class .= ' column small-12 large-4 small-order-1 medium-order-2';
+		$class .= ' column small-12 large-4 small-order-2 medium-order-2';
 	}
 	echo esc_attr( $class );
 }
