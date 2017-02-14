@@ -4,7 +4,7 @@ $medium-sizes: map-get($header-sizes, 'medium' );
     list-style:none;
     margin-left:0;
     li {
-      margin-bottom:$global-margin * 2;
+      margin-bottom:$global-margin;
     }
     .articulos-date,
     .articulos-author {
@@ -53,10 +53,11 @@ $medium-sizes: map-get($header-sizes, 'medium' );
     }
     &.text {
       h5 {
-        font-size:rem-calc(14);
+        font-size:rem-calc(16);
       }
       .articulos-category {
         font-size:rem-calc(13);
+        margin-bottom:0.5rem;
       }
       .articulos-date {
         display:none;

@@ -88,12 +88,12 @@ class Canino_Widget_Articulos extends WP_Widget {
 								</header>
 							<?php endif; ?>
 							<section class="articulos-content">
+								<p class="articulos-category"><?php echo get_the_category_list( ', ' ); ?></p>
 								<h5>
 									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 										<?php the_title(); ?>
 									</a>
 								</h5>
-								<p class="articulos-category"><?php echo get_the_category_list( ', ' ); ?></p>
 								<p class="articulos-author">Por <?php the_author_link(); ?></p>
 								<p class="articulos-date"><?php the_date(); ?></p>
 							</section>
