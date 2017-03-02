@@ -61,7 +61,7 @@ class Canino_Theme {
 	}
 
 	function enqueue_styles() {
-		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '20170104b' );
+		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '20170104d' );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_script(
 			'canino-foundation',
@@ -142,6 +142,15 @@ jQuery( document ).ready( function() {
 		register_sidebar( array(
 			'name' => 'Top Bar',
 			'id' => 'top-bar',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h6 class="widget-title">',
+			'after_title' => '</h6>'
+		) );
+
+		register_sidebar( array(
+			'name' => 'Horizontal',
+			'id' => 'horizontal',
 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
 			'after_widget' => '</div>',
 			'before_title' => '<h6 class="widget-title">',

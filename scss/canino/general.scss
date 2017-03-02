@@ -80,3 +80,9 @@ hr {
     max-width:100%;
   }
 }
+
+@include breakpoint( medium up ) {
+  .post-content .sharedaddy {
+    display:none;
+  }
+}

@@ -57,3 +57,19 @@
   color: #25282A;
   display: block;
 }
+
+@include breakpoint( small down ) {
+  .rp4wp-related-posts ul > li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding-right:0;
+    margin-bottom:$global-margin * 2;
+    float:none;
+    width:100%;
+    box-sizing: border-box;
+    &:last-child {
+      padding-right:0;
+    }
+  }
+}

@@ -98,3 +98,7 @@ $medium-sizes: map-get($header-sizes, 'medium' );
     }
   }
 }
+
+.cintillo img {
+  height:22px;
+}

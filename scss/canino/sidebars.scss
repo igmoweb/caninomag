@@ -15,9 +15,14 @@
 
 #top-bar {
   position: relative;
+
+  text-align:right;
   .widget {
+    vertical-align: top;
+    margin-top:0;
     display: inline-block;
     margin-right: $global-margin;
+    margin-bottom:0;
   }
   .widget-title {
     display:none;

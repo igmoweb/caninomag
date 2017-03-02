@@ -11,7 +11,11 @@ body:not(.home) #masthead .custom-logo {
   display:none;
 }
 
-@include breakpoint( small down ) {
+.site-title {
+  margin-bottom:0;
+}
+
+@include breakpoint( medium down ) {
   #masthead {
     padding-bottom:1px;
     height:35px;
@@ -28,6 +32,10 @@ body:not(.home) #masthead .custom-logo {
     width:100px;
     display:block;
   }
+}
+
+.header-patreon h2 {
+  color:$white;
 }
 
 #site-navigation {
@@ -59,42 +67,50 @@ body:not(.home) #masthead .custom-logo {
     }
   }
 
-  ul.canino-social-menu {
-    & > li {
-      width: rem-calc( 41 );
-    }
-    & > li a {
-      padding-left:0;
-      padding-right:0;
-      &:before {
-        font-family: "foundation-icons";
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        text-transform: none;
-        line-height: 1;
-        -webkit-font-smoothing: antialiased;
-        display: inline-block;
-        text-decoration: inherit;
-        color:$secondary-color;
-        font-size:rem-calc(23);
-        padding-right: rem-calc(3);
-        padding-left: rem-calc(3);
-      }
 
-      &[href*="facebook.com"]:before { content: "\f1c4";color:#3b5998;font-size:rem-calc(29); }
-      &[href*="instagram.com"]:before { content: "\f1cd";background:#3b5998;color:white; }
-      &[href*="flickr.com"]:before { content: "\f1c5"; }
-      &[href*="plus.google.com"]:before { content: "\f1car"; }
-      &[href*="linkedin.com"]:before { content: "\f1d0"; }
-      &[href*="pinterest.com"]:before { content: "\f1d6"; }
-      &[href*="reddit.com"]:before { content: "\f1d8"; }
-      &[href*="tumblr.com"]:before { content: "\f1e3"; }
-      &[href*="twitter.com"]:before { content: "\f1e4"; color:white; background: #3cf; }
-      &[href*="vimeo.com"]:before { content: "\f1e4"; }
-      &[href*="youtube.com"]:before { content: "\f1ea"; }
-      &[href*="spotify.com"]:before { content: "\f1dd"; }
+}
+
+ul#menu-social {
+  &:after {
+    content: "|";
+    color: white;
+  }
+  & > li {
+    width: rem-calc( 41 );
+  }
+  & > li a {
+    padding:0;
+    font-size:0;
+    &:before {
+      font-family: "foundation-icons";
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      display: inline-block;
+      text-decoration: inherit;
+      color:$white;
+      font-size:rem-calc(27);
+      content:"|";
     }
+    &:hover:before {
+      color:#ABABAB;
+    }
+
+    &[href*="facebook.com"]:before { content: "\f1c4"; }
+    &[href*="instagram.com"]:before { content: "\f1cd";}
+    &[href*="flickr.com"]:before { content: "\f1c5"; }
+    &[href*="plus.google.com"]:before { content: "\f1car"; }
+    &[href*="linkedin.com"]:before { content: "\f1d0"; }
+    &[href*="pinterest.com"]:before { content: "\f1d6"; }
+    &[href*="reddit.com"]:before { content: "\f1d8"; }
+    &[href*="tumblr.com"]:before { content: "\f1e3"; }
+    &[href*="twitter.com"]:before { content: "\f1e4"; }
+    &[href*="vimeo.com"]:before { content: "\f1e4"; }
+    &[href*="youtube.com"]:before { content: "\f1ea"; }
+    &[href*="spotify.com"]:before { content: "\f1dd"; }
   }
 }
 
