@@ -42,6 +42,8 @@ class Canino_Theme {
 
 		add_action( 'admin_init', array( $this, 'maybe_upgrade' ) );
 
+		add_action( 'media_buttons', array( $this, 'add_shortcode_button' ) );
+
 		include_once( 'inc/class-canino-load-more.php' );
 		include_once( 'inc/class-canino-query.php' );
 		include_once( 'inc/class-canino-customizer.php' );
@@ -269,6 +271,18 @@ jQuery( document ).ready( function() {
 		}
 
 		update_option( 'canino_theme_version', $this->version );
+	}
+
+	function add_shortcode_button() {
+		?>
+		<a href="#" id="insert-canino-banner" class="button">Ad Banner</a>
+		<script>
+			jQuery( '#insert-canino-banner' ).click( function( e ) {
+			    e.preventDefault();
+                wp.media.editor.insert('[canino-post-banner]');
+			})
+		</script>
+		<?php
 	}
 
 
