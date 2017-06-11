@@ -49,7 +49,8 @@ class Canino_Theme {
 		include_once( 'inc/class-canino-taxonomies.php' );
 		include_once( 'inc/class-canino-destacado.php' );
 		include_once( 'inc/class-canino-rich-snippets.php' );
-		include_once( 'inc/shortcodes/add-banner.php' );
+		include_once( 'inc/shortcodes/post-banner.php' );
+		include_once( 'inc/shortcodes/ad-banner.php' );
 		include_once( 'inc/template-tags.php' );
 		include_once( 'inc/jetpack.php' );
 		include_once( 'inc/widgets/publicidad.php' );
