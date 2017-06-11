@@ -23,6 +23,9 @@
     display: inline-block;
     margin-right: $global-margin;
     margin-bottom:0;
+    &:last-child {
+     margin-right:0;
+    }
   }
   .widget-title {
     display:none;
@@ -32,9 +35,5 @@
 #secondary > .widget-area {
   @include breakpoint(medium down) {
     text-align:center;
-    .widget {
-      padding-left: rem-calc(25);
-      padding-right: rem-calc(25);
-    }
   }
 }

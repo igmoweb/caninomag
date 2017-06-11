@@ -17,9 +17,7 @@ body:not(.home) #masthead .custom-logo {
 
 @include breakpoint( medium down ) {
   #masthead {
-    padding-bottom:1px;
-    height:35px;
-
+    margin-bottom:-1px;
     .custom-logo {
       display:none;
     }
@@ -34,8 +32,13 @@ body:not(.home) #masthead .custom-logo {
   }
 }
 
-.header-patreon h2 {
-  color:$white;
+.header-patreon {
+  h2 {
+    color:$white;
+  }
+  img:hover {
+    opacity:0.8;
+  }
 }
 
 #site-navigation {
@@ -114,3 +117,6 @@ ul#menu-social {
   }
 }
 
+.menu-icon {
+  min-width:20px;
+}

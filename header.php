@@ -33,7 +33,7 @@
 				<div class="row">
 					<h2 class="column large-6 align-middle show-for-large">¿Te gusta lo que lees?</h2>
 					<span class="column large-6 show-for-medium">
-						<a href="https://www.patreon.com/canino">
+						<a target="_blank" href="https://www.patreon.com/canino">
 							<span class="show-for-sr">Ap&oacute;yanos a partir de 2 Euros en Patreon</span>
 							<img src="<?php echo get_template_directory_uri(); ?>/images/Boton_patreon.png" alt="">
 						</a>
@@ -48,12 +48,12 @@
 			<div class="title-bar-title">
 				<div class="row align-middle">
 					<span class="column small-4">
-						<a href="<?php echo esc_url( get_home_url( '/' ) ); ?>>" class="custom-logo-link" rel="home" itemprop="url">
+						<a href="<?php echo home_url(); ?>" class="custom-logo-link" rel="home" itemprop="url">
 							<img width="150" height="150" src="<?php echo get_template_directory_uri() . '/images/canino-logo-small.png'; ?>" class="hide-for-large custom-logo" alt="Canino">
 						</a>
 					</span>
-					<span class="column small-8">
-						<a href="https://www.patreon.com/canino">
+					<span class="column small-7">
+						<a target="_blank" href="https://www.patreon.com/canino">
 							<span class="show-for-sr">Ap&oacute;yanos a partir de 2 Euros en Patreon</span>
 							<img src="<?php echo get_template_directory_uri(); ?>/images/Boton_patreon.png" alt="">
 						</a>
@@ -77,12 +77,6 @@
 				</div>
 			</nav>
 		</div><!-- .main-navigation -->
-	<?php endif; ?>
-
-	<?php if ( ! is_front_page() ): ?>
-		<div id="horizontal-bar">
-			<?php get_sidebar( 'horizontal' ); ?>
-		</div>
 	<?php endif; ?>
 
 	<?php if ( function_exists('yoast_breadcrumb') && ! is_home() && ! is_front_page() ): ?>
