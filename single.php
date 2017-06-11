@@ -45,8 +45,11 @@
 					</footer>
 				</div>
 			</article>
+
+			<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Artículos Promocionados</a></h2>
+			<?php canino_promoted_articles(); ?>
 			
-			<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a></h2>
+			<h2 class="canino-section-title">Publicidad</h2>
 			<div class="hide-for-large">
 				<?php canino_ad_banner('small'); ?>
 			</div>
