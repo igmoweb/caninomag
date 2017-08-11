@@ -40,7 +40,7 @@
   "scripts": {
     "sass": "gulp sass",
     "watch": "webpack --watch",
-    "build": "webpack -p --env.production=1"
+    "build": "webpack -p --env.production=1 && gulp build"
   },
   "repository": {
     "type": "git",

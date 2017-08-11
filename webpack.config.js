@@ -23,6 +23,8 @@ const devTool = ( production ) => {
     }
 };
 
+
+
 const sassCommonConfig = ( production ) => {
     // Webpack just understands JS, not CSS or Sass.
     // This section, generates a file called foundation.js that contains all CSS styles in a variable
@@ -112,7 +114,7 @@ const SassConfig = ( production ) => {
             {
                 entry: {'app':'./scss/app.js'},
                 output: {
-                    filename: 'app.js',
+                    filename: 'app.css',
                     path: path.resolve(__dirname, "css")
                 }
             },
@@ -130,7 +132,7 @@ const editorStyleConfig = ( production ) => {
             {
                 entry: {'editor-style':'./scss/editor-style.js'},
                 output: {
-                    filename: 'editor-style.js',
+                    filename: 'editor-style.css',
                     path: path.resolve(__dirname)
                 }
             },
