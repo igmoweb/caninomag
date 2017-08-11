@@ -3,8 +3,8 @@
 $fi-path: '../bower_components/foundation-icon-fonts';
 
 @import 'settings';
-@import 'foundation';
-@import 'motion-ui';
+@import '../bower_components/foundation-sites/scss/foundation';
+@import '../bower_components/motion-ui/motion-ui';
 @import 'wordpress/wordpress';
 @import 'canino/canino';
 @import '../bower_components/foundation-icon-fonts/_foundation-icons';
@@ -53,4 +53,6 @@ $fi-path: '../bower_components/foundation-icon-fonts';
 
 //@include motion-ui-transitions;
 //@include motion-ui-animations;
+
+@import '../bower_components/cookie-law-info/css/cli-style.css';
 
