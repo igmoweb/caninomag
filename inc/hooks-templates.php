@@ -16,3 +16,8 @@ function canino_password_form( $output ) {
 	';
 	return $output;
 }
+
+add_filter( 'protected_title_format', 'canino_protected_title_format' );
+function canino_protected_title_format( $format ) {
+	return '%s';
+}
