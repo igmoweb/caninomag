@@ -163,6 +163,7 @@ function canino_the_post_teaser() {
 		echo $extended['main'];
 		return;
 	}
+
 	the_excerpt();
 }
 

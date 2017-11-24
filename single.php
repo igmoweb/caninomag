@@ -16,8 +16,15 @@
 				</header>
 				<div class="row">
 					<section id="post-content-<?php the_ID(); ?>" class="post-content large-10 small-12 column medium-order-2">
-						<h4 class="post-excerpt"><?php canino_the_post_teaser(); ?></h4>
-						<?php canino_the_post_content(); ?>
+						<?php if ( post_password_required() ): ?>
+							<?php add_filter( 'post_password_required', '__return_false' ); ?>
+							<h4 class="post-excerpt"><?php canino_the_post_teaser(); ?></h4>
+							<?php echo get_the_password_form() ?>
+							<?php add_filter( 'post_password_required', '__return_true' ); ?>
+						<?php else: ?>
+							<h4 class="post-excerpt"><?php canino_the_post_teaser(); ?></h4>
+							<?php canino_the_post_content(); ?>
+						<?php endif; ?>
 					</section>
 					<footer class="post-footer large-2 column medium-order-1" data-sticky-container>
 						<div class="sticky" data-sticky data-anchor="post-content-<?php the_ID(); ?>">

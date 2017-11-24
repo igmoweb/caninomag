@@ -60,6 +60,7 @@ class Canino_Theme {
 		include_once( 'plugins/amp/amp.php' );
 		include_once( 'plugins/cookie-law-info/cookie-law-info.php' );
 		include_once( 'plugins/safe-report-comments/safe-report-comments.php' );
+		include_once( 'inc/hooks-templates.php' );
 
 		new Canino_Rich_Snippets();
 	}
