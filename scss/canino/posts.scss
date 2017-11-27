@@ -154,4 +154,8 @@ body.single {
 
 .post-password-form {
   margin-top:2em;
+  .password-form-fields {
+    max-width:400px;
+    margin:0 auto;
+  }
 }
