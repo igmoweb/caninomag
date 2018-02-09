@@ -66,13 +66,14 @@ class Canino_Theme {
 	}
 
 	function enqueue_styles() {
-		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), '20171127' );
+		$version = '20180209';
+		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), $version );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_script(
 			'canino-foundation',
 			get_stylesheet_directory_uri() . '/js/foundation.min.js',
 			array( 'jquery' ),
-			'201611190000'
+			$version
 		);
 
 		$js = '

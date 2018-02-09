@@ -8,7 +8,8 @@ const commonPlugins = () => {
     return {
         plugins: [
             new SystemBellPlugin(), // Makes a beep when an error is found
-            new FriendlyErrorsWebpackPlugin() // Better errors display
+            new FriendlyErrorsWebpackPlugin(), // Better errors display
+
         ]
     }
 };
