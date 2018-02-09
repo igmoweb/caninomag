@@ -1,5 +1,7 @@
-body.single {
-	h1.post-title {
-		font-size: rem-calc( 29 );
+@include breakpoint( small only ) {
+	body.single {
+		h1.post-title {
+			font-size: rem-calc( 29 );
+		}
 	}
 }
