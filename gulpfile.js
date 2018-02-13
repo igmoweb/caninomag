@@ -1,8 +1,6 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
-var $    = require('gulp-load-plugins')();
 var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
 var uglifyCSS = require( 'gulp-uglifycss' );
 
 gulp.task( 'clear-build', function() {
