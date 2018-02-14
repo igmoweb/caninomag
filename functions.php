@@ -66,7 +66,7 @@ class Canino_Theme {
 	}
 
 	function enqueue_styles() {
-		$version = '20180214';
+		$version = '20180214a';
 		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), $version );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_script(
