@@ -35,7 +35,8 @@
   "scripts": {
     "postinstall": "bower install && npm run build",
     "watch": "webpack --watch",
-    "build": "webpack -p --env.production=1 && gulp build"
+    "build": "webpack -p --env.production=1 && gulp build",
+    "phpcs": "./bin/composer.sh run-script phpcs"
   },
   "repository": {
     "type": "git",

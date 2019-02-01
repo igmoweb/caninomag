@@ -1,0 +1,21 @@
+{
+    "name": "igmoweb/canino-theme",
+    "authors": [
+        {
+            "name": "Ignacio Cruz",
+            "email": "igmoweb@gmail.com"
+        }
+    ],
+    "require": {},
+    "scripts": {
+        "phpcs:fix": "phpcbf --standard=phpcs.ruleset.xml",
+        "phpcs": "phpcs --standard=phpcs.ruleset.xml"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*",
+        "phpcompatibility/php-compatibility": "^9.1",
+        "phpcompatibility/phpcompatibility-wp": "*",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
+        "wp-coding-standards/wpcs": "^2.0"
+    }
+}
