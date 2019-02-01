@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="Domestic Theme">
+<ruleset name="Canino Theme">
 
 	<arg name="colors"/>
 	<arg name="extensions" value="php"/>
@@ -13,7 +13,9 @@
 	<rule ref="PHPCompatibilityWP"/>
 
 	<!-- Run against the WordPress ruleset -->
-	<rule ref="WordPress"/>
+	<rule ref="WordPress">
+		<exclude name="Squiz.Commenting.FileComment.Missing"/>
+	</rule>
 
 	<!-- Directories and third party library exclusions -->
 	<exclude-pattern>/node_modules/*</exclude-pattern>

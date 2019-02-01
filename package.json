@@ -62,7 +62,8 @@
     "linters": {
       "**/*.php": [
         "./bin/composer.sh run-script phpcs:fix",
-        "git add"
+        "git add",
+        "./bin/composer.sh run-script phpcs"
       ]
     }
   }

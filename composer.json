@@ -9,7 +9,7 @@
     "require": {},
     "scripts": {
         "phpcs:fix": "phpcbf --standard=phpcs.ruleset.xml",
-        "phpcs": "phpcs --standard=phpcs.ruleset.xml"
+        "phpcs": "phpcs -s --standard=phpcs.ruleset.xml"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "*",
