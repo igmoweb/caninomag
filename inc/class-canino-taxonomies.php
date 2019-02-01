@@ -39,16 +39,16 @@ if ( ! class_exists( 'Canino_Taxonomies' ) ) {
 				'items_list'                 => __( 'Items list', 'canino' ),
 				'items_list_navigation'      => __( 'Items list navigation', 'canino' ),
 			);
-			$args = array(
-				'labels'                     => $labels,
-				'hierarchical'               => false,
-				'public'                     => false,
-				'show_ui'                    => false,
-				'show_admin_column'          => true,
-				'show_in_nav_menus'          => false,
-				'show_tagcloud'              => false,
-				'query_var'                  => '',
-				'rewrite'                    => false,
+			$args   = array(
+				'labels'            => $labels,
+				'hierarchical'      => false,
+				'public'            => false,
+				'show_ui'           => false,
+				'show_admin_column' => true,
+				'show_in_nav_menus' => false,
+				'show_tagcloud'     => false,
+				'query_var'         => '',
+				'rewrite'           => false,
 			);
 			register_taxonomy( 'canino_destacado', array( 'post' ), $args );
 		}

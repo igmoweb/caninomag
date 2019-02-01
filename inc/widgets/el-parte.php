@@ -15,7 +15,7 @@ class Canino_Widget_El_Parte extends WP_Widget {
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'classname' => 'el-parte'
+			'classname' => 'el-parte',
 		);
 		parent::__construct( 'el-parte', 'El Parte (Canino)', $widget_ops );
 	}
@@ -32,23 +32,28 @@ class Canino_Widget_El_Parte extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title'];
 		}
 
-		$query = new WP_Query( array(
-			'posts_per_page' => 10,
-			'ignore_sticky_posts' => true,
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'post_format',
-					'field'    => 'slug',
-					'terms'    => array( 'post-format-link' ),
-					'operator' => 'IN'
-				)
+		$query = new WP_Query(
+			array(
+				'posts_per_page'      => 10,
+				'ignore_sticky_posts' => true,
+				'tax_query'           => array(
+					array(
+						'taxonomy' => 'post_format',
+						'field'    => 'slug',
+						'terms'    => array( 'post-format-link' ),
+						'operator' => 'IN',
+					),
+				),
 			)
-		) );
+		);
 
 		?>
-			<?php if ( $query->have_posts() ): ?>
+			<?php if ( $query->have_posts() ) : ?>
 				<ul class="el-parte-list">
-					<?php while ( $query->have_posts() ): $query->the_post(); ?>
+					<?php
+					while ( $query->have_posts() ) :
+						$query->the_post();
+						?>
 						<li <?php post_class( 'post' ); ?>>
 							<a class="el-parte-thumbnail" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 								<?php the_post_thumbnail( 'el-parte-widget' ); ?>
@@ -96,14 +101,17 @@ class Canino_Widget_El_Parte extends WP_Widget {
 	 * @param array $old_instance The previous options
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
+		$instance          = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		return $instance;
 	}
 }
 
-add_action( 'widgets_init', function(){
-	register_widget( 'Canino_Widget_El_Parte' );
-});
+add_action(
+	'widgets_init',
+	function() {
+		register_widget( 'Canino_Widget_El_Parte' );
+	}
+);
 
 

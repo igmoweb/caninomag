@@ -4,13 +4,13 @@
 		<?php echo get_avatar( get_the_author_meta( 'ID' ), 240 ); ?>
 	</div>
 	<div class="column large-8">
-		<h1 class="page_title"><?php echo canino_get_archive_title();?></h1>
+		<h1 class="page_title"><?php echo canino_get_archive_title(); ?></h1>
 		<?php the_author_meta( 'description' ); ?>
 		<ul class="author-links">
-			<?php if ( get_the_author_meta( 'twitter' ) ): ?>
+			<?php if ( get_the_author_meta( 'twitter' ) ) : ?>
 				<li class="twitter">
 					<a href="https://twitter.com/<?php the_author_meta( 'twitter' ); ?>">
-						<i class="fi-social-twitter"></i> <span class="show-for-sr">Twitter de <?php the_author() ;?></span>
+						<i class="fi-social-twitter"></i> <span class="show-for-sr">Twitter de <?php the_author(); ?></span>
 					</a>
 				</li>
 			<?php endif; ?>
@@ -28,7 +28,10 @@
 <div id="main-content" class="row">
 	<div id="primary" class="column small-12 large-8">
 		<div class="canino-cols row">
-			<?php while ( have_posts() ): the_post(); ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
 				<?php get_template_part( 'parts/content', 'archive' ); ?>
 			<?php endwhile; ?>
 		</div>

@@ -1,4 +1,4 @@
-<?php if ( $category = canino_get_post_category( get_the_ID() ) ): ?>
+<?php if ( $category = canino_get_post_category( get_the_ID() ) ) : ?>
 	<li class="post-category">
 		<a class="category-<?php echo $category->term_id; ?>"
 		   href="<?php echo get_category_link( $category->term_id ); ?>"

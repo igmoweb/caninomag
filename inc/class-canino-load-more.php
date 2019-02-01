@@ -34,11 +34,11 @@ class Canino_Load_More {
 							action: 'canino_load_more',
 							type: type,
 							offset: currentOffset,
-							nonce: '<?php echo wp_create_nonce( "canino-load-more"); ?>'
+							nonce: '<?php echo wp_create_nonce( 'canino-load-more' ); ?>'
 						};
 
 						spinner.css( 'visibility', 'visible' );
-						$.post( '<?php echo admin_url( "admin-ajax.php", "relative" ); ?>', data, function( response ) {
+						$.post( '<?php echo admin_url( 'admin-ajax.php', 'relative' ); ?>', data, function( response ) {
 							if ( response.success ) {
 								container.append( response.data.markup );
 								currentOffset = currentOffset + perPage;
@@ -55,23 +55,21 @@ class Canino_Load_More {
 	public function load_more() {
 		check_ajax_referer( 'canino-load-more', 'nonce' );
 		$offset = absint( $_POST['offset'] );
-		$type = $_POST['type'];
+		$type   = $_POST['type'];
 
 		ob_start();
 		if ( '2-cols' === $type ) {
-			$query = canino_get_2_cols_home_query( $offset );
+			$query   = canino_get_2_cols_home_query( $offset );
 			$columns = 6;
-		}
-		else {
-			$query = canino_get_3_cols_home_query( $offset );
+		} else {
+			$query   = canino_get_3_cols_home_query( $offset );
 			$columns = 4;
 		}
 
 		ob_start();
-		include( locate_template( 'parts/posts-cols.php' ) );
+		include locate_template( 'parts/posts-cols.php' );
 		$markup = ob_get_clean();
 		wp_reset_postdata();
-
 
 		if ( $markup ) {
 			wp_send_json_success( array( 'markup' => $markup ) );

@@ -25,18 +25,23 @@ if ( post_password_required() ) {
 		<?php if ( have_comments() ) : ?>
 			<h2 class="comments-title">
 				<?php
-				printf( _nx( 'Un comentario', '%1$s comentarios', get_comments_number(), 'comments title' ),
-					number_format_i18n( get_comments_number() ), get_the_title() );
+				printf(
+					_nx( 'Un comentario', '%1$s comentarios', get_comments_number(), 'comments title' ),
+					number_format_i18n( get_comments_number() ),
+					get_the_title()
+				);
 				?>
 			</h2>
 
 			<ol class="comment-list">
 				<?php
-				wp_list_comments( array(
-					'style'       => 'ol',
-					'short_ping'  => true,
-					'avatar_size' => 56,
-				) );
+				wp_list_comments(
+					array(
+						'style'       => 'ol',
+						'short_ping'  => true,
+						'avatar_size' => 56,
+					)
+				);
 				?>
 			</ol><!-- .comment-list -->
 

@@ -15,7 +15,7 @@ class Canino_Widget_Publi extends WP_Widget {
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'classname' => 'canino-ad'
+			'classname' => 'canino-ad',
 		);
 		parent::__construct( 'canino-ad', 'Publicidad', $widget_ops );
 	}
@@ -59,14 +59,17 @@ class Canino_Widget_Publi extends WP_Widget {
 	 * @param array $old_instance The previous options
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
+		$instance          = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		return $instance;
 	}
 }
 
-add_action( 'widgets_init', function(){
-	register_widget( 'Canino_Widget_Publi' );
-});
+add_action(
+	'widgets_init',
+	function() {
+		register_widget( 'Canino_Widget_Publi' );
+	}
+);
 
 

@@ -29,45 +29,51 @@ class Canino_Query {
 new Canino_Query();
 
 function canino_get_el_parte_home_query() {
-	return new WP_Query( array(
-		'showposts' => 10,
-		'cat' => canino_get_el_parte_term_id(),
-		'ignore_sticky_posts' => true
-	));
+	return new WP_Query(
+		array(
+			'showposts'           => 10,
+			'cat'                 => canino_get_el_parte_term_id(),
+			'ignore_sticky_posts' => true,
+		)
+	);
 }
 
 function canino_get_2_cols_home_query( $offset = 0 ) {
-	return new WP_Query( array(
-		'posts_per_page' => 6,
-		'page' => 1,
-		'offset' => $offset,
-		'ignore_sticky_posts' => true,
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'post_format',
-				'field'    => 'slug',
-				'terms'    => array( 'post-format-aside' ),
-				'operator' => 'IN'
-			)
+	return new WP_Query(
+		array(
+			'posts_per_page'      => 6,
+			'page'                => 1,
+			'offset'              => $offset,
+			'ignore_sticky_posts' => true,
+			'tax_query'           => array(
+				array(
+					'taxonomy' => 'post_format',
+					'field'    => 'slug',
+					'terms'    => array( 'post-format-aside' ),
+					'operator' => 'IN',
+				),
+			),
 		)
-	) );
+	);
 }
 
 function canino_get_3_cols_home_query( $offset = 6 ) {
-	$query = new WP_Query( array(
-		'posts_per_page' => 12,
-		'page' => 1,
-		'offset' => $offset,
-		'ignore_sticky_posts' => true,
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'post_format',
-				'field'    => 'slug',
-				'terms'    => array( 'post-format-aside' ),
-				'operator' => 'IN'
-			)
+	$query = new WP_Query(
+		array(
+			'posts_per_page'      => 12,
+			'page'                => 1,
+			'offset'              => $offset,
+			'ignore_sticky_posts' => true,
+			'tax_query'           => array(
+				array(
+					'taxonomy' => 'post_format',
+					'field'    => 'slug',
+					'terms'    => array( 'post-format-aside' ),
+					'operator' => 'IN',
+				),
+			),
 		)
-	) );
+	);
 
 	return $query;
 }

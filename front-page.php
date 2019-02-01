@@ -9,7 +9,7 @@
 		<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( canino_get_el_parte_term_id() ) ); ?>">El Parte</a></h2>
 		<?php
 			$query = canino_get_el_parte_home_query();
-			include_once( locate_template( 'parts/home/el-parte.php' ) );
+			require_once locate_template( 'parts/home/el-parte.php' );
 			wp_reset_postdata();
 		?>
 
@@ -34,9 +34,9 @@
 
 		<div id="canino-home-2-cols">
 			<?php
-				$query = canino_get_2_cols_home_query();
+				$query   = canino_get_2_cols_home_query();
 				$columns = 6;
-				include( locate_template( 'parts/posts-cols.php' ) );
+				require locate_template( 'parts/posts-cols.php' );
 				wp_reset_postdata();
 			?>
 		</div>
@@ -54,9 +54,9 @@
 <div id="submain-content" class="show-for-large">
 	<div id="canino-home-3-cols">
 		<?php
-			$query = canino_get_3_cols_home_query();
+			$query   = canino_get_3_cols_home_query();
 			$columns = 4;
-			include( locate_template( 'parts/posts-cols.php' ) );
+			require locate_template( 'parts/posts-cols.php' );
 			wp_reset_postdata();
 		?>
 	</div>

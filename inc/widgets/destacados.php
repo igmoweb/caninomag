@@ -15,7 +15,7 @@ class Canino_Widget_Destacados extends WP_Widget {
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'classname' => 'destacados'
+			'classname' => 'destacados',
 		);
 		parent::__construct( 'destacados', 'Artículos destacados (Canino)', $widget_ops );
 	}
@@ -32,22 +32,27 @@ class Canino_Widget_Destacados extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title'];
 		}
 
-		$query = new WP_Query( array(
-			'posts_per_page' => 3,
-			'ignore_sticky_posts' => true,
-			'tax_query' => array(
-				array(
-					'taxonomy' => 'canino_destacado',
-					'field' => 'slug',
-					'terms' => array( 'destacado', 'destacado-pequeno' )
+		$query = new WP_Query(
+			array(
+				'posts_per_page'      => 3,
+				'ignore_sticky_posts' => true,
+				'tax_query'           => array(
+					array(
+						'taxonomy' => 'canino_destacado',
+						'field'    => 'slug',
+						'terms'    => array( 'destacado', 'destacado-pequeno' ),
+					),
 				),
 			)
-		) );
+		);
 
 		?>
-		<?php if ( $query->have_posts() ): ?>
+		<?php if ( $query->have_posts() ) : ?>
 			<ul class="destacado-list">
-				<?php while ( $query->have_posts() ): $query->the_post(); ?>
+				<?php
+				while ( $query->have_posts() ) :
+					$query->the_post();
+					?>
 					<li <?php post_class( 'post' ); ?>>
 						<article class="destacado-post">
 							<header class="destacado-header">
@@ -84,7 +89,7 @@ class Canino_Widget_Destacados extends WP_Widget {
 	 * @param array $instance The widget options
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : 'Artículos destacados';
+		$title    = ! empty( $instance['title'] ) ? $instance['title'] : 'Artículos destacados';
 		$category = ! empty( $instance['category'] ) ? $instance['category'] : 0;
 		?>
 		<p>
@@ -101,14 +106,17 @@ class Canino_Widget_Destacados extends WP_Widget {
 	 * @param array $old_instance The previous options
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
+		$instance          = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		return $instance;
 	}
 }
 
-add_action( 'widgets_init', function(){
-	register_widget( 'Canino_Widget_Destacados' );
-});
+add_action(
+	'widgets_init',
+	function() {
+		register_widget( 'Canino_Widget_Destacados' );
+	}
+);
 
 

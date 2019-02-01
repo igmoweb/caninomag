@@ -21,9 +21,14 @@ if ( ! class_exists( 'Canino_Destacado' ) ) {
 		}
 
 		public function render( $post ) {
-			$terms = get_terms( array( 'hide_empty' => false, 'taxonomy' => 'canino_destacado' ) );
+			$terms             = get_terms(
+				array(
+					'hide_empty' => false,
+					'taxonomy'   => 'canino_destacado',
+				)
+			);
 			$object_destacados = wp_get_object_terms( $post->ID, array( 'canino_destacado' ) );
-			$selected = '';
+			$selected          = '';
 			if ( $object_destacados ) {
 				$selected = $object_destacados[0]->term_id;
 			}
@@ -32,7 +37,7 @@ if ( ! class_exists( 'Canino_Destacado' ) ) {
 			<label for="canino-destacado" class="screen-reader-text">Destacado</label>
 			<select name="canino-destacado" id="canino-destacado">
 				<option value="">Sin destacar</option>
-				<?php foreach ( $terms as $term ): ?>
+				<?php foreach ( $terms as $term ) : ?>
 					<option <?php selected( $selected, $term->term_id ); ?> value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
 				<?php endforeach; ?>
 			</select>
@@ -56,11 +61,10 @@ if ( ! class_exists( 'Canino_Destacado' ) ) {
 			}
 
 			$selected = absint( $_REQUEST['canino-destacado'] );
-			$term = get_term( $selected, 'canino_destacado' );
+			$term     = get_term( $selected, 'canino_destacado' );
 			if ( ! $term ) {
 				wp_set_object_terms( $post_id, array(), 'canino_destacado' );
-			}
-			else {
+			} else {
 				wp_set_object_terms( $post_id, array( $term->term_id ), 'canino_destacado' );
 			}
 		}

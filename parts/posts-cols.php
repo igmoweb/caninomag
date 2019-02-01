@@ -1,5 +1,6 @@
 <div class="canino-cols row">
-	<?php while ( $query->have_posts() ): $query->the_post(); ?>
+	<?php while ( $query->have_posts() ) :
+		$query->the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-cols column small-12 large-' . $columns ); ?>>
 			<header class="post-header">
 				<hr class="small show-for-small hide-for-large">

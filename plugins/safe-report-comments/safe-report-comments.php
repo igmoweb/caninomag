@@ -18,10 +18,11 @@ function canino_srcomments_deregister_scripts() {
 add_action( 'wp_footer', 'canino_srcomments_footer_scripts', 7 );
 function canino_srcomments_footer_scripts() {
 	// Use home_url() if domain mapped to avoid cross-domain issues
-	if ( home_url() != site_url() )
+	if ( home_url() != site_url() ) {
 		$ajaxurl = home_url( '/wp-admin/admin-ajax.php' );
-	else
+	} else {
 		$ajaxurl = admin_url( 'admin-ajax.php' );
+	}
 
 	$ajaxurl = apply_filters( 'safe_report_comments_ajax_url', $ajaxurl );
 

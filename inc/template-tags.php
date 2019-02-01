@@ -12,11 +12,11 @@ function canino_promoted_articles() {
 			Loading...
 		</div>
 		<script>
-            (function(){
-                var D=new Date(),d=document,b='body',ce='createElement',ac='appendChild',st='style',ds='display',n='none',gi='getElementById';
-                var i=d[ce]('iframe');i[st][ds]=n;d[gi]("M255518ScriptRootC127830")[ac](i);try{var iw=i.contentWindow.document;iw.open();iw.writeln("<ht"+"ml><bo"+"dy></bo"+"dy></ht"+"ml>");iw.close();var c=iw[b];}
-                catch(e){var iw=d;var c=d[gi]("M255518ScriptRootC127830");}var dv=iw[ce]('div');dv.id="MG_ID";dv[st][ds]=n;dv.innerHTML=127830;c[ac](dv);
-                var s=iw[ce]('script');s.async='async';s.defer='defer';s.charset='utf-8';s.src="//jsc.mgid.com/c/a/caninomag.es.127830.js?t="+D.getYear()+D.getMonth()+D.getDate()+D.getHours();c[ac](s);})();
+			(function(){
+				var D=new Date(),d=document,b='body',ce='createElement',ac='appendChild',st='style',ds='display',n='none',gi='getElementById';
+				var i=d[ce]('iframe');i[st][ds]=n;d[gi]("M255518ScriptRootC127830")[ac](i);try{var iw=i.contentWindow.document;iw.open();iw.writeln("<ht"+"ml><bo"+"dy></bo"+"dy></ht"+"ml>");iw.close();var c=iw[b];}
+				catch(e){var iw=d;var c=d[gi]("M255518ScriptRootC127830");}var dv=iw[ce]('div');dv.id="MG_ID";dv[st][ds]=n;dv.innerHTML=127830;c[ac](dv);
+				var s=iw[ce]('script');s.async='async';s.defer='defer';s.charset='utf-8';s.src="//jsc.mgid.com/c/a/caninomag.es.127830.js?t="+D.getYear()+D.getMonth()+D.getDate()+D.getHours();c[ac](s);})();
 		</script>
 	</div>
 	<!-- Composite End -->
@@ -27,21 +27,21 @@ function canino_promoted_articles() {
 function canino_ad_banner( $size = 'large' ) {
 	switch ( $size ) {
 		case 'small': {
-			$width = 300;
+			$width  = 300;
 			$height = 250;
 			break;
 		}
 		default: {
-			$width = 748;
+			$width  = 748;
 			$height = 90;
 		}
 	}
 	?>
 	<!-- Central_horizontal_Home -->
 	<ins class="adsbygoogle"
-	     style="display:inline-block;width:<?php echo $width; ?>px;height:<?php echo $height; ?>px"
-	     data-ad-client="ca-pub-8311800129241191"
-	     data-ad-slot="1748594590"></ins>
+		 style="display:inline-block;width:<?php echo $width; ?>px;height:<?php echo $height; ?>px"
+		 data-ad-client="ca-pub-8311800129241191"
+		 data-ad-slot="1748594590"></ins>
 	<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 	</script>
@@ -49,20 +49,20 @@ function canino_ad_banner( $size = 'large' ) {
 }
 
 function canino_get_archive_title() {
-	$title = "Archivos";
+	$title = 'Archivos';
 	if ( is_day() ) {
-		$title = __( "Archivos por día: ", 'canino' ) . get_the_date();
-	} else if ( is_month() ) {
-		$title = __( "Archivos por mes: ", 'canino' ) . get_the_date( 'F, Y' );
-	} else if ( is_year() ) {
-		$title = __( "Archivos por año: ", 'canino' ) . get_the_date( 'Y' );
-	} else if ( is_tag() ) {
-		$title = "Etiqueta: " . single_tag_title( "", false );
-	} else if ( is_category() ) {
-		$title = single_cat_title( "", false );
-	} else if ( is_search() ) {
-		$title = sprintf( "Resultados de la búsqueda: %s", get_search_query( false ) );
-	} else if ( is_author() ) {
+		$title = __( 'Archivos por día: ', 'canino' ) . get_the_date();
+	} elseif ( is_month() ) {
+		$title = __( 'Archivos por mes: ', 'canino' ) . get_the_date( 'F, Y' );
+	} elseif ( is_year() ) {
+		$title = __( 'Archivos por año: ', 'canino' ) . get_the_date( 'Y' );
+	} elseif ( is_tag() ) {
+		$title = 'Etiqueta: ' . single_tag_title( '', false );
+	} elseif ( is_category() ) {
+		$title = single_cat_title( '', false );
+	} elseif ( is_search() ) {
+		$title = sprintf( 'Resultados de la búsqueda: %s', get_search_query( false ) );
+	} elseif ( is_author() ) {
 		$title = get_the_author();
 	}
 	return $title;
@@ -86,7 +86,7 @@ function canino_secondary_class( $class = '' ) {
  * Remove sharing buttons from Excerpt
  */
 function jptweak_remove_exshare() {
-	remove_filter( 'the_excerpt', 'sharing_display',19 );
+	remove_filter( 'the_excerpt', 'sharing_display', 19 );
 }
 add_action( 'loop_start', 'jptweak_remove_exshare' );
 
@@ -146,7 +146,7 @@ function canino_custom_logo( $value ) {
 
 	if ( is_category() ) {
 		$category_id = get_queried_object_id();
-		$header = get_theme_mod( 'canino_cat_header_' . $category_id );
+		$header      = get_theme_mod( 'canino_cat_header_' . $category_id );
 		if ( $header && $post_id = attachment_url_to_postid( $header ) ) {
 			return $post_id;
 		}
@@ -157,7 +157,7 @@ function canino_custom_logo( $value ) {
 
 
 function canino_the_post_teaser() {
-	$post = get_post();
+	$post     = get_post();
 	$extended = get_extended( $post->post_content );
 	if ( ! empty( $extended['main'] ) && ! empty( $extended['extended'] ) ) {
 		echo $extended['main'];

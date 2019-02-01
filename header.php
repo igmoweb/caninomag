@@ -69,19 +69,21 @@
 				<div class="columns large-12 canino-primary-menu-wrap">
 					<?php
 					// Primary navigation menu.
-					wp_nav_menu( array(
-						'menu_class'     => 'menu vertical large-horizontal canino-primary-menu',
-						'theme_location' => 'primary'
-					) );
+					wp_nav_menu(
+						array(
+							'menu_class'     => 'menu vertical large-horizontal canino-primary-menu',
+							'theme_location' => 'primary',
+						)
+					);
 					?>
 				</div>
 			</nav>
 		</div><!-- .main-navigation -->
 	<?php endif; ?>
 
-	<?php if ( function_exists('yoast_breadcrumb') && ! is_home() && ! is_front_page() ): ?>
+	<?php if ( function_exists( 'yoast_breadcrumb' ) && ! is_home() && ! is_front_page() ) : ?>
 		<div class="row">
-			<?php yoast_breadcrumb('<div id="breadcrumbs" class="column large-12">','</div>'); ?>
+			<?php yoast_breadcrumb( '<div id="breadcrumbs" class="column large-12">', '</div>' ); ?>
 		</div>
 	<?php endif; ?>
 

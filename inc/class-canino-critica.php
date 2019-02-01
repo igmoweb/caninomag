@@ -19,9 +19,9 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 
 		public function enqueue_scripts( $hook ) {
 			if ( 'post.php' === $hook ) {
-				wp_enqueue_script('media-upload');
-				wp_enqueue_script('thickbox');
-				wp_enqueue_style('thickbox');
+				wp_enqueue_script( 'media-upload' );
+				wp_enqueue_script( 'thickbox' );
+				wp_enqueue_style( 'thickbox' );
 			}
 		}
 
@@ -58,8 +58,7 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 				$meta_value = sanitize_text_field( $meta_value );
 				if ( ! empty( $meta_value ) ) {
 					update_post_meta( $post_id, $meta_key, $meta_value );
-				}
-				else {
+				} else {
 					delete_post_meta( $post_id, $meta_key );
 				}
 			}
@@ -71,20 +70,19 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 			}
 			foreach ( $fields as $field => $atts ) {
 				$name = "canino[$field]";
-				$id = "canino-$field";
+				$id   = "canino-$field";
 				if ( 'text' === $atts['type'] ) {
 					?>
 					<p>
 						<label for="<?php echo esc_attr( $id ); ?>>">
 							<?php echo $atts['label']; ?>
 						</label>
-						<input type="text" class="widefat" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $id ); ?>" value="<?php $this->meta_value( $post_id, $field ) ?>">
+						<input type="text" class="widefat" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $id ); ?>" value="<?php $this->meta_value( $post_id, $field ); ?>">
 					</p>
 					<?php
-				}
-				elseif ( 'file' === $atts['type'] ) {
+				} elseif ( 'file' === $atts['type'] ) {
 					$value = canino_get_critica_field( $field, $post_id );
-					$url = '';
+					$url   = '';
 					if ( $value ) {
 						$url = wp_get_attachment_url( $value );
 					}
@@ -94,7 +92,7 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 							<?php echo $atts['label']; ?><br/>
 						</label>
 						<input id="<?php echo $id; ?>-upload-button" type="button" class="button" value="Subir imagen" data-url="<?php echo esc_attr( $url ); ?>" />
-						<input type="hidden" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $id ); ?>" value="<?php $this->meta_value( $post_id, $field ) ?>">
+						<input type="hidden" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $id ); ?>" value="<?php $this->meta_value( $post_id, $field ); ?>">
 					</p>
 					<div id="<?php echo $id; ?>-image-holder">
 
@@ -149,7 +147,6 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 					</script>
 					<?php
 				}
-
 			}
 		}
 
@@ -201,109 +198,109 @@ function canino_is_critica_post() {
 
 function canino_get_critica_fields( $area = 'all' ) {
 	$all_fields = array(
-		'' => array(
-			'portada' => array(
-				'label' => 'Portada',
-				'type' => 'file',
-				'show-label' => true
+		''       => array(
+			'portada'      => array(
+				'label'      => 'Portada',
+				'type'       => 'file',
+				'show-label' => true,
 
 			),
-			'titulo' => array(
-				'label' => 'Título',
-				'type' => 'text',
-				'show-label' => true
+			'titulo'       => array(
+				'label'      => 'Título',
+				'type'       => 'text',
+				'show-label' => true,
 			),
-			'year' => array(
-				'label' => 'Año',
-				'type' => 'text',
-				'show-label' => true
+			'year'         => array(
+				'label'      => 'Año',
+				'type'       => 'text',
+				'show-label' => true,
 			),
-			'texto-ficha' => array(
-				'label' => 'Slogan',
-				'type' => 'text',
-				'show-label' => false
+			'texto-ficha'  => array(
+				'label'      => 'Slogan',
+				'type'       => 'text',
+				'show-label' => false,
 			),
 			'texto-ficha2' => array(
-				'label' => 'Texto 2',
-				'type' => 'text',
-				'show-label' => false
-			)
+				'label'      => 'Texto 2',
+				'type'       => 'text',
+				'show-label' => false,
+			),
 		),
-		'cine' => array(
+		'cine'   => array(
 			'cine-director' => array(
-				'label' => 'Director',
-				'type' => 'text',
-				'show-label' => true
+				'label'      => 'Director',
+				'type'       => 'text',
+				'show-label' => true,
 			),
-			'cine-guion' => array(
-				'label' => 'Guión',
-				'type' => 'text',
-				'show-label' => true
+			'cine-guion'    => array(
+				'label'      => 'Guión',
+				'type'       => 'text',
+				'show-label' => true,
 			),
-			'cine-actores' => array(
-				'label' => 'Actores',
-				'type' => 'text',
-				'show-label' => true
-			)
+			'cine-actores'  => array(
+				'label'      => 'Actores',
+				'type'       => 'text',
+				'show-label' => true,
+			),
 		),
-		'juego' => array(
-			'game-estudio' => array(
-				'label' => 'Estudio',
-				'type' => 'text',
-				'show-label' => true
+		'juego'  => array(
+			'game-estudio'       => array(
+				'label'      => 'Estudio',
+				'type'       => 'text',
+				'show-label' => true,
 			),
 			'game-distribuidora' => array(
-				'label' => 'Distribuidora',
-				'type' => 'text',
-				'show-label' => true
+				'label'      => 'Distribuidora',
+				'type'       => 'text',
+				'show-label' => true,
 			),
-			'game-plataformas' => array(
-				'label' => 'Plataformas',
-				'type' => 'text',
-				'show-label' => true
-			)
+			'game-plataformas'   => array(
+				'label'      => 'Plataformas',
+				'type'       => 'text',
+				'show-label' => true,
+			),
 		),
-		'libro' => array(
+		'libro'  => array(
 			'libro-editorial' => array(
-				'label' => 'Editorial',
-				'type' => 'text',
-				'show-label' => true
+				'label'      => 'Editorial',
+				'type'       => 'text',
+				'show-label' => true,
 			),
-			'libro-autor' => array(
-				'label' => 'Autor',
-				'type' => 'text',
-				'show-label' => true
-			)
+			'libro-autor'     => array(
+				'label'      => 'Autor',
+				'type'       => 'text',
+				'show-label' => true,
+			),
 		),
-		'comic' => array(
+		'comic'  => array(
 			'comic-guionista' => array(
-				'label' => 'Guionista',
-				'type' => 'text',
-				'show-label' => true
+				'label'      => 'Guionista',
+				'type'       => 'text',
+				'show-label' => true,
 			),
 			'comic-editorial' => array(
-				'label' => 'editorial',
-				'type' => 'text',
-				'show-label' => true
+				'label'      => 'editorial',
+				'type'       => 'text',
+				'show-label' => true,
 			),
 			'comic-dibujante' => array(
-				'label' => 'Dibujante',
-				'type' => 'text',
-				'show-label' => true
+				'label'      => 'Dibujante',
+				'type'       => 'text',
+				'show-label' => true,
 			),
 		),
 		'musica' => array(
 			'musica-artista' => array(
-				'label' => 'Artista',
-				'type' => 'text',
-				'show-label' => true
+				'label'      => 'Artista',
+				'type'       => 'text',
+				'show-label' => true,
 			),
-			'musica-sello' => array(
-				'label' => 'Sello',
-				'type' => 'text',
-				'show-label' => true
+			'musica-sello'   => array(
+				'label'      => 'Sello',
+				'type'       => 'text',
+				'show-label' => true,
 			),
-		)
+		),
 	);
 
 	if ( 'all' === $area ) {

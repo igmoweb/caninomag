@@ -1,7 +1,10 @@
 <?php get_header(); ?>
 <div id="main-content" class="row">
 	<div id="primary" class="column small-12 large-12">
-		<?php while ( have_posts() ): the_post(); ?>
+		<?php
+		while ( have_posts() ) :
+			the_post();
+			?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<header class="post-header">
 					<h1 class="post-title"><?php the_title(); ?> </h1>

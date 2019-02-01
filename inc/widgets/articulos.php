@@ -15,7 +15,7 @@ class Canino_Widget_Articulos extends WP_Widget {
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'classname' => 'articulos'
+			'classname' => 'articulos',
 		);
 		parent::__construct( 'canino-articulos', 'Listado de posts (Canino)', $widget_ops );
 	}
@@ -35,7 +35,7 @@ class Canino_Widget_Articulos extends WP_Widget {
 		}
 
 		$query_args = array(
-			'posts_per_page' => $instance['posts_number'],
+			'posts_per_page'      => $instance['posts_number'],
 			'ignore_sticky_posts' => true,
 		);
 
@@ -48,8 +48,8 @@ class Canino_Widget_Articulos extends WP_Widget {
 				$query_args['tax_query'] = array(
 					array(
 						'taxonomy' => 'category',
-						'field' => 'term_id',
-						'terms' => array( canino_get_destacado_pequeno_term_id(), canino_get_destacado_term_id() )
+						'field'    => 'term_id',
+						'terms'    => array( canino_get_destacado_pequeno_term_id(), canino_get_destacado_term_id() ),
 					),
 				);
 				break;
@@ -61,8 +61,8 @@ class Canino_Widget_Articulos extends WP_Widget {
 						'taxonomy' => 'post_format',
 						'field'    => 'slug',
 						'terms'    => array( $instance['type'] ),
-						'operator' => 'IN'
-					)
+						'operator' => 'IN',
+					),
 				);
 				break;
 			}
@@ -75,12 +75,15 @@ class Canino_Widget_Articulos extends WP_Widget {
 		$query = new WP_Query( $query_args );
 
 		?>
-		<?php if ( $query->have_posts() ): ?>
+		<?php if ( $query->have_posts() ) : ?>
 			<ul class="articulos-list <?php echo $instance['format']; ?>">
-				<?php while ( $query->have_posts() ): $query->the_post(); ?>
+				<?php
+				while ( $query->have_posts() ) :
+					$query->the_post();
+					?>
 					<li>
 						<article class="articulos-post">
-							<?php if ( 'text' != $instance['format'] ): ?>
+							<?php if ( 'text' != $instance['format'] ) : ?>
 								<header class="articulos-header">
 									<a class="articulos-thumbnail" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 										<?php the_post_thumbnail( 'articulos-widget-' . $instance['format'] ); ?>
@@ -111,11 +114,11 @@ class Canino_Widget_Articulos extends WP_Widget {
 
 	private function get_defaults() {
 		return array(
-			'title' => '',
+			'title'        => '',
 			'posts_number' => 3,
-			'type' => 'post-format-link',
-			'author_posts' =>  false,
-			'format' => 'small'
+			'type'         => 'post-format-link',
+			'author_posts' => false,
+			'format'       => 'small',
 		);
 	}
 
@@ -165,18 +168,21 @@ class Canino_Widget_Articulos extends WP_Widget {
 	 * @param array $old_instance The previous options
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance                 = array();
+		$instance['title']        = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['author_posts'] = ! empty( $new_instance['author_posts'] );
 		$instance['posts_number'] = absint( $new_instance['posts_number'] );
-		$instance['format'] = $new_instance['format'];
-		$instance['type'] = $new_instance['type'];
+		$instance['format']       = $new_instance['format'];
+		$instance['type']         = $new_instance['type'];
 		return $instance;
 	}
 }
 
-add_action( 'widgets_init', function(){
-	register_widget( 'Canino_Widget_Articulos' );
-});
+add_action(
+	'widgets_init',
+	function() {
+		register_widget( 'Canino_Widget_Articulos' );
+	}
+);
 
 

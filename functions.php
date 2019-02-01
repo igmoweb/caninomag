@@ -31,36 +31,36 @@ class Canino_Theme {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 
 		add_filter( 'the_more_excerpt', array( $this, 'change_article_excerpt' ) );
-		add_action('wp_head', array( $this, 'add_googleanalytics' ) );
-		add_action('wp_footer', array( $this, 'add_ads' ) );
+		add_action( 'wp_head', array( $this, 'add_googleanalytics' ) );
+		add_action( 'wp_footer', array( $this, 'add_ads' ) );
 
 		add_filter( 'rp4wp_thumbnail_size', array( $this, 'rp4wp_my_thumbnail_size' ) );
 		add_filter( 'rp4wp_append_content', '__return_false' );
 
 		add_filter( 'esc_html', array( $this, 'rename_post_formats' ) );
-		add_action('admin_head', array( $this, 'live_rename_formats') );
+		add_action( 'admin_head', array( $this, 'live_rename_formats' ) );
 
 		add_action( 'admin_init', array( $this, 'maybe_upgrade' ) );
 
 		add_action( 'media_buttons', array( $this, 'add_shortcode_button' ) );
 
-		include_once( 'inc/class-canino-load-more.php' );
-		include_once( 'inc/class-canino-query.php' );
-		include_once( 'inc/class-canino-customizer.php' );
-		include_once( 'inc/class-canino-critica.php' );
-		include_once( 'inc/class-canino-taxonomies.php' );
-		include_once( 'inc/class-canino-destacado.php' );
-		include_once( 'inc/class-canino-rich-snippets.php' );
-		include_once( 'inc/shortcodes/post-banner.php' );
-		include_once( 'inc/shortcodes/ad-banner.php' );
-		include_once( 'inc/template-tags.php' );
-		include_once( 'inc/jetpack.php' );
-		include_once( 'inc/widgets/publicidad.php' );
-		include_once( 'inc/widgets/articulos.php' );
-		include_once( 'plugins/amp/amp.php' );
-		include_once( 'plugins/cookie-law-info/cookie-law-info.php' );
-		include_once( 'plugins/safe-report-comments/safe-report-comments.php' );
-		include_once( 'inc/hooks-templates.php' );
+		include_once 'inc/class-canino-load-more.php';
+		include_once 'inc/class-canino-query.php';
+		include_once 'inc/class-canino-customizer.php';
+		include_once 'inc/class-canino-critica.php';
+		include_once 'inc/class-canino-taxonomies.php';
+		include_once 'inc/class-canino-destacado.php';
+		include_once 'inc/class-canino-rich-snippets.php';
+		include_once 'inc/shortcodes/post-banner.php';
+		include_once 'inc/shortcodes/ad-banner.php';
+		include_once 'inc/template-tags.php';
+		include_once 'inc/jetpack.php';
+		include_once 'inc/widgets/publicidad.php';
+		include_once 'inc/widgets/articulos.php';
+		include_once 'plugins/amp/amp.php';
+		include_once 'plugins/cookie-law-info/cookie-law-info.php';
+		include_once 'plugins/safe-report-comments/safe-report-comments.php';
+		include_once 'inc/hooks-templates.php';
 
 		new Canino_Rich_Snippets();
 	}
@@ -99,62 +99,71 @@ jQuery( document ).ready( function() {
 		add_theme_support( 'post-thumbnails' );
 
 		// Sidebars
-		register_sidebar( array(
-			'name' => 'Barra Lateral',
-			'id' => 'cabecera-arriba-del-to',
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h4 class="widget-title">',
-			'after_title' => '</h4>'
-		) );
+		register_sidebar(
+			array(
+				'name'          => 'Barra Lateral',
+				'id'            => 'cabecera-arriba-del-to',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="widget-title">',
+				'after_title'   => '</h4>',
+			)
+		);
 
-		register_sidebar( array(
-			'name' => 'Página de autor',
-			'id' => 'author',
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h4 class="widget-title">',
-			'after_title' => '</h4>'
-		) );
+		register_sidebar(
+			array(
+				'name'          => 'Página de autor',
+				'id'            => 'author',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="widget-title">',
+				'after_title'   => '</h4>',
+			)
+		);
 
+		register_sidebar(
+			array(
+				'name'          => 'Pie de Página (Izquierda)',
+				'id'            => 'pie-izq',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="widget-title">',
+				'after_title'   => '</h4>',
+			)
+		);
 
-		register_sidebar( array(
-			'name' => 'Pie de Página (Izquierda)',
-			'id' => 'pie-izq',
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h4 class="widget-title">',
-			'after_title' => '</h4>'
-		) );
+		register_sidebar(
+			array(
+				'name'          => 'Pie de Página (Centro)',
+				'id'            => 'pie-centro',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="widget-title">',
+				'after_title'   => '</h4>',
+			)
+		);
 
-		register_sidebar( array(
-			'name' => 'Pie de Página (Centro)',
-			'id' => 'pie-centro',
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h4 class="widget-title">',
-			'after_title' => '</h4>'
-		) );
+		register_sidebar(
+			array(
+				'name'          => 'Pie de Página (Derecha)',
+				'id'            => 'pie-dcha',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="widget-title">',
+				'after_title'   => '</h4>',
+			)
+		);
 
-		register_sidebar( array(
-			'name' => 'Pie de Página (Derecha)',
-			'id' => 'pie-dcha',
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h4 class="widget-title">',
-			'after_title' => '</h4>'
-		) );
-
-
-
-		register_sidebar( array(
-			'name' => 'Top Bar',
-			'id' => 'top-bar',
-			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h6 class="widget-title">',
-			'after_title' => '</h6>'
-		) );
+		register_sidebar(
+			array(
+				'name'          => 'Top Bar',
+				'id'            => 'top-bar',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h6 class="widget-title">',
+				'after_title'   => '</h6>',
+			)
+		);
 
 		add_image_size( 'post-grid-thumb-large', 787, 524, true );
 		add_image_size( 'post-grid-thumb-big', 524, 524, true );
@@ -162,12 +171,14 @@ jQuery( document ).ready( function() {
 		add_image_size( 'blog-post-thumb', 330, 242, true );
 		add_image_size( 'articulos-widget-small', 100, 100, true );
 		add_image_size( 'articulos-widget-big', 524, 261, true );
-		add_image_size( 'single-post-thumb',634, 424, true );
+		add_image_size( 'single-post-thumb', 634, 424, true );
 
-		register_nav_menus( array(
-			'primary' => __( 'Primary Menu',      'canino' ),
-			'social'  => __( 'Social Links Menu', 'canino' ),
-		) );
+		register_nav_menus(
+			array(
+				'primary' => __( 'Primary Menu', 'canino' ),
+				'social'  => __( 'Social Links Menu', 'canino' ),
+			)
+		);
 
 		Canino_Taxonomies::register();
 	}
@@ -175,8 +186,7 @@ jQuery( document ).ready( function() {
 	function change_article_excerpt( $excerpt ) {
 		global $page, $pages;
 
-		if ( $page > count( $pages ) ) // if the requested page doesn't exist
-		{
+		if ( $page > count( $pages ) ) {
 			$page = count( $pages );
 		} // give them the highest numbered page that DOES exist
 
@@ -216,10 +226,11 @@ jQuery( document ).ready( function() {
 	 * @return string
 	 */
 	function rename_post_formats( $safe_text ) {
-		if ( $safe_text == 'Aside' )
+		if ( $safe_text == 'Aside' ) {
 			return 'Artículo';
-		elseif ( $safe_text == 'Link' )
+		} elseif ( $safe_text == 'Link' ) {
 			return 'Noticia';
+		}
 
 		return $safe_text;
 	}
@@ -240,7 +251,8 @@ jQuery( document ).ready( function() {
 
 				});
 			</script>
-		<?php }
+			<?php
+		}
 	}
 
 	function maybe_upgrade() {
@@ -253,7 +265,7 @@ jQuery( document ).ready( function() {
 		if ( version_compare( $saved_version, '1.0', '<' ) ) {
 			$terms = array(
 				get_term_by( 'slug', 'destacado', 'category' ),
-				get_term_by( 'slug', 'destacado-pequeno', 'category' )
+				get_term_by( 'slug', 'destacado-pequeno', 'category' ),
 			);
 
 			foreach ( $terms as $term ) {
@@ -282,8 +294,8 @@ jQuery( document ).ready( function() {
 		<a href="#" id="insert-canino-banner" class="button">Ad Banner</a>
 		<script>
 			jQuery( '#insert-canino-banner' ).click( function( e ) {
-			    e.preventDefault();
-                wp.media.editor.insert('[canino-post-banner]');
+				e.preventDefault();
+				wp.media.editor.insert('[canino-post-banner]');
 			})
 		</script>
 		<?php
@@ -313,8 +325,7 @@ function canino_get_post_category( $post_id ) {
 	$categories = wp_get_object_terms( $post_id, 'category' );
 	if ( $categories ) {
 		$category = $categories[0];
-	}
-	else {
+	} else {
 		$category = new WP_Term( new stdClass() );
 	}
 
