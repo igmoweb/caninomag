@@ -47,9 +47,9 @@ class Canino_Widget_Articulos extends WP_Widget {
 			case 'destacado': {
 				$query_args['tax_query'] = array(
 					array(
-						'taxonomy' => 'canino_destacado',
-						'field' => 'slug',
-						'terms' => array( 'destacado', 'destacado-pequeno' )
+						'taxonomy' => 'category',
+						'field' => 'term_id',
+						'terms' => array( canino_get_destacado_pequeno_term_id(), canino_get_destacado_term_id() )
 					),
 				);
 				break;

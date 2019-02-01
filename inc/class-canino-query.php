@@ -31,7 +31,7 @@ new Canino_Query();
 function canino_get_el_parte_home_query() {
 	return new WP_Query( array(
 		'showposts' => 10,
-		'cat' => 30,
+		'cat' => canino_get_el_parte_term_id(),
 		'ignore_sticky_posts' => true
 	));
 }

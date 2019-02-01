@@ -3,9 +3,9 @@
 	$query = new WP_Query( array(
 		'tax_query' => array(
 			array(
-				'taxonomy' => 'canino_destacado',
+				'taxonomy' => 'category',
 				'field'    => 'term_id',
-				'terms'    => 73,
+				'terms'    => canino_get_destacado_term_id(),
 			),
 		),
 		'posts_per_page' => 2,
@@ -35,9 +35,9 @@
 	$query = new WP_Query( array(
 		'tax_query' => array(
 			array(
-				'taxonomy' => 'canino_destacado',
+				'taxonomy' => 'category',
 				'field'    => 'term_id',
-				'terms'    => 687,
+				'terms'    => canino_get_destacado_pequeno_term_id(),
 			),
 		),
 		'posts_per_page' => 4,

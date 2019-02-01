@@ -6,7 +6,7 @@
 
 	<div id="primary" class="<?php canino_primary_class(); ?>">
 
-		<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">El Parte</a></h2>
+		<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( canino_get_el_parte_term_id() ) ); ?>">El Parte</a></h2>
 		<?php
 			$query = canino_get_el_parte_home_query();
 			include_once( locate_template( 'parts/home/el-parte.php' ) );
@@ -14,7 +14,7 @@
 		?>
 
 		<div class="show-for-large">
-			<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a></h2>
+			<h2 class="canino-section-title">Publicidad</h2>
 			<div class="canino-publi row">
 				<div class="column large-12">
 					<?php canino_ad_banner(); ?>
@@ -24,7 +24,7 @@
 		</div>
 
 		<div class="show-for-medium-only">
-			<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( 30 ) ); ?>">Publicidad</a></h2>
+			<h2 class="canino-section-title">Publicidad</h2>
 			<div class="canino-publi row align-center">
 				<div class="column medium-5">
 					<?php canino_ad_banner( 'small' ); ?>
