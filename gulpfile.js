@@ -38,6 +38,7 @@ gulp.task('build', ['cookie-law-info-js', 'cookie-law-info-css', 'cookie-law-inf
             '!bower_components/cookie-law-info/',
             '!bower_components/safe-report-comments/**',
             '!bower_components/safe-report-comments/'
+            '!mu-plugins/'
         ]
     )
         .pipe(gulp.dest('./build/'));
