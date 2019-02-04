@@ -21,6 +21,7 @@ gulp.task('build', ['clear-build'], function() {
             '!*.md',
             '!*.json',
             '!gulpfile.js',
+            '!phpcs.ruleset.xml',
             '!webpack.config.js',
             '!todo.txt',
             '!pasos-migracion',
@@ -28,8 +29,11 @@ gulp.task('build', ['clear-build'], function() {
             '!bower_components/cookie-law-info/',
             '!bower_components/safe-report-comments/**',
             '!bower_components/safe-report-comments/',
-            '!mu-plugins/'
-        ]
+            '!mu-plugins/**',
+            '!bin/**/*',
+            '!vendor/**/*'
+        ],
+      { nodir: true }
     )
         .pipe(gulp.dest('./build/'));
 
