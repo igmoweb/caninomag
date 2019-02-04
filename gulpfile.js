@@ -8,17 +8,7 @@ gulp.task( 'clear-build', function() {
         .pipe(clean());
 });
 
-
-gulp.task( 'safe-reports-comments-js', function() {
-    var cookieFiles = [
-        'bower_components/safe-report-comments/js/ajax.js'
-    ];
-    return gulp.src(cookieFiles)
-        .pipe(uglify())
-        .pipe(gulp.dest('./plugins/safe-report-comments/js'));
-});
-
-gulp.task('build', ['cookie-law-info-js', 'cookie-law-info-css', 'cookie-law-info-img', 'safe-reports-comments-js','clear-build'], function() {
+gulp.task('build', ['clear-build'], function() {
 
     // Copy JS
     gulp.src(
