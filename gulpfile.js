@@ -8,33 +8,6 @@ gulp.task( 'clear-build', function() {
         .pipe(clean());
 });
 
-gulp.task( 'cookie-law-info-js', function() {
-    var cookieFiles = [
-        'bower_components/cookie-law-info/js/cookielawinfo.js'
-    ];
-    return gulp.src(cookieFiles)
-        .pipe(uglify())
-        .pipe(gulp.dest('./plugins/cookie-law-info/js'));
-});
-
-gulp.task( 'cookie-law-info-css', function() {
-    var cookieFiles = [
-        'bower_components/cookie-law-info/css/cli-style.css'
-    ];
-    return gulp.src(cookieFiles)
-        .pipe(uglifyCSS())
-        .pipe(gulp.dest('./plugins/cookie-law-info/css'));
-});
-
-gulp.task( 'cookie-law-info-img', function() {
-    var cookieFiles = [
-        'bower_components/cookie-law-info/images'
-    ];
-    return gulp.src(cookieFiles)
-        .pipe(uglifyCSS())
-        .pipe(gulp.dest('./plugins/cookie-law-info/'));
-});
-
 
 gulp.task( 'safe-reports-comments-js', function() {
     var cookieFiles = [

@@ -49,6 +49,7 @@
 				<div class="row align-middle">
 					<span class="column small-4">
 						<a href="<?php echo home_url(); ?>" class="custom-logo-link" rel="home" itemprop="url">
+							<?php canino_the_mobile_logo(); ?>
 							<img width="150" height="150" src="<?php echo get_template_directory_uri() . '/images/canino-logo-small.png'; ?>" class="hide-for-large custom-logo" alt="Canino">
 						</a>
 					</span>

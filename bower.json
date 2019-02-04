@@ -22,7 +22,5 @@
   ],
   "private": true,
   "devDependencies": {
-    "cookie-law-info": "wp-plugins/cookie-law-info#^1.5.3",
-    "safe-report-comments": "Automattic/safe-report-comments#^0.4.1"
   }
 }

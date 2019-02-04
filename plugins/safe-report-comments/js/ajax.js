@@ -1,1 +1,0 @@
-function safe_report_comments_flag_comment(e,n,t){return jQuery.post(SafeCommentsAjax.ajaxurl,{comment_id:e,sc_nonce:n,result_id:t,action:"safe_report_comments_flag_comment",xhrFields:{withCredentials:!0}},function(e){jQuery("#"+t).html(e)}),!1}jQuery(document).ready(function(){jQuery(".hide-if-js").hide(),jQuery(".hide-if-no-js").show()});

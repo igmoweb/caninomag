@@ -48,8 +48,6 @@ class Canino_Theme {
 		include_once 'inc/class-canino-query.php';
 		include_once 'inc/class-canino-customizer.php';
 		include_once 'inc/class-canino-critica.php';
-		include_once 'inc/class-canino-taxonomies.php';
-		include_once 'inc/class-canino-destacado.php';
 		include_once 'inc/class-canino-rich-snippets.php';
 		include_once 'inc/shortcodes/post-banner.php';
 		include_once 'inc/shortcodes/ad-banner.php';
@@ -57,9 +55,6 @@ class Canino_Theme {
 		include_once 'inc/jetpack.php';
 		include_once 'inc/widgets/publicidad.php';
 		include_once 'inc/widgets/articulos.php';
-		include_once 'plugins/amp/amp.php';
-		include_once 'plugins/cookie-law-info/cookie-law-info.php';
-		include_once 'plugins/safe-report-comments/safe-report-comments.php';
 		include_once 'inc/hooks-templates.php';
 
 		new Canino_Rich_Snippets();
@@ -97,6 +92,7 @@ jQuery( document ).ready( function() {
 		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'video' ) );
 		add_theme_support( 'custom-logo' );
 		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'title-tag' );
 
 		// Sidebars
 		register_sidebar(
@@ -179,8 +175,6 @@ jQuery( document ).ready( function() {
 				'social'  => __( 'Social Links Menu', 'canino' ),
 			)
 		);
-
-		Canino_Taxonomies::register();
 	}
 
 	function change_article_excerpt( $excerpt ) {
@@ -322,7 +316,7 @@ function canino_get_post_category( $post_id ) {
 		return $canino_categories[ $post_id ];
 	}
 
-	$categories = wp_get_object_terms( $post_id, 'category' );
+	$categories = apply_filters( 'the_category_list', get_the_category( $post_id ), $post_id );
 	if ( $categories ) {
 		$category = $categories[0];
 	} else {

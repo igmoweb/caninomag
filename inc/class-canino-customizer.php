@@ -1,17 +1,27 @@
 <?php
 
+/**
+ * Manage the customizer options
+ */
 class Canino_Customizer {
 
+	/**
+	 * Canino_Customizer constructor.
+	 */
 	public function __construct() {
 		add_action( 'customize_register', array( $this, 'register_settings' ) );
 		add_filter( 'nav_menu_css_class', array( $this, 'primary_nav_menu_class' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_inline_css' ) );
 		add_action( 'the_category_list', array( $this, 'the_category_list' ) );
+		add_action( 'parse_query', array( $this, 'parse_query' ) );
 	}
 
+	/**
+	 * Register customizer options.
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
+	 */
 	public function register_settings( $wp_customize ) {
-		/** @var WP_Customize_Manager $wp_customize */
-
 		$wp_customize->add_panel(
 			'canino_panel',
 			array(
@@ -64,17 +74,21 @@ class Canino_Customizer {
 		$this->el_parte_category( $wp_customize );
 		$this->destacado_category( $wp_customize );
 		$this->destacado_pequeno_category( $wp_customize );
+		$this->logo_movil( $wp_customize );
 	}
 
-
+	/**
+	 * G Analytics options
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
+	 */
 	private function ganalytics( $wp_customize ) {
 		$wp_customize->add_setting(
 			'canino_ganalytics',
 			array(
-				'type'       => 'theme_mod', // or 'option'
+				'type'       => 'theme_mod',
 				'capability' => 'edit_theme_options',
 				'default'    => '',
-			// 'sanitize_callback' => '',
 			)
 		);
 
@@ -89,14 +103,18 @@ class Canino_Customizer {
 		);
 	}
 
+	/**
+	 * Ads options
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
+	 */
 	private function ads( $wp_customize ) {
 		$wp_customize->add_setting(
 			'canino_ads',
 			array(
-				'type'       => 'theme_mod', // or 'option'
+				'type'       => 'theme_mod',
 				'capability' => 'edit_theme_options',
 				'default'    => '',
-			// 'sanitize_callback' => '',
 			)
 		);
 
@@ -111,7 +129,11 @@ class Canino_Customizer {
 		);
 	}
 
-
+	/**
+	 * Category colors options
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
+	 */
 	private function category_colors( $wp_customize ) {
 		$categories = get_terms(
 			array(
@@ -123,7 +145,7 @@ class Canino_Customizer {
 			$wp_customize->add_setting(
 				'canino_cat_color_' . $category->term_id,
 				array(
-					'type'       => 'theme_mod', // or 'option'
+					'type'       => 'theme_mod',
 					'capability' => 'edit_theme_options',
 					'default'    => '',
 				)
@@ -142,6 +164,11 @@ class Canino_Customizer {
 		}
 	}
 
+	/**
+	 * Categories headers options
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
+	 */
 	private function category_headers( $wp_customize ) {
 		$categories = get_terms(
 			array(
@@ -153,7 +180,7 @@ class Canino_Customizer {
 			$wp_customize->add_setting(
 				'canino_cat_header_' . $category->term_id,
 				array(
-					'type'       => 'theme_mod', // or 'option'
+					'type'       => 'theme_mod',
 					'capability' => 'edit_theme_options',
 					'default'    => '',
 				)
@@ -172,6 +199,9 @@ class Canino_Customizer {
 		}
 	}
 
+	/**
+	 * Add inline CSS based on Customizer options.
+	 */
 	public function add_inline_css() {
 		$categories = get_terms(
 			array(
@@ -194,11 +224,16 @@ class Canino_Customizer {
 		}
 	}
 
+	/**
+	 * El Parte options
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
+	 */
 	private function el_parte_category( $wp_customize ) {
 		$wp_customize->add_setting(
 			'canino_el_parte_category',
 			array(
-				'type'              => 'theme_mod', // or 'option'
+				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
 				'default'           => 30,
 				'sanitize_callback' => array( $this, 'sanitize_term_id' ),
@@ -216,11 +251,16 @@ class Canino_Customizer {
 		);
 	}
 
+	/**
+	 * Destacado options.
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
+	 */
 	private function destacado_category( $wp_customize ) {
 		$wp_customize->add_setting(
 			'canino_destacado_category',
 			array(
-				'type'              => 'theme_mod', // or 'option'
+				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
 				'default'           => 4117,
 				'sanitize_callback' => array( $this, 'sanitize_term_id' ),
@@ -238,11 +278,16 @@ class Canino_Customizer {
 		);
 	}
 
+	/**
+	 * Destacado pequeño options
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
+	 */
 	private function destacado_pequeno_category( $wp_customize ) {
 		$wp_customize->add_setting(
 			'canino_destacado_pequeno_category',
 			array(
-				'type'              => 'theme_mod', // or 'option'
+				'type'              => 'theme_mod',
 				'capability'        => 'edit_theme_options',
 				'default'           => 4118,
 				'sanitize_callback' => array( $this, 'sanitize_term_id' ),
@@ -260,6 +305,42 @@ class Canino_Customizer {
 		);
 	}
 
+	/**
+	 * Mobile logo option
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
+	 */
+	private function logo_movil( $wp_customize ) {
+		$wp_customize->add_setting(
+			'canino_mobile_logo',
+			array(
+				'type'       => 'theme_mod',
+				'capability' => 'edit_theme_options',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Cropped_Image_Control(
+				$wp_customize,
+				'canino_mobile_logo',
+				array(
+					'flex_height' => false,
+					'flex_width'  => false,
+					'label'       => 'Logo para móvil',
+					'section'     => 'title_tagline',
+				)
+			)
+		);
+	}
+
+
+	/**
+	 * Term sanitization
+	 *
+	 * @param int $value Term ID.
+	 *
+	 * @return int
+	 */
 	public function sanitize_term_id( $value ) {
 		$term = get_term( $value );
 		if ( ! is_a( $term, 'WP_Term' ) ) {
@@ -270,6 +351,11 @@ class Canino_Customizer {
 
 	/**
 	 * Add an extra class for category items in menus
+	 *
+	 * @param array   $class CSS class.
+	 * @param WP_Term $item Term.
+	 *
+	 * @return array
 	 */
 	public function primary_nav_menu_class( $class, $item ) {
 		if ( 'category' === $item->object ) {
@@ -278,25 +364,69 @@ class Canino_Customizer {
 		return $class;
 	}
 
+	/**
+	 * Filter the category list based on Customizer options
+	 *
+	 * @param array $categories Categories list.
+	 *
+	 * @return array
+	 */
 	public function the_category_list( $categories ) {
-		return array_filter(
-			$categories,
-			function( $category ) {
-				return ( ! in_array( $category->term_id, array( canino_get_destacado_term_id(), canino_get_destacado_pequeno_term_id() ) ) );
-			}
+		return array_values(
+			array_filter(
+				$categories,
+				function( $category ) {
+					return ( ! in_array( $category->term_id, array( canino_get_destacado_term_id(), canino_get_destacado_pequeno_term_id() ) ) ); //phpcs:ignore
+				}
+			)
 		);
+	}
+
+	/**
+	 * Parses query based on Customizer options
+	 *
+	 * @param WP_Query $query Query object.
+	 */
+	public function parse_query( $query ) {
+		if (
+			is_main_query()
+			&& $query->is_category()
+			&& (
+				$query->get_queried_object_id() == canino_get_destacado_term_id() //phpcs:ignore
+				|| $query->get_queried_object_id() == canino_get_destacado_pequeno_term_id() //phpcs:ignore
+			)
+		) {
+			$query->is_404      = true;
+			$query->is_category = false;
+			$query->is_archive  = false;
+		}
 	}
 
 }
 
+/**
+ * Return the destacado term ID
+ *
+ * @return string|int
+ */
 function canino_get_destacado_term_id() {
 	return get_theme_mod( 'canino_destacado_category', 4117 );
 }
 
+/**
+ * Return the destacado pequeño term ID
+ *
+ * @return string|int
+ */
 function canino_get_destacado_pequeno_term_id() {
 	return get_theme_mod( 'canino_destacado_pequeno_category', 4118 );
 }
 
+/**
+ * Return the El Parte term ID
+ *
+ * @return string|int
+ */
 function canino_get_el_parte_term_id() {
 	return get_theme_mod( 'canino_el_parte_category', 30 );
 }

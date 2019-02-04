@@ -48,11 +48,6 @@ add_action(
 	}
 );
 
-function canino_add_shortcode_tinymce_plugin( $plugins ) {
-	$plugins['canino_shortcodes'] = get_stylesheet_directory_uri() . 'js/editor-shortcodes.js';
-	return $plugins;
-}
-
 function canino_register_shortcode_button() {
 	array_push( $buttons, '|', 'canino_shortcodes' );
 	return $buttons;
