@@ -26,6 +26,12 @@ article.hentry {
         color:$dark-gray;
       }
     }
+
+    .dashicons {
+      width:17px;
+      height:17px;
+      font-size:17px;
+    }
   }
 
   span.post-author {
@@ -78,7 +84,7 @@ body.single {
       margin-top:0;
     }
 
-    footer.post-footer > div.sticky > div {
+    .post-footer > div.sticky > div {
       margin-bottom: $global-margin;
       border-top:1px solid $light-gray;
       padding-top:$global-padding;
@@ -124,7 +130,7 @@ body.single {
 
     }
 
-    footer.post-footer > div:first-child {
+    .post-footer > div:first-child {
       margin-top:0;
     }
 

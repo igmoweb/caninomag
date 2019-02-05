@@ -1,13 +1,9 @@
 @charset 'utf-8';
 
-$fi-path: '../bower_components/foundation-icon-fonts';
-
 @import 'settings';
 @import '../bower_components/foundation-sites/scss/foundation';
-@import '../bower_components/motion-ui/motion-ui';
 @import 'wordpress/wordpress';
 @import 'canino/canino';
-@import '../bower_components/foundation-icon-fonts/_foundation-icons';
 
 @include foundation-global-styles;
 // @include foundation-grid;

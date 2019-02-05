@@ -9,9 +9,9 @@
 				<header class="post-header">
 					<h1 class="post-title"><?php the_title(); ?> </h1>
 					<ul class="post-details">
-						<li class="post-category"><i class="fi-folder"></i> En <?php echo get_the_category_list( ', ' ); ?></li>
-						<li class="post-date"><i class="fi-clock"></i> <?php the_date(); ?></li>
-						<li class="post-author"><i class="fi-pencil"></i> <?php the_author_link(); ?></li>
+						<li class="post-category"><span class="dashicons dashicons-category"></span></span> En <?php echo get_the_category_list( ', ' ); //phpcs:ignore ?></li>
+						<li class="post-date"><span class="dashicons dashicons-clock"></span> <?php the_date(); ?></li>
+						<li class="post-author"><span class="dashicons dashicons-admin-users"></span> <?php the_author_link(); ?></li>
 					</ul>
 					<div class="post-image">
 						<?php the_post_thumbnail( 'single-post-thumb' ); ?>
@@ -22,29 +22,30 @@
 						<?php if ( post_password_required() ) : ?>
 							<?php add_filter( 'post_password_required', '__return_false' ); ?>
 							<h4 class="post-excerpt"><?php canino_the_post_teaser(); ?></h4>
-							<?php echo get_the_password_form(); ?>
+							<?php echo get_the_password_form(); //phpcs:ignore ?>
 							<?php add_filter( 'post_password_required', '__return_true' ); ?>
 						<?php else : ?>
 							<h4 class="post-excerpt"><?php canino_the_post_teaser(); ?></h4>
 							<?php canino_the_post_content(); ?>
 						<?php endif; ?>
 					</section>
+					<div id="post-bottom-<?php the_ID(); ?>"></div>
 					<footer class="post-footer large-2 column medium-order-1" data-sticky-container>
-						<div class="sticky" data-sticky data-anchor="post-content-<?php the_ID(); ?>">
+						<div class="sticky" data-sticky data-top-anchor="post-content-<?php the_ID(); ?>:top" data-btm-anchor="post-bottom-<?php the_ID(); ?>:bottom">
 							<div class="post-banner-author-avatar">
 								<?php echo get_avatar( get_the_author_meta( 'ID' ), 110 ); ?>
 								<h3 class="text-center"><?php the_author_posts_link(); ?></h3>
-								<?php if ( $twitter = get_the_author_meta( 'twitter' ) ) : ?>
+								<?php if ( get_the_author_meta( 'twitter' ) ) : ?>
 									<div class="btn-twitter">
-										<a href="https://twitter.com/<?php echo esc_attr( $twitter ); ?>">
-											<p><strong>@<?php echo $twitter; ?></strong></p>
+										<a href="https://twitter.com/<?php echo esc_attr( get_the_author_meta( 'twitter' ) ); ?>">
+											<p><strong>@<?php echo esc_html( get_the_author_meta( 'twitter' ) ); ?></strong></p>
 										</a>
 									</div>
 								<?php endif; ?>
 							</div>
 							<?php if ( function_exists( 'sharing_display' ) ) : ?>
 								<div class="post-sharing text-center">
-									<?php echo sharing_display(); ?>
+									<?php echo sharing_display();//phpcs:ignore ?>
 								</div>
 							<?php endif; ?>
 							<div class="post-tags">

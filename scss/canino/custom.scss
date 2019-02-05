@@ -15,6 +15,11 @@ body.author {
   .author-links {
     list-style:none;
     margin-left:0;
+    .dashicons {
+      width:35px;
+      height:35px;
+      font-size:35px;
+    }
     li {
       font-size:rem-calc( 40 );
       display:inline-block;
