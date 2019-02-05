@@ -1,14 +1,18 @@
 var gulp = require('gulp');
 var clean = require('gulp-clean');
-var uglify = require('gulp-uglify');
-var uglifyCSS = require( 'gulp-uglifycss' );
+var image = require('gulp-image');
 
 gulp.task( 'clear-build', function() {
     return gulp.src('./build/', {read: false})
         .pipe(clean());
 });
 
-gulp.task('build', ['clear-build'], function() {
+gulp.task('compress', function () {
+        gulp.src('./images/*')
+          .pipe(image())
+          .pipe(gulp.dest('./images'));
+});
+gulp.task('build', ['clear-build', 'compress'], function() {
 
     // Copy JS
     gulp.src(
