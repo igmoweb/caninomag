@@ -9,9 +9,9 @@
 				<header class="post-header">
 					<h1 class="post-title"><?php the_title(); ?> </h1>
 					<ul class="post-details">
-						<li class="post-category"><span class="dashicons dashicons-category"></span></span> En <?php echo get_the_category_list( ', ' ); //phpcs:ignore ?></li>
-						<li class="post-date"><span class="dashicons dashicons-clock"></span> <?php the_date(); ?></li>
-						<li class="post-author"><span class="dashicons dashicons-admin-users"></span> <?php the_author_link(); ?></li>
+						<li class="post-category"><i class="fi-folder"></i> En <?php echo get_the_category_list( ', ' ); ?></li>
+						<li class="post-date"><i class="fi-clock"></i> <?php the_date(); ?></li>
+						<li class="post-author"><i class="fi-pencil"></i> <?php the_author_link(); ?></li>
 					</ul>
 					<div class="post-image">
 						<?php the_post_thumbnail( 'single-post-thumb' ); ?>

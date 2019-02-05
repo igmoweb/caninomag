@@ -14,7 +14,7 @@
 					the_author_meta( 'twitter' );
 					?>
 					">
-						<span class="dashicons dashicons-twitter"></span> <span class="show-for-sr">Twitter de <?php the_author(); ?></span>
+						<i class="fi-social-twitter"></i> <span class="show-for-sr">Twitter de <?php the_author(); ?></span>
 					</a>
 				</li>
 			<?php endif; ?>
