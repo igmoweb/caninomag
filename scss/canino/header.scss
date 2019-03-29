@@ -3,7 +3,7 @@
   padding: $global-padding/2 0;
 }
 
-body:not(.home) #masthead .custom-logo {
+body:not(.home):not(.canino-has-custom-category-logo) #masthead .custom-logo {
   width:230px;
 }
 

@@ -22,9 +22,9 @@ function canino_ad_banner( $size = 'large' ) {
 	?>
 	<!-- Central_horizontal_Home -->
 	<ins class="adsbygoogle"
-		 style="display:inline-block;width:<?php echo $width; ?>px;height:<?php echo $height; ?>px"
-		 data-ad-client="ca-pub-8311800129241191"
-		 data-ad-slot="1748594590"></ins>
+		style="display:inline-block;width:<?php echo esc_attr( $width ); ?>px;height:<?php echo esc_attr( $height ); ?>px"
+		data-ad-client="ca-pub-8311800129241191"
+		data-ad-slot="1748594590"></ins>
 	<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 	</script>
@@ -68,6 +68,11 @@ function canino_primary_class( $class = '' ) {
 	echo esc_attr( $class );
 }
 
+/**
+ * Retrieve the secondary content class.
+ *
+ * @param string $class Default secondary class.
+ */
 function canino_secondary_class( $class = '' ) {
 	if ( is_front_page() ) {
 		$class .= ' column small-12 large-4 small-order-2 medium-order-2';
@@ -183,11 +188,18 @@ function canino_the_mobile_logo() {
  * @return int
  */
 function canino_custom_logo( $value ) {
-	if ( ! function_exists( 'is_category' ) ) {
-		return $value;
-	}
+	$category_attachment_id = canino_get_custom_category_image_id();
+	return $category_attachment_id ? $category_attachment_id : $value;
+}
+add_filter( 'theme_mod_custom_logo', 'canino_custom_logo' );
 
-	if ( is_category() ) {
+/**
+ * Get the current category attachment ID.
+ *
+ * @return bool|int
+ */
+function canino_get_custom_category_image_id() {
+	if ( function_exists( 'is_category' ) && is_category() ) {
 		$category_id = get_queried_object_id();
 		$header      = get_theme_mod( 'canino_cat_header_' . $category_id );
 		$post_id     = attachment_url_to_postid( $header );
@@ -196,9 +208,24 @@ function canino_custom_logo( $value ) {
 		}
 	}
 
-	return $value;
+	return false;
 }
-add_filter( 'theme_mod_custom_logo', 'canino_custom_logo' );
+
+/**
+ * Add custom body classes
+ *
+ * @param array $classes Current body classes.
+ *
+ * @return array New list of classes.
+ */
+function canino_body_class( $classes ) {
+	$category_attachment_id = canino_get_custom_category_image_id();
+	if ( $category_attachment_id ) {
+		$classes[] = 'canino-has-custom-category-logo';
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'canino_body_class' );
 
 
 /**
