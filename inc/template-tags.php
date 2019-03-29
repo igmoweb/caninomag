@@ -25,9 +25,6 @@ function canino_ad_banner( $size = 'large' ) {
 		style="display:inline-block;width:<?php echo esc_attr( $width ); ?>px;height:<?php echo esc_attr( $height ); ?>px"
 		data-ad-client="ca-pub-8311800129241191"
 		data-ad-slot="1748594590"></ins>
-	<script>
-		(adsbygoogle = window.adsbygoogle || []).push({});
-	</script>
 	<?php
 }
 
