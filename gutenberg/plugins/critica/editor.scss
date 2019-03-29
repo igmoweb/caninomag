@@ -1,0 +1,27 @@
+.canino-critica-sidebar {
+	.components-base-control {
+		width:100%;
+	}
+	.canino-portada-controls {
+		display: flex;
+		justify-content: space-between;
+	}
+	.canino-portada-wrap {
+		position:relative;
+		&.is-loading {
+			img {
+				opacity: 0.3;
+			}
+			.components-spinner {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -9px;
+				margin-left: -9px;
+			}
+		}
+	}
+
+
+
+}

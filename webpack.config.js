@@ -93,8 +93,8 @@ const JSConfig = ( production = false ) => {
                             test: /\.js$/,
                             loader: 'babel-loader',
                             options: {
-                                presets: [ 'es2015' ], // Transform ES6 to Vanilla JS
-                                plugins: [ "transform-class-properties" ] // This plugin allows to define static properties in ES6. Really useful.
+                                presets: ['@babel/preset-env'],
+                                plugins: [ "@babel/plugin-proposal-class-properties" ] // This plugin allows to define static properties in ES6. Really useful.
                             }
                         }
                     ]
@@ -143,11 +143,99 @@ const editorStyleConfig = ( production ) => {
 };
 
 
+// Set different CSS extraction for editor only and common block styles
+const blocksCSSPlugin = new ExtractTextPlugin( {
+    filename: './css/blocks.style.css',
+} );
+const editBlocksCSSPlugin = new ExtractTextPlugin( {
+    filename: './css/blocks.editor.css',
+} );
+
+const extractConfig = {
+    use: [
+        { loader: 'raw-loader' },
+        {
+            loader: 'postcss-loader',
+            options: {
+                plugins: [ require( 'autoprefixer' ) ],
+            },
+        },
+        {
+            loader: 'sass-loader',
+            query: {
+                outputStyle:
+                    'production' === process.env.NODE_ENV ? 'compressed' : 'nested',
+            },
+        },
+    ],
+};
+
+const blocksConfig = ( production ) => {
+    return merge([
+        {
+            entry: {
+                'editor.blocks': './gutenberg/blocks/index.js',
+                'frontend.blocks': './gutenberg/blocks/frontend.js',
+                'editor.plugins': './gutenberg/plugins/index.js'
+            },
+            output: {
+                filename: '[name].js',
+                path: path.resolve(__dirname, 'js')
+            }
+        },
+        devTool( production ),
+        commonPlugins(),
+        {
+            externals: {
+                react: 'React',
+                'react-dom': 'ReactDOM'
+            },
+        },
+        {
+            module: {
+                rules: [
+                    {
+                        test: /\.js$/,
+                        exclude: /(node_modules|bower_components)/,
+                        use: {
+                            loader: 'babel-loader',
+                            options: {
+                                presets: ['@babel/preset-env', '@babel/preset-react'],
+                                plugins: [ "@babel/plugin-proposal-class-properties" ] // This plugin allows to define static properties in ES6. Really useful.
+                            }
+                        },
+                    },
+                    {
+                        test: /style\.s?css$/,
+                        use: blocksCSSPlugin.extract( extractConfig ),
+                    },
+                    {
+                        test: /editor\.s?css$/,
+                        use: editBlocksCSSPlugin.extract( extractConfig ),
+                    },
+                ],
+            },
+        },
+        {
+            plugins: [
+                blocksCSSPlugin,
+                editBlocksCSSPlugin,
+            ],
+        }
+    ]);
+}
+
+
 module.exports = ( env ) => {
     let production = false;
     if ( ! ( typeof env === 'undefined' ) ) {
         production = env.production || false;
     }
 
-    return [ JSConfig( production ), editorStyleConfig( production ), SassConfig( production ) ];
+    return [
+        JSConfig( production ),
+        editorStyleConfig( production ),
+        SassConfig( production ),
+        blocksConfig( production )
+    ];
 };

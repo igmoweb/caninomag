@@ -1,0 +1,45 @@
+@import './settings';
+
+.entry-content .wp-block-canino-click-to-tweet,
+.wp-block-canino-click-to-tweet {
+    transition: all .2s ease-out 0s;
+    background: $background none repeat scroll 0 0;
+    border-radius: 0;
+    border: 0;
+    padding: 25px 30px;
+    margin-bottom:0;
+    display:block;
+    color: $color;
+    font-size: 25.8px;
+    line-height: 1.2;
+
+    &:hover {
+        background: $background__hover none repeat scroll 0 0;
+        color:$color__hover;
+        cursor:pointer;
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom:0;
+    }
+
+    .click-to-tweet-content,
+    .editor-rich-text .editor-rich-text__tinymce {
+        p {
+            font-size: 25.8px;
+            line-height: 1.2;
+            margin-top: 0;
+            margin-bottom:0;
+        }
+    }
+
+    .click-to-tweet {
+        color: #00b6e6;
+        font: 14px open sans,sans-serif;
+        text-transform: none;
+        padding-right: 0;
+        padding-top: 12px;
+        text-align:right;
+    }
+}

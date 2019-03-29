@@ -141,7 +141,6 @@ class Canino_Widget_Articulos extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'type' ) ); ?>"><?php echo 'Tipo'; ?></label>
 			<select id="<?php echo esc_attr( $this->get_field_id( 'type' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'type' ) ); ?>">
-				<option value="post-format-link" <?php selected( 'post-format-link', $instance['type'] ); ?>>El Parte (Formato de post: link)</option>
 				<option value="post-format-aside" <?php selected( 'post-format-aside', $instance['type'] ); ?>>Últimos artículos (Formato de post: aside)</option>
 				<option value="destacado" <?php selected( 'destacado', $instance['type'] ); ?>>Sólo destacados</option>
 			</select>

@@ -9,7 +9,8 @@
 				<header class="post-header">
 					<h1 class="post-title"><?php the_title(); ?> </h1>
 					<ul class="post-details">
-						<li class="post-category"><i class="fi-folder"></i> En <?php echo get_the_category_list( ', ' ); ?></li>
+						<li class="post-category">
+							<i class="fi-folder"></i> En <?php echo get_the_category_list( ', ' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></li>
 						<li class="post-date"><i class="fi-clock"></i> <?php the_date(); ?></li>
 						<li class="post-author"><i class="fi-pencil"></i> <?php the_author_link(); ?></li>
 					</ul>
@@ -38,7 +39,9 @@
 								<?php if ( get_the_author_meta( 'twitter' ) ) : ?>
 									<div class="btn-twitter">
 										<a href="https://twitter.com/<?php echo esc_attr( get_the_author_meta( 'twitter' ) ); ?>">
-											<p><strong>@<?php echo esc_html( get_the_author_meta( 'twitter' ) ); ?></strong></p>
+											<p>
+												<strong>@<?php echo esc_html( get_the_author_meta( 'twitter' ) ); ?></strong>
+											</p>
 										</a>
 									</div>
 								<?php endif; ?>
@@ -57,9 +60,6 @@
 				</div>
 			</article>
 
-			<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( canino_get_el_parte_term_id() ) ); ?>">Artículos Promocionados</a></h2>
-			<?php canino_promoted_articles(); ?>
-
 			<h2 class="canino-section-title">Publicidad</h2>
 			<div class="hide-for-large">
 				<?php canino_ad_banner( 'small' ); ?>
@@ -71,11 +71,11 @@
 
 			<?php if ( function_exists( 'rp4wp_children' ) ) : ?>
 				<?php rp4wp_children(); ?>
-			<?php endif; ?>
+		<?php endif; ?>
 
 			<?php if ( function_exists( 'mc4wp_show_form' ) ) : ?>
 				<?php mc4wp_show_form( 25814 ); ?>
-			<?php endif; ?>
+		<?php endif; ?>
 
 		<?php endwhile; ?>
 

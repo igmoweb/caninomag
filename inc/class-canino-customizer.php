@@ -71,7 +71,6 @@ class Canino_Customizer {
 		$this->ads( $wp_customize );
 		$this->category_colors( $wp_customize );
 		$this->category_headers( $wp_customize );
-		$this->el_parte_category( $wp_customize );
 		$this->destacado_category( $wp_customize );
 		$this->destacado_pequeno_category( $wp_customize );
 		$this->logo_movil( $wp_customize );
@@ -222,33 +221,6 @@ class Canino_Customizer {
 				wp_add_inline_style( 'canino-style', $css );
 			}
 		}
-	}
-
-	/**
-	 * El Parte options
-	 *
-	 * @param WP_Customize_Manager $wp_customize Customizer Manager.
-	 */
-	private function el_parte_category( $wp_customize ) {
-		$wp_customize->add_setting(
-			'canino_el_parte_category',
-			array(
-				'type'              => 'theme_mod',
-				'capability'        => 'edit_theme_options',
-				'default'           => 30,
-				'sanitize_callback' => array( $this, 'sanitize_term_id' ),
-			)
-		);
-
-		$wp_customize->add_control(
-			'canino_el_parte_category',
-			array(
-				'type'        => 'number',
-				'description' => '<a target="_blank" href="https://sensacionweb.com/que-es-id-post-pagina-wordpress/#ver-la-id-de-una-categoria-y-etiqueta-desde-wordpress">Cómo averiguar el ID de una categoría o tag</a>',
-				'section'     => 'canino_options_front_page',
-				'label'       => 'ID Categoría de El Parte',
-			)
-		);
 	}
 
 	/**
@@ -422,13 +394,5 @@ function canino_get_destacado_pequeno_term_id() {
 	return get_theme_mod( 'canino_destacado_pequeno_category', 4118 );
 }
 
-/**
- * Return the El Parte term ID
- *
- * @return string|int
- */
-function canino_get_el_parte_term_id() {
-	return get_theme_mod( 'canino_el_parte_category', 30 );
-}
 
 new Canino_Customizer();

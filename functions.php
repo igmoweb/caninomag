@@ -27,22 +27,22 @@ class Canino_Theme {
 	}
 
 	public function __construct() {
-		add_action( 'after_setup_theme', array( $this, 'init' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
+		add_action( 'after_setup_theme', [ $this, 'init' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 
-		add_filter( 'the_more_excerpt', array( $this, 'change_article_excerpt' ) );
-		add_action( 'wp_head', array( $this, 'add_googleanalytics' ) );
-		add_action( 'wp_footer', array( $this, 'add_ads' ) );
+		add_filter( 'the_more_excerpt', [ $this, 'change_article_excerpt' ] );
+		add_action( 'wp_head', [ $this, 'add_googleanalytics' ] );
+		add_action( 'wp_footer', [ $this, 'add_ads' ] );
 
-		add_filter( 'rp4wp_thumbnail_size', array( $this, 'rp4wp_my_thumbnail_size' ) );
+		add_filter( 'rp4wp_thumbnail_size', [ $this, 'rp4wp_my_thumbnail_size' ] );
 		add_filter( 'rp4wp_append_content', '__return_false' );
 
-		add_filter( 'esc_html', array( $this, 'rename_post_formats' ) );
-		add_action( 'admin_head', array( $this, 'live_rename_formats' ) );
+		add_filter( 'esc_html', [ $this, 'rename_post_formats' ] );
+		add_action( 'admin_head', [ $this, 'live_rename_formats' ] );
 
-		add_action( 'admin_init', array( $this, 'maybe_upgrade' ) );
+		add_action( 'admin_init', [ $this, 'maybe_upgrade' ] );
 
-		add_action( 'media_buttons', array( $this, 'add_shortcode_button' ) );
+		add_action( 'media_buttons', [ $this, 'add_shortcode_button' ] );
 
 		include_once 'inc/class-canino-load-more.php';
 		include_once 'inc/class-canino-query.php';
@@ -56,26 +56,27 @@ class Canino_Theme {
 		include_once 'inc/widgets/publicidad.php';
 		include_once 'inc/widgets/articulos.php';
 		include_once 'inc/hooks-templates.php';
+		include_once 'gutenberg/gutenberg.php';
 
 		new Canino_Rich_Snippets();
 	}
 
 	function enqueue_styles() {
 		$version = '20190205b';
-		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', array(), $version );
+		wp_enqueue_style( 'canino-style', get_stylesheet_directory_uri() . '/css/app.css', [], $version );
 		wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 		wp_enqueue_script(
 			'canino-foundation',
 			get_stylesheet_directory_uri() . '/js/foundation.min.js',
-			array( 'jquery' ),
+			[ 'jquery' ],
 			$version
 		);
 
 		$js = '
-jQuery( document ).ready( function() {
-	jQuery(document).foundation();
-} );		
-';
+	jQuery( document ).ready( function() {
+		jQuery(document).foundation();
+	} );		
+	';
 		wp_add_inline_script( 'canino-foundation', $js );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -89,76 +90,76 @@ jQuery( document ).ready( function() {
 
 		add_editor_style();
 
-		add_theme_support( 'post-formats', array( 'aside', 'link', 'gallery', 'video' ) );
+		add_theme_support( 'post-formats', [ 'aside', 'link', 'gallery', 'video' ] );
 		add_theme_support( 'custom-logo' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'title-tag' );
 
 		// Sidebars
 		register_sidebar(
-			array(
+			[
 				'name'          => 'Barra Lateral',
 				'id'            => 'cabecera-arriba-del-to',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h4 class="widget-title">',
 				'after_title'   => '</h4>',
-			)
+			]
 		);
 
 		register_sidebar(
-			array(
+			[
 				'name'          => 'Página de autor',
 				'id'            => 'author',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h4 class="widget-title">',
 				'after_title'   => '</h4>',
-			)
+			]
 		);
 
 		register_sidebar(
-			array(
+			[
 				'name'          => 'Pie de Página (Izquierda)',
 				'id'            => 'pie-izq',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h4 class="widget-title">',
 				'after_title'   => '</h4>',
-			)
+			]
 		);
 
 		register_sidebar(
-			array(
+			[
 				'name'          => 'Pie de Página (Centro)',
 				'id'            => 'pie-centro',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h4 class="widget-title">',
 				'after_title'   => '</h4>',
-			)
+			]
 		);
 
 		register_sidebar(
-			array(
+			[
 				'name'          => 'Pie de Página (Derecha)',
 				'id'            => 'pie-dcha',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h4 class="widget-title">',
 				'after_title'   => '</h4>',
-			)
+			]
 		);
 
 		register_sidebar(
-			array(
+			[
 				'name'          => 'Top Bar',
 				'id'            => 'top-bar',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h6 class="widget-title">',
 				'after_title'   => '</h6>',
-			)
+			]
 		);
 
 		add_image_size( 'post-grid-thumb-large', 787, 524, true );
@@ -170,10 +171,10 @@ jQuery( document ).ready( function() {
 		add_image_size( 'single-post-thumb', 634, 424, true );
 
 		register_nav_menus(
-			array(
+			[
 				'primary' => __( 'Primary Menu', 'canino' ),
 				'social'  => __( 'Social Links Menu', 'canino' ),
-			)
+			]
 		);
 	}
 
@@ -233,19 +234,20 @@ jQuery( document ).ready( function() {
 		global $current_screen;
 
 		if ( $current_screen->id == 'edit-post' ) { ?>
-			<script type="text/javascript">
-				jQuery('document').ready(function() {
+		<script type="text/javascript">
+			jQuery( 'document' ).ready( function() {
 
-					jQuery("span.post-state-format").each(function() {
-						if ( jQuery(this).text() == "Aside" )
-							jQuery(this).text("Artículo");
-						else if ( jQuery(this).text() == "Link" )
-							jQuery(this).text("Noticia");
-					});
+				jQuery( 'span.post-state-format' ).each( function() {
+					if ( jQuery( this ).text() == 'Aside' ) {
+						jQuery( this ).text( 'Artículo' );
+					} else if ( jQuery( this ).text() == 'Link' ) {
+						jQuery( this ).text( 'Noticia' );
+					}
+				} );
 
-				});
-			</script>
-			<?php
+			} );
+		</script>
+		<?php
 		}
 	}
 
@@ -257,10 +259,10 @@ jQuery( document ).ready( function() {
 		}
 
 		if ( version_compare( $saved_version, '1.0', '<' ) ) {
-			$terms = array(
+			$terms = [
 				get_term_by( 'slug', 'destacado', 'category' ),
 				get_term_by( 'slug', 'destacado-pequeno', 'category' ),
-			);
+			];
 
 			foreach ( $terms as $term ) {
 				if ( ! $term ) {
@@ -269,10 +271,10 @@ jQuery( document ).ready( function() {
 
 				$wpdb->update(
 					$wpdb->term_taxonomy,
-					array( 'taxonomy' => 'canino_destacado' ),
-					array( 'term_id' => $term->term_id ),
-					array( '%s' ),
-					array( '%d' )
+					[ 'taxonomy' => 'canino_destacado' ],
+					[ 'term_id' => $term->term_id ],
+					[ '%s' ],
+					[ '%d' ]
 				);
 
 				clean_term_cache( $term->term_id, 'category' );
@@ -285,17 +287,15 @@ jQuery( document ).ready( function() {
 
 	function add_shortcode_button() {
 		?>
-		<a href="#" id="insert-canino-banner" class="button">Ad Banner</a>
-		<script>
-			jQuery( '#insert-canino-banner' ).click( function( e ) {
-				e.preventDefault();
-				wp.media.editor.insert('[canino-post-banner]');
-			})
-		</script>
+			<a href="#" id="insert-canino-banner" class="button">Ad Banner</a>
+			<script>
+				jQuery( '#insert-canino-banner' ).click( function( e ) {
+					e.preventDefault();
+					wp.media.editor.insert( '[canino-post-banner]' );
+				} )
+			</script>
 		<?php
 	}
-
-
 }
 
 
@@ -307,11 +307,10 @@ function canino_theme() {
 canino_theme();
 
 
-
 function canino_get_post_category( $post_id ) {
 	global $canino_categories;
 	// Cache hack
-	$canino_categories = is_array( $canino_categories ) ? $canino_categories : array();
+	$canino_categories = is_array( $canino_categories ) ? $canino_categories : [];
 	if ( isset( $canino_categories[ $post_id ] ) ) {
 		return $canino_categories[ $post_id ];
 	}
@@ -324,5 +323,6 @@ function canino_get_post_category( $post_id ) {
 	}
 
 	$canino_categories[ $post_id ] = $category;
+
 	return $category;
 }

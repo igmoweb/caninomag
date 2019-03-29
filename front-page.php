@@ -6,13 +6,6 @@
 
 	<div id="primary" class="<?php canino_primary_class(); ?>">
 
-		<h2 class="canino-section-title"><a href="<?php echo esc_url( get_category_link( canino_get_el_parte_term_id() ) ); ?>">El Parte</a></h2>
-		<?php
-			$query = canino_get_el_parte_home_query();
-			require_once locate_template( 'parts/home/el-parte.php' );
-			wp_reset_postdata();
-		?>
-
 		<div class="show-for-large">
 			<h2 class="canino-section-title">Publicidad</h2>
 			<div class="canino-publi row">

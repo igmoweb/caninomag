@@ -12,9 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'Canino_Critica' ) ) {
 	class Canino_Critica {
 		public function __construct() {
-			add_action( 'add_meta_boxes', array( $this, 'register_meta_box' ) );
-			add_action( 'save_post', array( $this, 'save' ) );
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_action( 'add_meta_boxes', [ $this, 'register_meta_box' ] );
+			add_action( 'save_post', [ $this, 'save' ] );
+			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+			add_action( 'rest_api_init', [ $this, 'register_metas' ] );
 		}
 
 		public function enqueue_scripts( $hook ) {
@@ -26,12 +27,88 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 		}
 
 		public function register_meta_box() {
-			add_meta_box( 'canino-critica', 'Crítica', array( $this, 'render_critica' ), 'post' );
-			add_meta_box( 'canino-critica-cine', 'Crítica Cine', array( $this, 'render_cine' ), 'post' );
-			add_meta_box( 'canino-critica-juego', 'Crítica Juego', array( $this, 'render_juego' ), 'post' );
-			add_meta_box( 'canino-critica-comic', 'Crítica Cómic', array( $this, 'render_comic' ), 'post' );
-			add_meta_box( 'canino-critica-musica', 'Crítica Música', array( $this, 'render_musica' ), 'post' );
-			add_meta_box( 'canino-critica-libro', 'Crítica Libro', array( $this, 'render_libro' ), 'post' );
+			add_meta_box(
+				'canino-critica',
+				'Crítica',
+				[
+					$this,
+					'render_critica',
+				],
+				'post',
+				'advanced',
+				[ '__back_compat_meta_box' => true ]
+			);
+			add_meta_box(
+				'canino-critica-cine',
+				'Crítica Cine',
+				[
+					$this,
+					'render_cine',
+				],
+				'post',
+				'advanced',
+				[ '__back_compat_meta_box' => true ]
+			);
+			add_meta_box(
+				'canino-critica-juego',
+				'Crítica Juego',
+				[
+					$this,
+					'render_juego',
+				],
+				'post',
+				'advanced',
+				[ '__back_compat_meta_box' => true ]
+			);
+			add_meta_box(
+				'canino-critica-comic',
+				'Crítica Cómic',
+				[
+					$this,
+					'render_comic',
+				],
+				'post',
+				'advanced',
+				[ '__back_compat_meta_box' => true ]
+			);
+			add_meta_box(
+				'canino-critica-musica',
+				'Crítica Música',
+				[
+					$this,
+					'render_musica',
+				],
+				'post',
+				'advanced',
+				[ '__back_compat_meta_box' => true ]
+			);
+			add_meta_box(
+				'canino-critica-libro',
+				'Crítica Libro',
+				[
+					$this,
+					'render_libro',
+				],
+				'post',
+				'advanced',
+				[ '__back_compat_meta_box' => true ]
+			);
+		}
+
+		public function register_metas() {
+			foreach ( canino_get_critica_fields() as $section_key => $section ) {
+				foreach ( $section as $field_key => $field ) {
+					register_meta(
+						'post',
+						$field_key,
+						[
+							'type'         => $field['type'] === 'file' ? 'integer' : 'string',
+							'single'       => true,
+							'show_in_rest' => true,
+						]
+					);
+				}
+			}
 		}
 
 		public function save( $post_id ) {
@@ -91,59 +168,60 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 						<label for="<?php echo esc_attr( $id ); ?>>">
 							<?php echo $atts['label']; ?><br/>
 						</label>
-						<input id="<?php echo $id; ?>-upload-button" type="button" class="button" value="Subir imagen" data-url="<?php echo esc_attr( $url ); ?>" />
+						<input id="<?php echo $id; ?>-upload-button" type="button" class="button" value="Subir imagen" data-url="<?php echo esc_attr( $url ); ?>"/>
 						<input type="hidden" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $id ); ?>" value="<?php $this->meta_value( $post_id, $field ); ?>">
 					</p>
 					<div id="<?php echo $id; ?>-image-holder">
 
 					</div>
 					<script>
-						jQuery(document).ready( function( $ ) {
-							var $holder = $('#<?php echo $id; ?>-image-holder'),
-								$button = $('#<?php echo $id; ?>-upload-button'),
-								$field = $('#<?php echo $id; ?>'),
+						jQuery( document ).ready( function( $ ) {
+							var $holder = $( '#<?php echo $id; ?>-image-holder' ),
+								$button = $( '#<?php echo $id; ?>-upload-button' ),
+								$field = $( '#<?php echo $id; ?>' ),
 								uploader;
 
 							function showImage( url ) {
-								var content = $('<img src="' + url + '" style="max-width:95%;display:block;" />');
-								var removeLink = $('<a href="#">Eliminar</a>');
+								var content = $( '<img src="' + url + '" style="max-width:95%;display:block;" />' );
+								var removeLink = $( '<a href="#">Eliminar</a>' );
 								removeLink.click( function( e ) {
 									e.preventDefault();
-									$holder.html('');
-									$field.val('');
-								});
+									$holder.html( '' );
+									$field.val( '' );
+								} );
 								$holder.append( removeLink );
 								$holder.append( content );
 
 							}
-							if ( $button.data('url') ) {
-								showImage($button.data('url'));
+
+							if ( $button.data( 'url' ) ) {
+								showImage( $button.data( 'url' ) );
 							}
 
 							$button.click( function( e ) {
 								if ( ! uploader ) {
-									uploader = wp.media({
+									uploader = wp.media( {
 										title: 'Añadir imagen',
-										library : {
-											type : 'image'
+										library: {
+											type: 'image'
 										},
 										button: {
 											text: 'Usar esta imagen'
 										},
 										multiple: false
-									})
-										.on('select', function() { // it also has "open" and "close" events
-											var attachment = uploader.state().get('selection').first().toJSON();
+									} )
+										.on( 'select', function() { // it also has "open" and "close" events
+											var attachment = uploader.state().get( 'selection' ).first().toJSON();
 											if ( attachment.id ) {
 												$field.val( attachment.id );
 												showImage( attachment.url );
 											}
-										});
+										} );
 								}
 								e.preventDefault();
 								uploader.open();
-							});
-						});
+							} );
+						} );
 					</script>
 					<?php
 				}
@@ -158,28 +236,32 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 			$fields = canino_get_critica_fields( 'cine' );
 			$this->render( $post_id, $fields );
 		}
+
 		public function render_juego( $post_id ) {
 			$fields = canino_get_critica_fields( 'juego' );
 
 			$this->render( $post_id, $fields );
 		}
+
 		public function render_comic( $post_id ) {
 			$fields = canino_get_critica_fields( 'comic' );
 			$this->render( $post_id, $fields );
 		}
+
 		public function render_musica( $post_id ) {
 			$fields = canino_get_critica_fields( 'musica' );
 			$this->render( $post_id, $fields );
 		}
+
 		public function render_libro( $post_id ) {
 			$fields = canino_get_critica_fields( 'libro' );
 			$this->render( $post_id, $fields );
 		}
+
 		public function render_critica( $post_id ) {
 			$fields = canino_get_critica_fields( '' );
 			$this->render( $post_id, $fields );
 		}
-
 
 
 	}
@@ -193,120 +275,122 @@ function canino_is_critica_post() {
 	if ( in_array( 236, $cats ) ) {
 		return true;
 	}
+
 	return false;
 }
 
 function canino_get_critica_fields( $area = 'all' ) {
-	$all_fields = array(
-		''       => array(
-			'portada'      => array(
+	$all_fields = [
+		''       => [
+			'portada'      => [
 				'label'      => 'Portada',
 				'type'       => 'file',
 				'show-label' => true,
 
-			),
-			'titulo'       => array(
+			],
+			'titulo'       => [
 				'label'      => 'Título',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'year'         => array(
+			],
+			'year'         => [
 				'label'      => 'Año',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'texto-ficha'  => array(
+			],
+			'texto-ficha'  => [
 				'label'      => 'Slogan',
 				'type'       => 'text',
 				'show-label' => false,
-			),
-			'texto-ficha2' => array(
+			],
+			'texto-ficha2' => [
 				'label'      => 'Texto 2',
 				'type'       => 'text',
 				'show-label' => false,
-			),
-		),
-		'cine'   => array(
-			'cine-director' => array(
+			],
+		],
+		'cine'   => [
+			'cine-director' => [
 				'label'      => 'Director',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'cine-guion'    => array(
+			],
+			'cine-guion'    => [
 				'label'      => 'Guión',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'cine-actores'  => array(
+			],
+			'cine-actores'  => [
 				'label'      => 'Actores',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-		),
-		'juego'  => array(
-			'game-estudio'       => array(
+			],
+		],
+		'juego'  => [
+			'game-estudio'       => [
 				'label'      => 'Estudio',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'game-distribuidora' => array(
+			],
+			'game-distribuidora' => [
 				'label'      => 'Distribuidora',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'game-plataformas'   => array(
+			],
+			'game-plataformas'   => [
 				'label'      => 'Plataformas',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-		),
-		'libro'  => array(
-			'libro-editorial' => array(
+			],
+		],
+		'libro'  => [
+			'libro-editorial' => [
 				'label'      => 'Editorial',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'libro-autor'     => array(
+			],
+			'libro-autor'     => [
 				'label'      => 'Autor',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-		),
-		'comic'  => array(
-			'comic-guionista' => array(
+			],
+		],
+		'comic'  => [
+			'comic-guionista' => [
 				'label'      => 'Guionista',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'comic-editorial' => array(
+			],
+			'comic-editorial' => [
 				'label'      => 'editorial',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'comic-dibujante' => array(
+			],
+			'comic-dibujante' => [
 				'label'      => 'Dibujante',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-		),
-		'musica' => array(
-			'musica-artista' => array(
+			],
+		],
+		'musica' => [
+			'musica-artista' => [
 				'label'      => 'Artista',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-			'musica-sello'   => array(
+			],
+			'musica-sello'   => [
 				'label'      => 'Sello',
 				'type'       => 'text',
 				'show-label' => true,
-			),
-		),
-	);
+			],
+		],
+	];
 
 	if ( 'all' === $area ) {
 		return $all_fields;
 	}
-	return isset( $all_fields[ $area ] ) ? $all_fields[ $area ] : array();
+
+	return isset( $all_fields[ $area ] ) ? $all_fields[ $area ] : [];
 }
 
 function canino_get_critica_field( $field, $post_id = false ) {
@@ -318,5 +402,6 @@ function canino_get_critica_field( $field, $post_id = false ) {
 	if ( $value ) {
 		return $value;
 	}
+
 	return false;
 }
