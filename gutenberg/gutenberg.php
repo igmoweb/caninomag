@@ -40,29 +40,53 @@ add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_block_edito
  */
 function enqueue_block_editor_assets() {
 	// Make paths variables so we don't write em twice ;).
-	$block_path   = '/editor.blocks.js';
-	$plugins_path = '/editor.plugins.js';
-	$style_path   = '/css/blocks.editor.css';
+	$block_path         = '/editor.blocks.js';
+	$plugins_path       = '/editor.plugins.js';
+	$blocks_style_path  = '/css/editor.editor.blocks.css';
+	$plugins_style_path = '/css/editor.editor.plugins.css';
+	$style_path         = '/css/style.editor.blocks.css';
+
+	$theme   = wp_get_theme();
+	$version = $theme->get( 'Version' );
 
 	// Enqueue the bundled block JS file.
 	wp_enqueue_script(
 		'canino-blocks-js',
 		_get_dist_url() . $block_path,
-		[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor' ]
+		[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor' ],
+		$version,
+		false
 	);
 
 	// Enqueue the bundled block JS file.
 	wp_enqueue_script(
 		'canino-plugins-js',
 		_get_dist_url() . $plugins_path,
-		[ 'canino-blocks-js' ]
+		[ 'canino-blocks-js' ],
+		$version,
+		false
 	);
 
 	// Enqueue optional editor only styles.
 	wp_enqueue_style(
-		'canino-blocks-editor-css',
+		'canino-blocks-editor-style',
+		_get_dist_url() . $blocks_style_path,
+		[],
+		$version
+	);
+
+	wp_enqueue_style(
+		'canino-plugins-editor',
+		_get_dist_url() . $plugins_style_path,
+		[],
+		$version
+	);
+
+	wp_enqueue_style(
+		'canino-blocks-style',
 		_get_dist_url() . $style_path,
-		[]
+		[],
+		$version
 	);
 }
 
@@ -71,11 +95,13 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_assets' );
  * Enqueue front end and editor JavaScript and CSS assets.
  */
 function enqueue_assets() {
-	$style_path = '/css/blocks.style.css';
+	$style_path = '/css/style.editor.blocks.css';
+	$theme      = wp_get_theme();
 	wp_enqueue_style(
 		'canino-blocks',
 		_get_dist_url() . $style_path,
-		null
+		null,
+		$theme->get( 'Version' )
 	);
 }
 
@@ -90,17 +116,20 @@ function enqueue_frontend_assets() {
 		return;
 	}
 
+	$theme   = wp_get_theme();
+	$version = $theme->get( 'Version' );
+
 	$block_path = '/frontend.blocks.js';
 	wp_enqueue_script(
 		'canino-blocks-frontend',
 		_get_dist_url() . $block_path,
 		[ 'jquery' ],
-		'',
+		$version,
 		true
 	);
 }
 
-function add_block_category( $categories, $post ) {
+function add_block_category( $categories ) {
 	return array_merge(
 		$categories,
 		[

@@ -146,10 +146,10 @@ const editorStyleConfig = ( production ) => {
 
 // Set different CSS extraction for editor only and common block styles
 const blocksCSSPlugin = new ExtractTextPlugin( {
-    filename: './css/blocks.style.css',
+    filename: './css/style.[name].css',
 } );
 const editBlocksCSSPlugin = new ExtractTextPlugin( {
-    filename: './css/blocks.editor.css',
+    filename: './css/editor.[name].css',
 } );
 
 const extractConfig = {
