@@ -65,7 +65,7 @@
 			</div>
 			<button class="menu-icon" type="button" data-toggle><span class="show-for-sr">Menú</span></button>
 		</div>
-		<div id="site-navigation" class="main-navigation">
+		<div id="site-navigation" class="main-navigation hide-for-small-only">
 			<nav role="navigation" class="row">
 				<div class="columns large-12 canino-primary-menu-wrap">
 					<?php

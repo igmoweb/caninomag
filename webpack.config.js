@@ -82,6 +82,7 @@ const JSConfig = ( production = false ) => {
                     './bower_components/foundation-sites/js/foundation.util.mediaQuery.js',
                     './bower_components/foundation-sites/js/foundation.sticky.js',
                     './bower_components/foundation-sites/js/foundation.responsiveToggle.js',
+                    './_src/js/mobile-menu.js',
                 ],
                 output: {
                     filename: 'foundation.min.js',
