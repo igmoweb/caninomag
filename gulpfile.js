@@ -21,6 +21,7 @@ gulp.task( 'copy', function() {
                   './**/*',
                   '!node_modules/**',
                   '!node_modules/',
+                  '!_src/**',
                   '!scss/**',
                   '!scss/',
                   '!*.md',

@@ -28,3 +28,7 @@ Canino Theme tiene todo preparado y automatizado para compilar todos los estilos
 ## Cambios a producción
 No es necesario mover toda la carpeta del Tema. `npm run build` creará una carpeta nueva, `build`, que incluye todo lo necesario para que el tema funcione en producción, obviando varios archivos que sólo sirven durante el desarrollo.
 El contenido de `build` es lo único que hay que mover a producción. 
+
+## mu-plugins
+
+La carpeta `mu-plugins` contiene un mu-plugin que tiene que moverse a `wp-content/mu-plugins`. De esta forma, algunos plugins no se cargarán en el frontend. 
