@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var image = require('gulp-image');
 const { series } = require('gulp');
+const zip = require('gulp-zip');
+
 
 gulp.task( 'clear-build', function() {
     return gulp.src('./build/', {read: false})
@@ -41,6 +43,12 @@ gulp.task( 'copy', function() {
           ],
           { nodir: true }
         )
-          .pipe(gulp.dest('./build/'));
+          .pipe(gulp.dest('./build/canino'));
 })
-gulp.task('build', series( 'clear-build', 'compress', 'copy' ) );
+
+gulp.task( 'zip', function() {
+    return gulp.src('./build/canino/**/*')
+        .pipe(zip('canino.zip'))
+        .pipe(gulp.dest('build'))
+})
+gulp.task('build', series( 'clear-build', 'compress', 'copy', 'zip' ) );

@@ -268,8 +268,7 @@ if ( ! class_exists( 'Canino_Critica' ) ) {
 }
 
 
-new Canino_Critica();
-
+// new Canino_Critica();
 function canino_is_critica_post() {
 	$cats = wp_get_post_categories( get_the_ID() );
 	if ( in_array( 236, $cats ) ) {

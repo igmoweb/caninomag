@@ -1,30 +1,7 @@
 $img-opacity:0.6;
 
-@mixin title-section( $squema: light ) {
-  @if $squema == light {
-    border-left: 3px solid $dark-gray;
-    background: $light-gray;
-  }
-  @else {
-    border-left: 3px solid $light-gray;
-    background: $dark-gray;
-  }
+@import 'mixins.scss';
 
-  font-size: rem-calc( 14 );
-  text-transform: uppercase;
-  font-weight: 600;
-  padding:rem-calc( 9 ) rem-calc( 15 ) rem-calc( 10 );
-  border-bottom:none;
-}
-
-@mixin animate-opacity() {
-  -webkit-transition: opacity 0.3s ease-in-out;
-  -moz-transition: opacity 0.3s ease-in-out;
-  transition: opacity 0.3s ease-in-out;
-  &:hover {
-    opacity:$img-opacity;
-  }
-}
 
 @import 'general';
 @import 'header';

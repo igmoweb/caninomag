@@ -1,0 +1,34 @@
+@import '../../scss/_settings.scss';
+@import '../../scss/canino/mixins.scss';
+
+.wp-block-quote {
+	.wp-block-quote__citation {
+		font-size: $cite-font-size;
+		color: $cite-color;
+
+		&:before {
+			content: '\2014 \0020';
+		}
+
+		font-style: italic;
+	}
+}
+
+hr.wp-block-separator {
+	max-width: $hr-width !important;
+	height: 0;
+	border-right: 0;
+	border-top: 0;
+	border-bottom: $hr-border;
+	border-left: 0;
+	margin: $hr-margin;
+	clear: both;
+
+	@include title-section();
+
+	border-left: none;
+	&.small {
+		border-left:none;
+		padding:rem-calc(2) 0 0 0;
+	}
+}

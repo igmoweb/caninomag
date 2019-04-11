@@ -1,14 +1,53 @@
 @charset 'utf-8';
 
-@import url( 'https://fonts.googleapis.com/css?family=Lora' );
-
 @import 'settings';
 
-@import '../bower_components/foundation-sites/scss/foundation';
+body {
+	font-family: $body-font-family;
+	font-weight: $global-weight-normal;
+	line-height: $global-lineheight;
+	color: $body-font-color;
+	background: $body-background;
 
-@include foundation-global-styles;
+	@if ($body-antialiased) {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
 
-html {
-  width:612px;
-  margin:0 auto;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $header-font-family;
+	font-weight: $header-font-weight;
+	font-style: $header-font-style;
+	color: $header-color;
+	text-rendering: $header-text-rendering;
+	margin-top: 0;
+	margin-bottom: $header-margin-bottom;
+	line-height: $header-lineheight;
+
+	small {
+		color: $header-small-font-color;
+		line-height: 0;
+	}
+}
+
+// Heading sizes
+@each $size, $headers in $header-sizes {
+	@include breakpoint($size) {
+		@each $header, $font-size in $headers {
+			#{$header} {
+				font-size: rem-calc($font-size);
+			}
+		}
+	}
+}
+
+.wp-block {
+	max-width: 640px;
 }

@@ -10,7 +10,7 @@ const { withSelect, withDispatch } = wp.data;
 const { Button, PanelBody, PanelRow, TextControl, Spinner, withNotices } = wp.components;
 const { MediaPlaceholder } = wp.editor;
 const { apiFetch } = wp;
-const { mediaUpload, MediaUploadCheck, MediaUpload } = wp.editor;
+const { MediaUploadCheck, MediaUpload } = wp.editor;
 const { isBlobURL } = wp.blob;
 
 const allowedMedia = [ 'image' ];

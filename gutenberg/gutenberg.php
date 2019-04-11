@@ -88,6 +88,8 @@ function enqueue_block_editor_assets() {
 		[],
 		$version
 	);
+
+	wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
 }
 
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_assets' );

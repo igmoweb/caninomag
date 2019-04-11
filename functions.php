@@ -177,6 +177,9 @@ class Canino_Theme {
 				'social'  => __( 'Social Links Menu', 'canino' ),
 			]
 		);
+
+		add_theme_support( 'editor-styles' );
+		add_editor_style( 'editor-style.css' );
 	}
 
 	function change_article_excerpt( $excerpt ) {
