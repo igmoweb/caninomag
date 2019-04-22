@@ -1,5 +1,5 @@
 const AdsEdit = ( { attributes, setAttributes, className } ) => (
-	<div className={`${className} ad-size-leaderboard`} style={ { ['text-align']:'center'} }>
+	<div className={`${className} ad-size-leaderboard`}>
 		Publi
 	</div>
 );
