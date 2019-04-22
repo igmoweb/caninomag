@@ -32,3 +32,11 @@ hr.wp-block-separator {
 		padding:rem-calc(2) 0 0 0;
 	}
 }
+
+.wp-block-gallery .blocks-gallery-item {
+	figure {
+		&:hover {
+			border-color:transparent;
+		}
+	}
+}

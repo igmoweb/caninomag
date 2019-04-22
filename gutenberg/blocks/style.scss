@@ -1,3 +1,5 @@
+@import '../../scss/settings';
+
 .wp-block-embed {
 	margin: 32px 0;
 }
@@ -8,4 +10,14 @@
 
 cite {
 	font-style: italic;
+}
+
+.wp-block-gallery {
+	figure {
+		cursor:pointer;
+		border:1px solid transparent;
+		&:hover {
+			border-color:$primary-color;
+		}
+	}
 }

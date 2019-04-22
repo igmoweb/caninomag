@@ -89,7 +89,12 @@ function enqueue_block_editor_assets() {
 		$version
 	);
 
-	wp_enqueue_style( 'canino-fonts', 'https://fonts.googleapis.com/css?family=Lora|Arvo' );
+	wp_enqueue_style(
+		'canino-fonts',
+		'https://fonts.googleapis.com/css?family=Lora|Arvo',
+		[],
+		$version
+	);
 }
 
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_assets' );
@@ -107,30 +112,13 @@ function enqueue_assets() {
 	);
 }
 
-add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_frontend_assets' );
 /**
- * Enqueue frontend JavaScript and CSS assets.
+ * Add Canino blocks category.
+ *
+ * @param array $categories Current block categories.
+ *
+ * @return array
  */
-function enqueue_frontend_assets() {
-
-	// If in the backend, bail out.
-	if ( is_admin() ) {
-		return;
-	}
-
-	$theme   = wp_get_theme();
-	$version = $theme->get( 'Version' );
-
-	$block_path = '/frontend.blocks.js';
-	wp_enqueue_script(
-		'canino-blocks-frontend',
-		_get_dist_url() . $block_path,
-		[ 'jquery' ],
-		$version,
-		true
-	);
-}
-
 function add_block_category( $categories ) {
 	return array_merge(
 		$categories,
