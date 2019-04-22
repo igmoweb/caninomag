@@ -11,14 +11,6 @@ import Save from './components/AdsSave';
  */
 const { registerBlockType } = wp.blocks;
 
-const blockAttributes = {
-	size : {
-		type: 'string',
-		default: 'leaderboard',
-		enum: [ 'leaderboard', 'medium' ],
-	},
-};
-
 /**
  * Register block
  */
@@ -31,7 +23,6 @@ export default registerBlockType(
 		icon: {
 			src: 'money',
 		},
-		attributes: blockAttributes,
 		keywords: [
 			'ad',
 			'anuncio',

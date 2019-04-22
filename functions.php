@@ -83,6 +83,20 @@ class Canino_Theme {
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
+
+		wp_enqueue_script( 'googleads', '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', [], null );
+		add_filter(
+			'script_loader_tag',
+			function ( $tag, $handle ) {
+				if ( $handle === 'googleads' ) {
+					$tag = str_replace( ' src', ' async="async" src', $tag );
+				}
+
+				return $tag;
+			},
+			10,
+			2
+		);
 	}
 
 
@@ -238,19 +252,19 @@ class Canino_Theme {
 		global $current_screen;
 
 		if ( $current_screen->id == 'edit-post' ) { ?>
-		<script type="text/javascript">
-			jQuery( 'document' ).ready( function() {
+			<script type="text/javascript">
+				jQuery( 'document' ).ready( function() {
 
-				jQuery( 'span.post-state-format' ).each( function() {
-					if ( jQuery( this ).text() == 'Aside' ) {
-						jQuery( this ).text( 'Artículo' );
-					} else if ( jQuery( this ).text() == 'Link' ) {
-						jQuery( this ).text( 'Noticia' );
-					}
+					jQuery( 'span.post-state-format' ).each( function() {
+						if ( jQuery( this ).text() == 'Aside' ) {
+							jQuery( this ).text( 'Artículo' );
+						} else if ( jQuery( this ).text() == 'Link' ) {
+							jQuery( this ).text( 'Noticia' );
+						}
+					} );
+
 				} );
-
-			} );
-		</script>
+			</script>
 			<?php
 		}
 	}
@@ -291,13 +305,13 @@ class Canino_Theme {
 
 	function add_shortcode_button() {
 		?>
-			<a href="#" id="insert-canino-banner" class="button">Ad Banner</a>
-			<script>
-				jQuery( '#insert-canino-banner' ).click( function( e ) {
-					e.preventDefault();
-					wp.media.editor.insert( '[canino-post-banner]' );
-				} )
-			</script>
+		<a href="#" id="insert-canino-banner" class="button">Ad Banner</a>
+		<script>
+			jQuery( '#insert-canino-banner' ).click( function( e ) {
+				e.preventDefault();
+				wp.media.editor.insert( '[canino-post-banner]' );
+			} )
+		</script>
 		<?php
 	}
 }
