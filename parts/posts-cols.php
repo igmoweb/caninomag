@@ -20,7 +20,7 @@
 				</ul>
 			</header>
 			<section class="post-content">
-				<?php the_excerpt(); ?>
+				<?php canino_the_excerpt(); ?>
 			</section>
 			<footer class="post-footer">
 				<span class="post-author">Por <?php the_author_posts_link(); ?></span>
