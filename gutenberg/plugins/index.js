@@ -1,2 +1,3 @@
-import './critica'
-import './block-options'
+import './critica';
+import './block-options';
+import './default-template';

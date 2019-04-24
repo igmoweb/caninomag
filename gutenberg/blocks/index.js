@@ -7,6 +7,7 @@ import './editor.scss';
 const allowedBlocks = [
 	'jetpack/map',
 	'jetpack/slideshow',
+	'canino/template',
 	'canino/click-to-tweet',
 	'canino/patreon',
 	'canino/ad',

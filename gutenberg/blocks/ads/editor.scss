@@ -3,16 +3,22 @@
 	padding:10px;
 	margin:0 auto;
 
-	&.wp-block-canino-ad.ad-size-leaderboard {
+	&.wp-block-canino-ad.ad-size-horizontal {
+		width: 728px;
+		max-width: 100%;
+		height: 120px;
+	}
+
+	&.wp-block-canino-ad.ad-size-auto {
 		width: 728px;
 		max-width: 100%;
 		height: 90px;
 	}
 
-	&.wp-block-canino-ad.ad-size-medium {
+	&.wp-block-canino-ad.ad-size-vertical {
 		width: 300px;
 		max-width: 100%;
-		height: 250px;
+		height: 600px;
 	}
 }
 

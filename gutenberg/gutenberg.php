@@ -132,3 +132,52 @@ function add_block_category( $categories ) {
 }
 
 add_filter( 'block_categories', __NAMESPACE__ . '\add_block_category', 10, 2 );
+
+add_action(
+	'init',
+	function () {
+		register_block_type(
+			'canino/ad',
+			[
+				'render_callback' => __NAMESPACE__ . '\render_ad_block',
+			]
+		);
+	}
+);
+
+/**
+ * Ad block server side rendering.
+ *
+ * @param array $attributes Ad block attributes.
+ *
+ * @return false|string
+ */
+function render_ad_block( $attributes ) {
+	ob_start();
+	$size = isset( $attributes['size'] ) ? $attributes['size'] : 'auto';
+	// phpcs:disable
+	?>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- Inside_adaptable_articulo -->
+	<ins class="adsbygoogle"
+		 style="display:block"
+		 data-ad-client="ca-pub-8311800129241191"
+		 data-ad-slot="2524484593"
+		 data-ad-format="<?php echo esc_attr( $size ); ?>"></ins>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push( {} );
+	</script>
+	<?php
+	return ob_get_clean();
+	// phpcs:enable
+}
+
+add_action(
+	'init',
+	function () {
+		$post_type_object           = get_post_type_object( 'post' );
+		$post_type_object->template = [
+			[ 'canino/template' ],
+		];
+	}
+);

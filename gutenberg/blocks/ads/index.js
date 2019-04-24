@@ -4,12 +4,19 @@
 import './editor.scss';
 
 import Edit from './components/AdsEdit';
-import Save from './components/AdsSave';
 
 /**
  * Internal block libraries
  */
 const { registerBlockType } = wp.blocks;
+
+const blockAttributes = {
+	size : {
+		type: 'string',
+		default: 'auto',
+		enum: [ 'horizontal', 'vertical', 'auto' ],
+	},
+};
 
 /**
  * Register block
@@ -23,6 +30,7 @@ export default registerBlockType(
 		icon: {
 			src: 'money',
 		},
+		attributes: blockAttributes,
 		keywords: [
 			'ad',
 			'anuncio',
@@ -30,6 +38,9 @@ export default registerBlockType(
 		],
 		supports: [],
 		edit: Edit,
-		save: Save,
+		save: () => {
+			// Rendered by PHP. See gutenberg.php.
+			return null;
+		},
 	},
 );
