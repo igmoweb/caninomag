@@ -83,20 +83,6 @@ class Canino_Theme {
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
-
-		wp_enqueue_script( 'googleads', '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', [], null );
-		add_filter(
-			'script_loader_tag',
-			function ( $tag, $handle ) {
-				if ( $handle === 'googleads' ) {
-					$tag = str_replace( ' src', ' async="async" src', $tag );
-				}
-
-				return $tag;
-			},
-			10,
-			2
-		);
 	}
 
 

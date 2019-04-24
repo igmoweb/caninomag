@@ -245,3 +245,14 @@ function canino_the_post_teaser() {
 function canino_the_post_content() {
 	the_content( null, true );
 }
+
+/**
+ * Retrieve the post excerpt
+ */
+function canino_the_excerpt() {
+	$excerpt = apply_filters( 'the_excerpt', get_the_excerpt() );
+	if ( empty( $excerpt ) ) {
+		canino_the_post_teaser();
+	}
+	echo $excerpt;
+}
