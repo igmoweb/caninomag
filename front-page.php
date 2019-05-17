@@ -13,13 +13,6 @@
 			<hr>
 		<?php endif; ?>
 
-		<?php if ( is_active_sidebar( 'home-top-bar' ) ) : ?>
-			<div id="home-top-bar" class="widget-area" role="complementary">
-				<?php dynamic_sidebar( 'home-top-bar' ); ?>
-			</div><!-- .widget-area -->
-			<hr>
-		<?php endif; ?>
-
 		<div id="canino-home-2-cols">
 			<?php
 				$query   = canino_get_2_cols_home_query();
