@@ -163,6 +163,18 @@ class Canino_Theme {
 			]
 		);
 
+		register_sidebar(
+			[
+				'name'          => 'Home Top Bar',
+				'description'   => 'Se muestra justo después del mosaico en al home',
+				'id'            => 'home-top-bar',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="widget-title">',
+				'after_title'   => '</h6>',
+			]
+		);
+
 		add_image_size( 'post-grid-thumb-large', 787, 524, true );
 		add_image_size( 'post-grid-thumb-big', 524, 524, true );
 		add_image_size( 'post-grid-thumb-medium', 524, 261, true );

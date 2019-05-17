@@ -6,24 +6,19 @@
 
 	<div id="primary" class="<?php canino_primary_class(); ?>">
 
-		<div class="show-for-large">
-			<h2 class="canino-section-title">Publicidad</h2>
-			<div class="canino-publi row">
-				<div class="column large-12">
-					<?php canino_ad_banner(); ?>
-				</div>
-			</div>
+		<?php if ( is_active_sidebar( 'home-top-bar' ) ) : ?>
+			<div id="home-top-bar" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'home-top-bar' ); ?>
+			</div><!-- .widget-area -->
 			<hr>
-		</div>
+		<?php endif; ?>
 
-		<div class="show-for-medium-only">
-			<h2 class="canino-section-title">Publicidad</h2>
-			<div class="canino-publi row align-center">
-				<div class="column medium-5">
-					<?php canino_ad_banner( 'small' ); ?>
-				</div>
-			</div>
-		</div>
+		<?php if ( is_active_sidebar( 'home-top-bar' ) ) : ?>
+			<div id="home-top-bar" class="widget-area" role="complementary">
+				<?php dynamic_sidebar( 'home-top-bar' ); ?>
+			</div><!-- .widget-area -->
+			<hr>
+		<?php endif; ?>
 
 		<div id="canino-home-2-cols">
 			<?php
