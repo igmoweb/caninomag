@@ -51,3 +51,18 @@
     }
   }
 }
+
+#home-top-bar-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+  .widget {
+    flex-grow: 2;
+    margin-top:0;
+    margin-right: 1rem;
+    &:last-child {
+      margin-right:0;
+    }
+  }
+}

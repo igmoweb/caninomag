@@ -166,8 +166,20 @@ class Canino_Theme {
 		register_sidebar(
 			[
 				'name'          => 'Home Top Bar',
-				'description'   => 'Se muestra justo después del mosaico en al home',
+				'description'   => 'Se muestra justo después del mosaico en la home',
 				'id'            => 'home-top-bar',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="widget-title">',
+				'after_title'   => '</h6>',
+			]
+		);
+
+		register_sidebar(
+			[
+				'name'          => 'Home Top Bar (Mobile)',
+				'description'   => 'Se muestra justo después del mosaico en la home (sólo en móviles)',
+				'id'            => 'home-top-bar-mobile',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h4 class="widget-title">',

@@ -7,10 +7,17 @@
 	<div id="primary" class="<?php canino_primary_class(); ?>">
 
 		<?php if ( is_active_sidebar( 'home-top-bar' ) ) : ?>
-			<div id="home-top-bar" class="widget-area" role="complementary">
+			<div id="home-top-bar" class="widget-area show-for-large" role="complementary">
 				<?php dynamic_sidebar( 'home-top-bar' ); ?>
 			</div><!-- .widget-area -->
-			<hr>
+			<hr class="show-for-large">
+		<?php endif; ?>
+
+		<?php if ( is_active_sidebar( 'home-top-bar-mobile' ) ) : ?>
+			<div id="home-top-bar-mobile" class="widget-area hide-for-large" role="complementary">
+				<?php dynamic_sidebar( 'home-top-bar-mobile' ); ?>
+			</div><!-- .widget-area -->
+			<hr class="hide-for-large">
 		<?php endif; ?>
 
 		<div id="canino-home-2-cols">
